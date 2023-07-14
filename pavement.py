@@ -59,7 +59,7 @@ options(
         sourcedir="_sources",
         outdir="./build/BHSawesome",
         confdir=".",
-        project_name = project_name,
+        project_name = "BHSawesome",
         template_args={'course_id': 'BHSawesome',
                        'login_required':'false',
                        'appname':master_app,
