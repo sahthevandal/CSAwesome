@@ -16,7 +16,7 @@ sys.path.append(os.getcwd())
 
 home_dir = os.getcwd()
 
-project_name = "bhsawesome"
+project_name = "BHSawesome"
 
 #master_url = None
 #if master_url is None:
@@ -35,7 +35,7 @@ if master_url is None:
     master_url = get_master_url()
 
 master_app = 'runestone'
-serving_dir = "./build/bhsawesome"
+serving_dir = "./build/BHSawesome"
 
 #new 7/2019 changes
 # Change to False when running localhost
@@ -55,12 +55,12 @@ options(
     sphinx = Bunch(docroot=".",),
 
     build = Bunch(
-        builddir="./build/bhsawesome",
+        builddir="./build/BHSawesome",
         sourcedir="_sources",
-        outdir="./build/bhsawesome",
+        outdir="./build/BHSawesome",
         confdir=".",
-        project_name = "bhsawesome",
-        template_args={'course_id': 'bhsawesome',
+        project_name = project_name,
+        template_args={'course_id': 'BHSawesome',
                        'login_required':'false',
                        'appname':master_app,
                        'loglevel': 10,
@@ -68,7 +68,7 @@ options(
                        'use_services': 'true',
                        'python3': 'false',
                        'dburl': 'postgresql://runestone@localhost/runestone',
-                       'basecourse': 'bhsawesome',
+                       'basecourse': 'BHSawesome',
                        # new 7/2019 changes
                        'dynamic_pages': dynamic_pages,
                        'downloads_enabled': 'false',
