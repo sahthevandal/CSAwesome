@@ -179,79 +179,113 @@ Most if statements have a boolean condition that uses relational operators like 
       }
    }
    ====
+   
    // Test Code for Lesson 3.2.1 - Activity 1 - if-relational
-    import static org.junit.Assert.*;
-    import org.junit.After;
-    import org.junit.Before;
-    import org.junit.Test;
-
-    import java.io.*;
-
-    public class RunestoneTests extends CodeTestHelper
-    {
-        @Test
-        public void testPositive()
-        {
-            String output = "";
-            int num = -999;
-
-            while(num <= 0) {
-                output = getMethodOutput("main");
-                num = getNumber(output);
-            }
-
-            String expect = "The number is " + num + "\n" + num + " is positive!";
-
-            boolean passed = getResults(expect, output, "Testing positive numbers");
-            assertTrue(passed);
-        }
-
-        @Test
-        public void testZero()
-        {
-            String output = "";
-            int num = -999;
-
-            while(num != 0) {
-                output = getMethodOutput("main");
-                num = getNumber(output);
-            }
-
-            String expect = "The number is " + num + "\n" + num + " is zero!";
-
-            boolean passed = getResults(expect, output, "Testing zero");
-            assertTrue(passed);
-        }
-
-        @Test
-        public void testNegative()
-        {
-            String output = "";
-            int num = 999;
-
-            while(num >= 0) {
-                output = getMethodOutput("main");
-                num = getNumber(output);
-            }
-
-            String expect = "The number is " + num + "\n" + num + " is negative!";
-
-            boolean passed = getResults(expect, output,"Testing negative numbers");
-            assertTrue(passed);
-        }
-
-        private int getNumber(String output) {
-            output = output.replaceAll("The number is ", "");
-            int space = output.indexOf("\n");
-
-            String numStr = output;
-
-            if (space >= 0)
-                numStr = numStr.substring(0, space).trim();
-
-            return Integer.parseInt(numStr);
-        }
-    }
+   import static org.junit.Assert.*;
+   import org.junit.After;
+   import org.junit.Before;
+   import org.junit.Test;
+   
+   import java.io.*;
+   
+   import java.util.regex.Pattern;
+   import java.util.regex.MatchResult;
+   
+   public class RunestoneTests extends CodeTestHelper {
+   
+       @Test
+       public void testPositive() {
+           String output = "";
+           int num = -999, count = 0;
+   
+           while (num <= 0 && count < 50) {
+               output = getMethodOutput("main");
+               num = getNumber(output);
+               count++;
+   
+               if (num == 9999999) {
+                   getResults("The number is ##\n## is positive!",output,"Did you forget to print the number?", false);
+                   assertTrue(false);
+                   return;
+               }
+           }
+   
+           String expect = "The number is " + num + "\n" + num + " is positive!";
+   
+           boolean passed = output.contains("positive");
+           getResults(expect, output, "Testing positive numbers", passed);
+           assertTrue(passed);
+       }
+   
+       @Test
+       public void testZero() {
+           String output = "";
+           int num = -999, count = 0;
+   
+           while (num != 0 && count < 50) {
+               output = getMethodOutput("main");
+               num = getNumber(output);
+               count++;
+   
+               if (num == 9999999) {
+                   getResults("The number is ##\n## is zero!",output,"Did you forget to print the number?", false);
+                   assertTrue(false);
+                   return;
+               }
+           }
+   
+           String expect = "The number is " + num + "\n" + num + " is zero!";
+   
+           boolean passed = output.contains("zero");
+           getResults(expect, output, "Testing zero", passed);
+           assertTrue(passed);
+       }
+   
+       @Test
+       public void testNegative() {
+           String output = "";
+           int num = 999, count = 0;
+   
+           while (num >= 0 && count < 50) {
+               output = getMethodOutput("main");
+               num = getNumber(output);
+               count++;
+   
+               if (num == 9999999) {
+                   getResults("The number is ##\n## is negative!",output,"Did you forget to print the number?", false);
+                   assertTrue(false);
+                   return;
+               }
+           }
+   
+           String expect = "The number is " + num + "\n" + num + " is negative!";
+   
+           boolean passed = output.contains("negative");
+           getResults(expect, output, "Testing negative numbers", passed);
+           assertTrue(passed);
+       }
+   
+       private int getNumber(String output) {
+           String regex = "[0-9]+";
+   
+           String[] matches = Pattern.compile(regex)
+                   .matcher(output)
+                   .results()
+                   .map(MatchResult::group)
+                   .toArray(String[]::new);
+   
+           int num = 9999999;
+           
+           if (matches.length > 0)
+               num = Integer.parseInt(matches[0]);
+   
+           if (output.contains("-"))
+               num *= -1;
+   
+           return num;
+       }
+   
+   }
 
 
 .. note::
