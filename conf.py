@@ -30,7 +30,7 @@ import pkg_resources
 #html_defer_js = True
 
 # new for title page
-course_description = "CSAwesome is a College Board endorsed curriculum for AP Computer Science A, an introductory college-level computer programming course in Java, by Barbara Ericson, University of Michigan, and Beryl Hoffman, Elms College."
+course_description = "BHS Awesome is an adaptation by Peter Seibel of CSAwesome for use at Berkeley High School. CSAwesome is a College Board endorsed curriculum for AP Computer Science A written by Barbara Ericson, University of Michigan, and Beryl Hoffman, Elms College."
 key_words = "AP CSA Java"
 shelf_section = "AP Computer Science"
 
@@ -61,7 +61,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'CSAwesome'
+project = 'BHS Awesome'
 copyright = '2015 Barb Ericson, 2019 revised by Beryl Hoffman'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -129,7 +129,7 @@ html_theme = 'sphinx_bootstrap'
 #html_theme_options = {'nosidebar': 'true'}
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "AP CSAwesome!",
+    'navbar_title': "BHS Awesome!",
 
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Units",
@@ -177,10 +177,10 @@ html_theme_path = [pkg_resources.resource_filename('runestone', 'common/project_
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'AP CSAwesome'
+html_title = 'BHS Awesome'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title ='AP CSAwesome'
+html_short_title ='BHS Awesome'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
