@@ -1,4 +1,4 @@
-.. image:: ../../_static/CSAwesomeLogo.png
+.. image:: ../../_static/BHSawesomeLogo.png
     :width: 350
     :align: center
 
