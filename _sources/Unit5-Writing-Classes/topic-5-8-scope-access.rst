@@ -70,16 +70,17 @@ The image below shows these 3 levels of scope.
     :iscode:
     :feedback: Remember that the instance variables declared at the top of the class have Class Scope.
 
-    :click-incorrect:public class Name {:endclick:
-
+    :click-incorrect:public class Name:endclick:
+    :click-incorrect:{:endclick:
         :click-correct:private String first;:endclick:
         :click-correct:public String last;:endclick:
 
-        :click-incorrect:public Name(String theFirst, String theLast) {:endclick:
+        :click-incorrect:public Name(String theFirst, String theLast):endclick:
+        :click-incorrect:{:endclick:
             :click-incorrect:String firstName = theFirst;:endclick:
             :click-incorrect:first = firstName;:endclick:
             :click-incorrect:last = theLast;:endclick:
-         :click-incorrect:}:endclick:
+        :click-incorrect:}:endclick:
     :click-incorrect:}:endclick:
 
 .. clickablearea:: name_method_scope
@@ -87,16 +88,17 @@ The image below shows these 3 levels of scope.
     :iscode:
     :feedback: Remember that the parameter variables and the local variables declared inside a method have Method Level Scope.
 
-    :click-incorrect:public class Name {:endclick:
-
+    :click-incorrect:public class Name:endclick:
+    :click-incorrect:{:endclick:
         :click-incorrect:private String first;:endclick:
         :click-incorrect:public String last;:endclick:
 
-        :click-correct:public Name(String theFirst, String theLast) {:endclick:
+        :click-correct:public Name(String theFirst, String theLast):endclick:
+        :click-incorrect:{:endclick:
             :click-correct:String firstName = theFirst;:endclick:
             :click-incorrect:first = firstName;:endclick:
             :click-incorrect:last = theLast;:endclick:
-         :click-incorrect:}:endclick:
+        :click-incorrect:}:endclick:
     :click-incorrect:}:endclick:
 
 **Local variables** are variables that are declared inside a method, usually at the top of the method. These variables can only be used within the method and do not exist outside of the method. Parameter variables are also considered local variables that only exist for that method. It's good practice to declare any variables that are used by just one method as local variables in that method.
@@ -118,55 +120,63 @@ Another way to look at scope is that a variable's scope is where it lives and ex
   ~~~~
   public class Person
   {
-     private String name;
-     private String email;
+      private String name;
+      private String email;
 
-     public Person(String initName, String initEmail)
-     {
-        name = initName;
-        email = initEmail;
-     }
+      public Person(String initName, String initEmail)
+      {
+          name = initName;
+          email = initEmail;
+      }
 
-     public String toString()
-     {
-       for (int i=0; i < 5; i++) {
-          int id = i;
-       }
-       // Can you access the blockScope variables i or id?
-       System.out.println("i at the end of the loop is " + i);
-       System.out.println("The last id is " + id);
+      public String toString()
+      {
+          for (int i = 0; i < 5; i++)
+          {
+              int id = i;
+          }
+          // Can you access the blockScope variables i or id?
+          System.out.println("i at the end of the loop is " + i);
+          System.out.println("The last id is " + id);
 
-       // Can toString() access parameter variables in Person()?
-       return  initName + ": " + initEmail;
-     }
+          // Can toString() access parameter variables in Person()?
+          return initName + ": " + initEmail;
+      }
 
-     // main method for testing
-     public static void main(String[] args)
-     {
-        // call the constructor to create a new person
-        Person p1 = new Person("Sana", "sana@gmail.com");
-        System.out.println(p1);
-     }
+      // main method for testing
+      public static void main(String[] args)
+      {
+          // call the constructor to create a new person
+          Person p1 = new Person("Sana", "sana@gmail.com");
+          System.out.println(p1);
+      }
   }
+
   ====
   import static org.junit.Assert.*;
-    import org.junit.*;;
-    import java.io.*;
 
-    public class RunestoneTests extends CodeTestHelper
-    {
-        @Test
-        public void testCodeContains(){
-          boolean passed = checkCodeContains("returning instance variables", "return  name + \": \" + email;");
-          assertTrue(passed);
-        }
+  import org.junit.*;
 
-        @Test
-        public void testCodeContains2(){
-          boolean passed = checkCodeContains("declaration and initialization of id to 0", "int id = 0;");
+  import java.io.*;
+
+  public class RunestoneTests extends CodeTestHelper
+  {
+      @Test
+      public void testCodeContains()
+      {
+          boolean passed =
+                  checkCodeContains("returning instance variables", "return  name + \": \" + email;");
           assertTrue(passed);
-        }
-    }
+      }
+
+      @Test
+      public void testCodeContains2()
+      {
+          boolean passed =
+                  checkCodeContains("declaration and initialization of id to 0", "int id = 0;");
+          assertTrue(passed);
+      }
+  }
 
 If there is a local variable with the same name as an instance variable, the variable name will refer to the local variable instead of the instance variable, as seen below. We'll see in the next lesson, that we can distinguish between the local variable and the instance variable using the keyword this to refer to this object's instance variables.
 
@@ -178,47 +188,50 @@ If there is a local variable with the same name as an instance variable, the var
   ~~~~
   public class Person
   {
-     private String name;
-     private String email;
+      private String name;
+      private String email;
 
-     public Person(String initName, String initEmail)
-     {
-        name = initName;
-        email = initEmail;
-     }
+      public Person(String initName, String initEmail)
+      {
+          name = initName;
+          email = initEmail;
+      }
 
-     public String toString()
-     {
-       String name = "unknown";
-       // The local variable name here will be used,
-       //  not the instance variable name.
-       return  name + ": " + email;
-     }
+      public String toString()
+      {
+          String name = "unknown";
+          // The local variable name here will be used,
+          //  not the instance variable name.
+          return name + ": " + email;
+      }
 
-     // main method for testing
-     public static void main(String[] args)
-     {
-        // call the constructor to create a new person
-        Person p1 = new Person("Sana", "sana@gmail.com");
-        System.out.println(p1);
-     }
+      // main method for testing
+      public static void main(String[] args)
+      {
+          // call the constructor to create a new person
+          Person p1 = new Person("Sana", "sana@gmail.com");
+          System.out.println(p1);
+      }
   }
+
   ====
   import static org.junit.Assert.*;
-    import org.junit.*;;
-    import java.io.*;
 
-    public class RunestoneTests extends CodeTestHelper
-    {
-        @Test
-        public void testMain() throws IOException
-        {
-            String output = getMethodOutput("main");
-            String expect = "unknown: sana@gmail.com";
-            boolean passed = getResults(expect, output, "Expected output from main", true);
-            assertTrue(passed);
-        }
-    }
+  import org.junit.*;
+
+  import java.io.*;
+
+  public class RunestoneTests extends CodeTestHelper
+  {
+      @Test
+      public void testMain() throws IOException
+      {
+          String output = getMethodOutput("main");
+          String expect = "unknown: sana@gmail.com";
+          boolean passed = getResults(expect, output, "Expected output from main", true);
+          assertTrue(passed);
+      }
+  }
 
 |Groupwork| Programming Challenge : Debugging
 ------------------------------------------------------------
@@ -234,84 +247,133 @@ If there is a local variable with the same name as an instance variable, the var
   ~~~~
   public class TesterClass
   {
-     public static void main(String[] args)
-     {
-        Fraction f1 = new Fraction();
-        Fraction f2 = new Fraction(1,2);
-        System.out.println(f1);
-        System.out.println(f2.numerator / f2.denominator);
-     }
-   }
+      public static void main(String[] args)
+      {
+          Fraction f1 = new Fraction();
+          Fraction f2 = new Fraction(1, 2);
+          System.out.println(f1);
+          System.out.println(f2.numerator / f2.denominator);
+      }
+  }
 
   /** Class Fraction */
   class Fraction
   {
-     //  instance variables
-     private int numerator;
-     private int denominator;
+      //  instance variables
+      private int numerator;
+      private int denominator;
 
-     // constructor: set instance variables to default values
-     public Fraction()
-     {
-        int d = 1;
-        numerator = d;
-        denominator = d;
-     }
+      // constructor: set instance variables to default values
+      public Fraction()
+      {
+          int d = 1;
+          numerator = d;
+          denominator = d;
+      }
 
-     // constructor: set instance variables to init parameters
-     public Fraction(int initNumerator, int initDenominator)
-     {
-        numerator = initNumerator;
-        denominator = initDenominator;
-     }
+      // constructor: set instance variables to init parameters
+      public Fraction(int initNumerator, int initDenominator)
+      {
+          numerator = initNumerator;
+          denominator = initDenominator;
+      }
 
-     public String toString()
-     {
-       // if the denominator is 1, then just return the numerator
-       if (denominator == d) {
-          int newNumerator = 1;
-       }
-       return newNumerator + "/" + denominator;
-     }
+      public String toString()
+      {
+          // if the denominator is 1, then just return the numerator
+          if (denominator == d)
+          {
+              int newNumerator = 1;
+          }
+          return newNumerator + "/" + denominator;
+      }
   }
+
   ====
   import static org.junit.Assert.*;
-    import org.junit.*;;
-    import java.io.*;
 
-    public class RunestoneTests extends CodeTestHelper
-    {
-        public RunestoneTests() {
-            super("TesterClass");
-        }
+  import org.junit.*;
 
-        @Test
-        public void test1() {
-            String orig = "public class TesterClass\n{\n   public static void main(String[] args)\n   {\n      Fraction f1 = new Fraction();\n      Fraction f2 = new Fraction(1,2);\n      System.out.println(f1);\n      System.out.println(f2.numerator / f2.denominator);\n   }\n }\n\n/** Class Fraction */\nclass Fraction\n{\n   //  instance variables\n   private int numerator;\n   private int denominator;\n\n   // constructor: set instance variables to default values\n   public Fraction()\n   {\n      int d = 1;\n      numerator = d;\n      denominator = d;\n   }\n\n   // constructor: set instance variables to init parameters\n   public Fraction(int initNumerator, int initDenominator)\n   {\n      numerator = initNumerator;\n      denominator = initDenominator;\n   }\n\n   public String toString()\n   {\n     // if the denominator is 1, then just return the numerator\n     if (denominator == d) {\n        int newNumerator = 1;\n     }\n     return newNumerator + \"/\" + denominator;\n   }\n}\n";
+  import java.io.*;
 
-            boolean passed = codeChanged(orig);
-            assertTrue(passed);
-        }
+  public class RunestoneTests extends CodeTestHelper
+  {
+      public RunestoneTests()
+      {
+          super("TesterClass");
+      }
 
-        @Test
-        public void test2() {
-            String expect = "1\n1/2";
-            String actual = getMethodOutput("main");
+      @Test
+      public void test1()
+      {
+          String orig =
+                  "public class TesterClass\n"
+                      + "{\n"
+                      + "   public static void main(String[] args)\n"
+                      + "   {\n"
+                      + "      Fraction f1 = new Fraction();\n"
+                      + "      Fraction f2 = new Fraction(1,2);\n"
+                      + "      System.out.println(f1);\n"
+                      + "      System.out.println(f2.numerator / f2.denominator);\n"
+                      + "   }\n"
+                      + " }\n\n"
+                      + "/** Class Fraction */\n"
+                      + "class Fraction\n"
+                      + "{\n"
+                      + "   //  instance variables\n"
+                      + "   private int numerator;\n"
+                      + "   private int denominator;\n\n"
+                      + "   // constructor: set instance variables to default values\n"
+                      + "   public Fraction()\n"
+                      + "   {\n"
+                      + "      int d = 1;\n"
+                      + "      numerator = d;\n"
+                      + "      denominator = d;\n"
+                      + "   }\n\n"
+                      + "   // constructor: set instance variables to init parameters\n"
+                      + "   public Fraction(int initNumerator, int initDenominator)\n"
+                      + "   {\n"
+                      + "      numerator = initNumerator;\n"
+                      + "      denominator = initDenominator;\n"
+                      + "   }\n\n"
+                      + "   public String toString()\n"
+                      + "   {\n"
+                      + "     // if the denominator is 1, then just return the numerator\n"
+                      + "     if (denominator == d) {\n"
+                      + "        int newNumerator = 1;\n"
+                      + "     }\n"
+                      + "     return newNumerator + \"/\" + denominator;\n"
+                      + "   }\n"
+                      + "}\n";
 
-            boolean passed = getResults(expect, actual, "Testing main()");
-            assertTrue(passed);
-        }
-        @Test
-        public void test3() {
-           String code = getCodeWithoutComments();
-          int count = countOccurences(code,"private");
-          boolean passed = (count >= 2);
-          getResults("2 private vars", count + " private vars", "Keep the instance variables private! Use other Fraction methods.", passed);
+          boolean passed = codeChanged(orig);
           assertTrue(passed);
-         }
-    }
+      }
 
+      @Test
+      public void test2()
+      {
+          String expect = "1\n1/2";
+          String actual = getMethodOutput("main");
 
+          boolean passed = getResults(expect, actual, "Testing main()");
+          assertTrue(passed);
+      }
+
+      @Test
+      public void test3()
+      {
+          String code = getCodeWithoutComments();
+          int count = countOccurences(code, "private");
+          boolean passed = (count >= 2);
+          getResults(
+                  "2 private vars",
+                  count + " private vars",
+                  "Keep the instance variables private! Use other Fraction methods.",
+                  passed);
+          assertTrue(passed);
+      }
+  }
 
 Summary
 -------
