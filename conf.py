@@ -247,9 +247,8 @@ html_show_copyright = True
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'PythonCoursewareProjectdoc'
 
-
-
 # custom  files in _static
-setup.custom_css_files = ['css/custom.css',]
+setup.custom_css_files = ['css/custom.css']
+setup.custom_js_files = ['js/renumber.js']
 
 # setup function moved to runestone 5.8.0 release
