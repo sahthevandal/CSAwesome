@@ -1,8 +1,29 @@
 // The new numbering for chapters in the book. The non-funny numbers should
 // basically correspond to the original units in CSAwesome which themselves
-// correspond to the order give by the College Board in the CED.
+// correspond to the order give by the College Board in the CED. For now the
+// funny numbers are commented out because I haven't added those chapters yet.
 
-const numbers = [ "1", "√2", "2", "3", "4", "4½", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" ];
+const numbers = [
+  "1",
+  // "√2",
+  "2",
+  "3",
+  "4",
+  // "4½",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17"
+];
 
 // Add selectors here if you find any more places where automatic numbers
 // appear. These selectors should select the elements that contain the text
@@ -32,7 +53,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const units = [...document.querySelectorAll('#table-of-contents .toctree-wrapper > ul > li')];
 
   if (units.length > 0) {
-      const smallTOC = document.createElement('ul');
+    const smallTOC = document.createElement('ul');
 
     // Add the main units
     units.slice(0, 10).forEach(e => {
@@ -63,6 +84,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       smallTOC.append(copy);
     });
 
-    document.getElementById('ap-csa-java-course').querySelector('ul').replaceWith(smallTOC);
+    document.getElementById('small_toc').replaceWith(smallTOC);
   }
 });
