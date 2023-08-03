@@ -25,6 +25,15 @@ const numbers = [
   "17"
 ];
 
+// Adjust these two values. They are indices, not the unit numbers.
+const practiceUnitsStart = 10;
+const practiceUnits = 5;
+const unitsAfterPractice = 1;
+
+// Derived
+const afterPractice = practiceUnitsStart + practiceUnits;
+const end = afterPractice + unitsAfterPractice;
+
 // Add selectors here if you find any more places where automatic numbers
 // appear. These selectors should select the elements that contain the text
 // starting with the unit number to be replaced.
@@ -42,6 +51,43 @@ const renumber = (e) => {
   e.innerText = e.innerText.replace(chapterNum, (match, p1, p2, p3) => `${numbers[p1 - 1]}${p2}${p3}`);
 };
 
+
+const buildSmallTOC = () => {
+  const units = [...document.querySelectorAll('#table-of-contents .toctree-wrapper > ul > li')];
+
+  const smallTOC = document.createElement('ul');
+  const prep = units[0].cloneNode();
+  prep.append("Practice units: ");
+
+  const addToSmallTOC = (e) => {
+    const copy = e.cloneNode();
+    const a = e.querySelector('a').cloneNode(true);
+    a.innerText = a.innerText.replace(/^(.*?)\./, 'Unit $1:');
+    copy.append(a);
+    smallTOC.append(copy);
+  };
+
+  const addToPrepEntry = (e, i, arr) => {
+    const a = e.querySelector('a').cloneNode(true);
+    a.innerText = numbers[i + practiceUnitsStart];
+    prep.append(a);
+    if (i < arr.length - 1) prep.append(", ");
+  };
+
+  // Add the main units
+  units.slice(0, practiceUnitsStart).forEach(addToSmallTOC);
+
+  // The prep entry
+  units.slice(practiceUnitsStart, afterPractice).forEach(addToPrepEntry);
+  smallTOC.append(prep);
+
+  // And any remaining units.
+  units.slice(afterPractice, end).forEach(addToSmallTOC);
+
+  return smallTOC;
+};
+
+
 window.addEventListener("DOMContentLoaded", (event) => {
 
   // Renumbering of the TOC and section headers.
@@ -49,41 +95,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     document.querySelectorAll(s).forEach(renumber);
   });
 
-  // Rebuild the small TOC if were on the main TOC page.
-  const units = [...document.querySelectorAll('#table-of-contents .toctree-wrapper > ul > li')];
+  // Fill the small toc if it's on the page
+  document.getElementById('small_toc')?.replaceWith(buildSmallTOC());
 
-  if (units.length > 0) {
-    const smallTOC = document.createElement('ul');
-
-    // Add the main units
-    units.slice(0, 10).forEach(e => {
-      const copy = e.cloneNode();
-      const a = e.querySelector('a').cloneNode(true);
-      a.prepend(document.createTextNode('Unit '));
-      copy.append(a);
-      smallTOC.append(copy);
-    });
-
-    // Add practice units as a single entry
-    const prep = units[10].cloneNode();
-    prep.append("Practice units: ");
-    units.slice(10, 15).forEach((e, i) => {
-      const a = e.querySelector('a').cloneNode(true);
-      a.innerText = numbers[i + 10];
-      prep.append(a);
-      if (i + 10 < 14) prep.append(", ");
-      smallTOC.append(prep);
-    });
-
-    // Add the stories unit but don't add the hidden items.
-    units.slice(15, 16).forEach(e => {
-      const copy = e.cloneNode();
-      const a = e.querySelector('a').cloneNode(true);
-      a.prepend(document.createTextNode('Unit '));
-      copy.append(a);
-      smallTOC.append(copy);
-    });
-
-    document.getElementById('small_toc').replaceWith(smallTOC);
-  }
 });
