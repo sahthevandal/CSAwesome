@@ -50,6 +50,11 @@ In this chapter we’ll see how to write other methods and how to **call** them.
 What is a Method?
 -----------------
 
+.. image:: Figures/Toaster.png
+    :width: 100
+    :align: left
+    :alt: Toaster
+
 One way to think of a method is as a little machine that does something.
 Consider a toaster. You put bread in the toaster and turn it on and a little
 while later you get a piece of toast. Toasters don’t make toast without bread
