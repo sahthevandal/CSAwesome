@@ -5,11 +5,11 @@
 
 // Set this to true to skip renumbering things if they won't actually change.
 // You'll still get the small table of contents built from the actual TOC.
-const skipRenumbering = true;
+const skipRenumbering = false;
 
 const numbers = [
   "1",
-  // "√2",
+  "√2",
   "2",
   "3",
   "4",
@@ -45,6 +45,7 @@ const selectors = [
   '.toctree-wrapper ul li a',          // Main TOC
   'span.section-number',               // Text in chapters
   'li.dropdown.globaltoc-container a', // Dropdown menu
+  'title',                             // Page title (shows up in browser tab)
 ];
 
 const chapterNum = /^(\d+)(\.| )(.*)$/;
