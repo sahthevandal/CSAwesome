@@ -9,27 +9,25 @@
 What is Procedural Abstraction?
 ===============================
 
-Computer programs, as you’ll discover, can get rather complex. Once you get past
-the details of syntax and the basic mechanics of the language, you’ll find that
-your main task as a programmer is managing that complexity.
+Computer programs, as you’ll discover, can get rather complex. Large programs
+may consist of millions of lines of code, all of which have to connect to each
+other in just the right way for the program to work. Compare that to a novel,
+which might be only a few hundred thousand words and is still perfectly readable
+even if the author misplaced a semicolon. How can human beings possibly deal
+with that kind of complexity?
 
 **Abstraction** is the main tool we have to keep complexity under control.
 Abstraction gets a bad rap in our culture, often being considered synonymous
 with “hard to understand” as in abstract math or abstract theoretical physics.
-But abstraction really just means “hiding details” and we use abtractions all
+But abstraction really just means “hiding details” and we use abstractions all
 the time without even realizing it.
 
-Texting, for instance, is an abstraction that hides many details about
-interactions that take place between between multiple computers every time your
-friend taps out a message on their phone and hits send and, causing it to show
-up on your phone milliseconds later. Very few people undertand all the details
-that happen because they are abstracted away. Even the people who wrote the text
-software on your phone don’t know all the details because the software itself is
-built on top of abstractions that hide the details of how the phone communicates
-with the nearest radio tower, etc. But the point of this abstraction, like many
-others, is that as long as we understand abstractly what happens—the text that
-is typed on this phone shows up on that phone after I hit send—we can make use
-of the abstraction without knowing exactly how it happens.
+When you learn to drive, you learn how to use a steering wheel and the brake and
+accelerator pedals. But your drivers ed instructor will almost certainly not
+teach you about how a rack and pinion turns the wheels or how tiny explosions in
+the car’s engine make it go. Most of the details are *abstracted* away. A car
+mechanic needs to understand them but as a driver you can deal with the car in
+terms of a much simpler set of concepts like press the gas to make the car go.
 
 Abstraction is a powerful tool that will appear over and over as you learn to
 program. In this chapter we are going to talk about **procedural abstraction**
@@ -42,10 +40,51 @@ Procedures go by many names in different programming languages: functions,
 subroutines, commands, or even procedures. In Java they are called **methods**,
 as in a method of doing something.
 
-In the last chapter we talked about data types and variables. But data is inert;
-it just `is`. Any code that `does` anything will live in a method. So far we’ve
+In the last chapter we talked about data types and variables. Variables are a
+form of abstraction—by giving a name to a value we can think about it in terms
+of what it means rather than as a specific value. But data is mostly inert; it
+just `is`. Any code that `does` anything will live in a method. So far we’ve
 only seen one method the ``main`` method that is run when you run a Java class.
 In this chapter we’ll see how to write other methods and how to **call** them.
+
+What is a Method?
+-----------------
+
+One way to think of a method is as a little machine that does something.
+Consider a toaster. You put bread in the toaster and turn it on and a little
+while later you get a piece of toast. Toasters don’t make toast without bread
+and they can make toast out of any kind of bread that fits in the toaster.
+
+And even a lowly toaster is a kind of abstraction. While you probably have some
+rough idea of how a toaster works on the inside, as with a car you don't have to
+know how it works to make toast. All you have to know is, you put the bread in,
+you press the button, and a little while later you get toast out.
+
+Methods are similar. We can look at them from the outside where they have a
+name, take some values as **arguments** and then do something, either producing
+a new value or having some effect such as printing to the screen.
+
+Then on the inside of the method there is code that defines how the method does
+what it does. The details matter a lot when you're trying to build or fix the
+method but once it's working it creates an abstraction that you can use without
+having to keep all those details in mind.
+
+One important difference, however, is that in the physical world machines can
+really only *transform* their inputs—after you make toast you don’t have the
+original bread. Methods that compute values typically don’t have any effect on
+their inputs: the 2 is not changed into a 4; a new ``int`` with the value 4 is
+created when the method is called.
+
+Maybe a better analogy from the physical world would be something like a
+photocopier. If you ignore (abstract away!) the fact that photo copier has an
+internal supply of paper and toner, you can think of it like a method that takes
+something you want to copy as its input and produces a copy as its output. A
+method in a computer is kind of like a photocopier in that it has a reservoir of
+bits of computer memory that it can draw on to create new values whenever they
+are needed.
+
+Without getting too wrapped up in our analogies, let’s look at two kinds of
+methods we will write and use.
 
 Two Kinds of Methods
 --------------------
@@ -139,7 +178,7 @@ simple example:
 
 The first ``int`` is the return type which tells both the compiler and humans
 reading this code what kind of value this method produces. Then comes the name
-``doubled``. As with variables the name can be (almost) anything. (One of the
+``doubled``. As with variables, the name can be (almost) anything. (One of the
 constraints, however, is that the name cannot be a **keyword**. Keywords are a
 set of names that have special meaning in Java and thy include the names of the
 primitive types. That means we can't call this method ``double`` since that’s
@@ -151,17 +190,18 @@ parameter, an ``int`` parameter named ``n`` which presumably stands for
 
 Finally we get to the **body** of the method, which is always enclosed in a pair
 of curly braces (``{}``). In the body we can write whatever code we want and can
-refer to the variables defined in the parameter list. However, the code does
-have one obligation: it must return a value of the correct type. In this case
-that means we need to an ``int``. To return a value we use a return statement
-which consists of the word ``return`` followed by an expression that will
-produce the value to be returned. As you can see in this method, the code in the
-method body can refer to the variables defined in the method’s parameter list.
-The expression in the return statement ``n * 2`` means, multiply the value
-passed to this method by 2. Since ``n`` was delcared to be an ``int`` and ``2``
-is an ``int`` and multiplying two ``ints`` gives us another ``int``, this
-clearly satisfies the requirement to return an ``int``. (Phew, that’s a lot of
-``int``\ s.)
+refer to the variables defined in the parameter list.
+
+However, the code does have one obligation: it must return a value of the
+correct type. In this case that means we need to an ``int``. To return a value
+we use a return statement which consists of the word ``return`` followed by an
+expression that will produce the value to be returned. As you can see in this
+method, the code in the method body can refer to the variables defined in the
+method’s parameter list. The expression in the return statement ``n * 2`` means,
+multiply the value passed to this method by 2. Since ``n`` was declared to be an
+``int`` and ``2`` is an ``int`` and multiplying two ``int``\ s gives us another
+``int``, this clearly satisfies the requirement to return an ``int``. (Phew,
+that’s a lot of ``int``\ s.)
 
 Calling a Method
 ----------------
@@ -173,8 +213,12 @@ a value.
 A call to a method is made up of the name of the method followed by a pair of
 parentheses. In between the parentheses is a comma-separated list of
 expressions, one for each parameter defined in the method declaration. In this
-case ``doubled`` just takes one argument so we only need one expression.
+case ``doubled`` just takes one argument so we only need one expression. Thus,
+to call ``doubled`` with the argument 2, we would write:
 
+.. code-block:: java
+
+   double(2)
 
 |Exercise| **Check Your Understanding**
 
@@ -208,49 +252,23 @@ case ``doubled`` just takes one argument so we only need one expression.
        ``double`` which is perfectly fine.
 
 
-But what does it mean to call a method? One way to think of a method is as a
-little machine that does something. Like many machines, it takes some inputs
-which effect what it does. Consider a toaster. You put bread in the toaster and
-turn it on and a little while later you get a piece of toast. Toasters don’t
-make toast without bread and they can make toast out of any kind of bread that
-fits in the toaster.
-
-The ``doubled`` method above is somewhat like a toaster. You put in one ``int``
-and you get back a different ``int``. If you put in ``2`` you get ``4`` but if
-you put in ``3`` you get ``6``, just like if you put a piece of whole wheat
-bread in a toaster you get whole wheat toast and if you put in sourdough you get
-sourdough toast.
-
-One important difference, however, is that in the physical world machines can
-really only *transform* their inputs—after you make toast you don’t have the
-original bread. Methods that compute values typically don’t have any effect on
-their inputs: the 2 is not changed into a 4; a new ``int`` with the value 4 is
-created when the method is called.
-
-Maybe a better analogy from the physical world would be something like a
-photocopier. If you ignore (abstract away!) the fact that photo copier has a
-reservoir of paper and toner, you can think of it like a method that takes
-something you want to copy as its input and produces a copy as its output. A
-method in a computer is kind of like a photocopier in that it has a reservoir of
-bits of computer memory that it can draw on to create new values whenever they
-are needed.
-
-To actually be able to call a method, we need to put it in a class. Until now
-the only method we’ve written is ``main`` which is called for you when you run
-your program. To use a method like ``doubled`` we need to put it in a class like
-this:
-
 |CodingEx| **Coding Exercise**
 
-.. activecode:: DoubledMethod
+.. activecode:: doubled
    :language: java
 
-   This class has both a ``main`` method and a ``doubled`` method. We’ll talk
-   more later about what the ``public`` added before the ``int`` in the
-   definiont of ``doubled`` is for but for now most methods you write will be
-   ``public``. Run this program and look at the output. Notice how there is no
-   sign in the output of the call to ``doubled(4)``. Can you change the program
-   to have it print out the result of that call?
+   To actually be able to call a method, we need to put it in a class. Until now
+   the only method we’ve written is ``main`` which is called for you when you
+   run your program.
+
+   This class has two methods, ``main`` and ``doubled``. We’ll talk more later
+   about what the ``public`` added before the ``int`` in the definition of
+   ``doubled`` is for but for now just know that most methods you write will be
+   ``public``.
+
+   Run this program and look at the output. Notice how there is no sign in the
+   output of the call to ``doubled(4)``. Can you change the program to have it
+   print out the result of that call?
 
    ~~~~
    public class Doubler {
@@ -280,20 +298,20 @@ line executes multiplying 5 times 2, producing 10 which is returned.
 
 The variable ``n`` only exists within the body of the method and it can take on
 different values for different calls. There can be other variables named ``n``
-else where in a program but they do not interfer with the ``n`` in ``doubled``.
+else where in a program but they do not interfere with the ``n`` in ``doubled``.
 Which is good news—if that wasn’t true we’d have to keep track of all the
 variable names we had used anywhere in our program which would be a huge pain!
 
 This is the key to using methods as an abstraction. The details that we care
 about inside the method—what names the method uses for its parameters and how it
-computes its result—are only relevant hidden inside the method. Code that calls
-the method such as this line:
+computes its result—are hidden inside the method. Code that calls the method
+such as this line:
 
 .. code-block:: java
 
    System.out.println("Twice 2 is: " + doubled(2));
 
-isn’t affected at all by those details. We could change the definiton of
+isn’t affected at all by those details. We could change the definition of
 ``doubled`` to this perfectly good, but different, definition and everything
 would still work the same:
 
@@ -306,7 +324,7 @@ would still work the same:
 
 Note that both the parameter name has changed, from ``n`` to ``value`` and the
 way the result is computed, using addition rather than multiplication. Those are
-the details that have been abtracted away by writing the method.
+the details that have been abstracted away by writing the method.
 
 The only tricky thing about this is that when you are writing a program and
 defining your own methods, sometimes you are creating the abstraction and
@@ -338,11 +356,11 @@ as shown in this code:
 
    After running this code, add two new methods to this class:
 
-     - ``tripled`` that takes an ``int`` and return an ``int`` which is three
-       times the argument.
+   - ``tripled`` that takes an ``int`` and return an ``int`` which is three
+     times the argument.
 
-     - ``showThrice`` that takes an ``int`` and will print out a message similar
-       to the one in ``showTwice`` except showing what the argument tripled is.
+   - ``showThrice`` that takes an ``int`` and will print out a message similar
+     to the one in ``showTwice`` except showing what the argument tripled is.
 
    ~~~~
    public class Doubler {
@@ -364,6 +382,39 @@ as shown in this code:
       }
    }
 
+Using Methods in Your Code
+--------------------------
+
+This chapter has just covered the mechanics of writing and calling methods.
+Actually learning to use methods well is a big part of learning Java so we can't
+expect to cover it all here.
+
+However even from these small examples, you can maybe start to get a glimpse of
+how we can use methods to break our programs into meaningful chunks. Look at the
+``main`` method from the last coding exercise. While some details are abstracted
+away in the definition of ``showTwice``, if we at least remember that it prints
+something about the value we can see at a glance what ``main`` does: it does
+that, once for the value 2 and once for 4.
+
+If we care about the details we can look at the definition of ``showTwice``.
+There we can see what it prints though exactly how the doubled value is computed
+is abstracted away in the ``doubled`` method.
+
+Obviously this is a tiny program and none of these abstractions is hiding very
+much. But consider a million line program, like the ones mentioned at the
+beginning of this chapter. Suppose you broke what that program does into ten
+main pieces and wrote each piece as a separate method. Each method would still
+be 100,000 lines. But at least at the top level you could understand what the
+program does in terms of only ten separate parts. And each of those ten methods
+could be further broken down into ten smaller pieces, and so on. If you kept
+going it would only take six levels until you got to a bunch of 10-line methods.
+You'd still have a million lines and you'd have written a lot of methods. But
+you could read each method and understand, at a certain level of abstraction,
+what it does while only having to think about ten things at a time.
+
+There’s no silver bullet to making a million-line program trivial to understand
+but with good abstractions, including well-designed methods, it’s possible.
+
 
 Summary
 -------------------
@@ -372,6 +423,11 @@ Summary
   the details of how a procedure is performed and so we can focus on what it
   achieves.
 
-- A **method** in Java either computes a value or has some effect, such as printing to the screen.
+- A **method** in Java either computes a value or has some effect, such as
+  printing to the screen.
 
-- Methods belong to **object**. We say we invoke a method `on` and object.
+- The **type** of a method is determined by its **return type** and the types of
+  its **parameters**.
+
+- **Parameters** are variables whose values are the values passed as arguments
+  passed when a method is **called**.
