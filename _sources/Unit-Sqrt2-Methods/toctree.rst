@@ -3,10 +3,11 @@
     :align: center
 
 
-Procedural Abstraction
-::::::::::::::::::::::
+Methods
+:::::::
 
-In this unit, you will learn how to create and use objects in Java.
+In this unit, you will learn how to use and define methods, one of the most
+important forms of abstraction in Java.
 
 Class Periods: 13-15
 
@@ -16,4 +17,5 @@ AP CSA Exam Weighting: 5-7.5%
    :caption: Unit 2 Table of Contents
    :maxdepth: 3
 
-   topic-sqrt2-1-what-is-procedural-abstraction.rst
+   topic-sqrt2-1-using-methods.rst
+   topic-sqrt2-2-writing-methods.rst
