@@ -6,15 +6,15 @@
 
 |Time45|
 
-What is Procedural Abstraction?
-===============================
+Using Methods
+=============
 
 Computer programs, as you’ll discover, can get rather complex. Large programs
 may consist of millions of lines of code, all of which have to connect to each
 other in just the right way for the program to work. Compare that to a novel,
 which might be only a few hundred thousand words and is still perfectly readable
-even if the author misplaced a semicolon. How can human beings possibly deal
-with that kind of complexity?
+even if the author misplaced a semicolon. Yet people manage to write those large
+programs. How can human beings possibly deal with that kind of complexity?
 
 **Abstraction** is the main tool we have to keep complexity under control.
 Abstraction gets a bad rap in our culture, often being considered synonymous
@@ -39,16 +39,6 @@ things, allowing us to focus on *what* result it achieves.
 Procedures go by many names in different programming languages: functions,
 subroutines, commands, or even procedures. In Java they are called **methods**,
 as in a method of doing something.
-
-In the last unit we talked about data types and variables. Variables are a form
-of abstraction—by giving a name to a value we can think about it in terms of
-what it means rather than as a specific value. We’ve also seen how to write
-expressions that compute new values from existing values using operators. But if
-we start writing complex expressions, especially if we have to use the same
-complex expression more than once in a program, writing everything in terms of
-just values, variables, and operator will get pretty unweildy. That’s where
-methods come in. They allow us to abstract the details of a particular
-computation and give it a name and then **call** it using that name.
 
 What is a Method?
 -----------------
@@ -95,12 +85,22 @@ their arguments.
 
 A simple example of this kind of method is the ``sqrt`` method that is part of
 the ``java.lang.Math`` class. ``Math.sqrt`` takes an ``double`` argument and
-**returns** a value which is square root of the argument. A method that returns
-a value doesn’t have any observable effect when it is called—nothing shows up on
-the screen; no lights blink, no bleeps or bloops are emitted—it just produces a
-new value just like an expression like ``y * 2`` produces a new value that you
-need to something with like assign it to another variable. For instance, we
-might use ``sqrt`` like this:
+**returns** a ``double`` value which is square root of the argument. We say that
+the **return type** of ``sqrt`` is ``double``.
+
+.. note::
+
+  ``Math.sqrt`` is a static method, sometimes called a class method. The name of
+  the method is just ``sqrt`` but we refer to it with the name of the class
+  where it is defined, ``Math``, followed by a dot (``.``) followed by the name.
+  If you write a static method in your own class, as you will do later in this
+  unit you can call the method using just the name.
+
+Methods that return a value typically doesn’t have any observable effect when
+they are called—nothing shows up on the screen; no lights blink, no bleeps or
+bloops are emitted—they just produces a new value that you need to something
+with like assigning it to a variable. For instance, we might use ``sqrt`` like
+this:
 
 .. code-block:: java
 
@@ -121,42 +121,34 @@ write:
 
    System.out.println("The square root of 2 is: " + Math.sqrt(2));
 
-``Math.sqrt`` is maybe more like a toaster than a car. Most of us, in this age
-of a smartphone in every pocket, are probably a bit fuzzy on how to compute
-arbitrary square roots, so maybe we don’t know exactly how ``sqrt`` works on the
-inside but in principle it’s just some math. But it sure is convenient that Java
-provides this method so we don’t have to figure that math out ourselves. (In
-fact, the source code for ``sqrt`` in the JDK is over 100 lines of pretty hairy
-math code.)
+If ``System.out.println`` is a car, using all kinds of machinery under the hood
+to make it go, ``Math.sqrt`` is maybe more like a toaster. It's not a total
+mystery how it works but few of us probably know off the top of our head how to
+compute arbitrary square roots efficiently. So it sure is convenient that Java
+provides this method for us. (In fact, the source code for ``sqrt`` in the JDK
+is over 100 lines of pretty hairy math code.)
 
 Calling Methods
 ---------------
 
 The main thing we can do with a method is **call** it. Calling a method is how
 we get the code in the method to run, either to produce an effect or to compute
-a value.
+a value. There are several examples above of calling both ``println`` and
+``sqrt`` but to spell it out, a call to a method is made up of the name of the
+method followed by a pair of parentheses. In between the parentheses is a
+comma-separated list of expressions, one for each parameter defined in the
+method declaration.
 
-A call to a method is made up of the name of the method followed by a pair of
-parentheses. In between the parentheses is a comma-separated list of
-expressions, one for each parameter defined in the method declaration. All the
-methods we’ve talked about so far only take one argument so the argument lists
-only contain one expression. As a quick aside, it might not be obvious at first
-glance that
-
-.. code-block:: java
-
-   "The square root of 2 is: " + Math.sqrt(2)
-
-is a single expression but it is: it’s a string concatenation expression
-combining a literal string ``"The square root of 2 is: "`` with the value
-returned from a call to ``Math.sqrt(2)``. That new string is passed as the
-single argument to ``println``.
+All the methods we’ve talked about so far only take one argument so the argument
+lists only contain one expression. In a moment we’ll learn about some methods
+that take more than one argument and also that take no arguments.
 
 |Exercise| **Check Your Understanding**
 
 .. mchoice:: correct-calls
 
-   Knowing that ``Math.sqrt`` takes a single argument, Which of these are syntactically correct method calls to ``sqrt``?
+   Knowing that ``Math.sqrt`` takes a single argument, Which of these are
+   syntactically correct method calls to ``sqrt``?
 
    - ``Math.sqrt(2)``
 
@@ -183,87 +175,26 @@ single argument to ``println``.
      + ✅ The argument passed to ``Math.sqrt`` is the value of *another* call to
        ``Math.sqrt`` which is perfectly fine.
 
-
-
-
-there is code that defines how the method does
-what it does. The details matter a lot when you're trying to build or fix the
-method but once it's working it creates an abstraction that you can use without
-having to keep all those details in mind.
-
-One important difference, however, is that in the physical world machines can
-really only *transform* their inputs—after you make toast you don’t have the
-original bread. Methods that compute values typically don’t have any effect on
-their inputs: the 2 is not changed into a 4; a new ``int`` with the value 4 is
-created when the method is called.
-
-Maybe a better analogy from the physical world would be something like a
-photocopier. If you ignore (abstract away!) the fact that photo copier has an
-internal supply of paper and toner, you can think of it like a method that takes
-something you want to copy as its input and produces a copy as its output. A
-method in a computer is kind of like a photocopier in that it has a reservoir of
-bits of computer memory that it can draw on to create new values whenever they
-are needed.
-
-Two Kinds of Methods
---------------------
-
-There are two broad categories of methods: methods that have effects and methods
-that compute values. You have seen examples of the former already:
-``System.out.println`` is a method that has the effect of causing some text to
-appear on the computer screen.
+Note that some methods take no arguments but when you call them you still need
+an empty pair of paretheses. It's a common beginner mistake to leave the
+parentheses off a method call that takes no arguments.
 
 .. code-block:: java
 
-   System.out.println("hello, world");
-
-
-Java only enforces half of the distinction between methods with effects and
-methods that compute values. If a method has ``void`` as its return type it
-definitely doesn’t return a value. Therefore the only possible thing it *can* do
-is have some effect. So when you see a ``void`` method you know you are looking
-at a method to be called for effect.
-
-Methods with non-``void`` return types, on the other hand, are less constrained.
-They have to return a value but there is nothing stopping them from also having
-effects. For instance, you can’t tell from its return type that ``Math.sqrt``
-doesn’t also print something to the screen. But as you might imagine, if it did
-it would be a lot less useful because usually when you are trying to compute a
-square root you don’t also want something printed to the screen.
-
-As you start writing your own methods, it is best to keep the two kinds of
-methods distinct. Methods that compute values are a lot easier to understand and
-to use if that’s all they do. And since methods with effects can call methods
-that compute values, there’s no need to make methods that do both.
+   System.out.println(); // ✅ Good - prints a blank line
+   System.out.println;   // ❌ No good - will give you a compile error.
 
 Other ``Math`` methods
 ----------------------
 
-Before we get to writing our own methods, lets take a look at some more methods
-from ``java.lang.Math``.
-
-The ``Math`` methods are almost all methods that compute values from their
-arguments. The ``Math`` methods that are part of the AP subset are ``Math.abs``,
-``Math.pow``, ``Math.sqrt``, and ``Math.random``. Some other useful methods are
-``Math.min`` and ``Math.max``. And if you are doing something that needs
-trigonometry, ``Math`` has you covered there too. You can look up the official
-documenation in the `Javadocs
+``Math.sqrt`` is just one of many static methods in the ``Math`` class. Several
+other ``Math`` methods are part of the AP subset in addition to ``sqrt``:
+``abs``, ``pow``, and ``random``. And if you need to do any other at all complex
+mathematical computations in a program you are writing, you should take a look
+at what else is in ``Math``—it might have just what you need. You can read about
+all the methods in the `Javadocs
 <https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html>`_ hosted by
 Oracle.
-
-When we want to use a method that computes a value we need to know four things:
-
-- Its name.
-
-- What arguments it expects.
-
-- What type of value it returns.
-
-- How is the returned value related to the arguments.
-
-If you look back to the earlier description of ``Math.sqrt``, you’ll see it
-includes exactly that information: “``Math.sqrt`` takes an ``double`` argument
-and returns a value which is square root of the argument.”
 
 You may be able to guess what ``abs`` and ``pow`` do, if you can decipher the
 abbreviations. ``Math.abs`` takes a single argument, either a ``double`` or an
@@ -277,32 +208,154 @@ argument. So:
    Math.abs(33.3);  // returns 33.3
    Math.abs(-33.3); // returns 33.3
 
-
 The next method ``Math.pow`` takes two argument, both ``double``\ s and returns
 a ``double`` which is the first argument raised to the power of the second
 argument.
 
 .. code-block:: java
 
-   Math.pow(2.0, 3.0); // returns 8.0
-   Math.pow(10, 6);    // returns 1000000.0
-   Math.pow(2, -3);    // returns 0.125
+   Math.pow(2 , 3); // returns 8.0
+   Math.pow(10, 6); // returns 1000000.0
+   Math.pow(2, -3); // returns 0.125
 
 The ``Math.random`` method is a bit of an odd duck. It takes no arguments and
 each time it is called returns an essentially random ``double`` value that is
-greater than or equal to 0 and less than 1. In a later section we’ll talk about
-how to use this method to generate random ``ints`` in specifc but for now let’s
-ask a different question: is this a method called for effect or to compute a
-value?
+greater than or equal to 0 and less than 1. It’s not a method like ``println``
+that is called purely for an effect, but it’s also not a method like ``sqrt`` or
+``pow`` that returns a value computed purely from its arguments—it doesn’t even
+take any arguments! Maybe rather than an odd duck it’s a platypus, a mammal that
+lays eggs.
 
-It’s not a ``void`` method so that suggests it’s not a method called for effect.
-Yet the value it returns is not just a function of it’s arguments because it
-doesn’t take any arguments and it returns a different value every time you call
-it. So it’s a bit of both—maybe rather than an odd duck it’s more of a platypus,
-a mammal that lays eggs. What’s going on is there is some hidden state that is
-used to determine what number is returned and then changed each time you call
-``random``. So a call to ``random`` has a hidden effect of changing that state
-and then computes a value based on that state.
+What’s going on is there a hidden value that is used to determine what number is
+returned each time ``random`` is called and ``random`` changes that value each
+time it is called so the next time it is called it will return a new
+unpredictable number.
+
+Coding exercises
+----------------
+
+|CodingEx|
+
+.. activecode:: bhsawesome-distance
+
+   The distance between two numbers is defined as the absolute value of their
+   difference. (There difference is just what you get when you subtract one from
+   the other.) Implement the distance method below.
+
+   ~~~~
+   public class DistanceCalculator {
+
+       public double distance(double a, double b)
+       {
+           // Implement this using Math.abs
+       }
+
+       public static void main(String[] argv)
+       {
+           System.out.println("distance(13.5, 26.2) = " + distance(13.5, 26.2));
+           System.out.println("distance(26.2, 13.5) = " + distance(26.2, 13.5));
+           System.out.println(distance(13.5, 26.2) == distance(13.5, 26.2));
+       }
+   }
+   ====
+   import static org.junit.Assert.*;
+
+   import org.junit.*;
+
+   import java.io.*;
+
+   public class RunestoneTests extends CodeTestHelper
+   {
+       @Test
+       public void testMain() throws IOException
+       {
+           String output = getMethodOutput("main");
+           String expected = "distance(13.5, 26.2) = 12.7\ndistance(26.2, 13.5) = 12.7\ntrue\n”;
+           assertTrue(getResults(expected, output, "Expected output from main"));
+       }
+   }
+
+|CodingEx|
+
+.. activecode:: bhsawesome-hypotenuse
+
+   The Pythagorean theorem tells us that the length of the hypotenuse (the side
+   opposite the right angle in a right triangle) is the square root of the sum
+   of the squares of the lengths of the other two sides, also called the “legs”
+   of the triangle. In other words :math:`c^{2} = \sqrt{a^{2} + b^{2}}` where
+   :math:`a` and :math:`b` are the lengths of the legs and :math:`c` is the
+   length of the hypotenuse.
+
+   Using that fact and at least one ``Math`` method, implement the
+   ``hypotenuse`` method in this class.
+
+   ~~~~
+   public class HypotenuseCalculator {
+
+       public double hypotenuse(double a, double b)
+       {
+           // Implement this using Math.sqrt
+       }
+
+       public static void main(String[] argv)
+       {
+           System.out.println("hypotenuse(3, 4) = " + hypotenuse(3, 4));
+           System.out.println("hypotenuse(5, 12) = " + hypotenuse(5, 12));
+       }
+   }
+   ====
+   import static org.junit.Assert.*;
+
+   import org.junit.*;
+
+   import java.io.*;
+
+   public class RunestoneTests extends CodeTestHelper
+   {
+       @Test
+       public void testMain() throws IOException
+       {
+           String output = getMethodOutput("main");
+           String expected = "hypotenuse(3, 4) = 5\nhypotenuse(5, 12) = 13\n";
+           assertTrue(getResults(expected, output, "Expected output from main"));
+       }
+   }
+
+|CodingEx|
+
+.. activecode:: bhsawesome-random-bug
+
+   This is a tricky one. Remember that ``Math.random`` returns a different value
+   every time it is called. (Well, technically it *could* return the same value
+   twice; some people win the lottery twice too.) Usually that’s exactly what we
+   want. The program below has a subtle bug caused by the programmer forgetting
+   this fact. Can you see it? If you can, how would you fix it?
+
+   (By “subtle” we mean that you can't actually tell from the output of the
+   program that it is wrong. But the logic is not quite right.)
+
+   ~~~~
+   public class GuessingGame
+   {
+       public static void checkGuess(double guess)
+       {
+           if (guess == Math.random())
+           {
+               System.out.println("Correct!");
+           }
+           else
+           {
+               System.out.println("Wrong. It was " + Math.random());
+           }
+       }
+
+       public static void main(String[] argv)
+       {
+           checkGuess(3.2);
+           checkGuess(4.6);
+       }
+   }
+
 
 
 The Structure of a Method
@@ -364,7 +417,7 @@ that’s a lot of ``int``\ s.)
 
 |CodingEx| **Coding Exercise**
 
-.. activecode:: doubled
+.. activecode:: bhsawesome-doubled
    :language: java
 
    To actually be able to call a method, we need to put it in a class. Until now
@@ -457,7 +510,7 @@ as shown in this code:
 
 |CodingEx| **Coding Exercise**
 
-.. activecode:: doubled-and-twice
+.. activecode:: bhsawesome-doubled-and-twice
    :language: java
 
    This code adds a ``showTwice`` method that uses ``System.out.println`` to
