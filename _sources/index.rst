@@ -59,7 +59,7 @@ Table of Contents
    :maxdepth: 3
 
    Unit1-Getting-Started/toctree.rst
-   Unit-Sqrt2-Procedural-Abstraction/toctree.rst
+   Unit-Sqrt2-Methods/toctree.rst
    Unit2-Using-Objects/toctree.rst
    Unit3-If-Statements/toctree.rst
    Unit4-Iteration/toctree.rst
