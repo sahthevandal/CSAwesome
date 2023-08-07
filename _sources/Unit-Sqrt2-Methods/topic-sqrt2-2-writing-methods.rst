@@ -78,8 +78,8 @@ parameter named ``n`` which presumably stands for “number”.
 For now all the methods you will be asked to write will be public static methods
 so you will mark them with ``public static`` before the return type.
 
-Writing a Method that Computes a Value
--------------------------------------
+Writing Methods that Computes Values
+------------------------------------
 
 Now, in order to see how the body fits in, let’s look at a simple method that
 takes an ``int`` value and returns an ``int`` whose value is twice the argument.
@@ -113,6 +113,32 @@ and ``2`` is an ``int`` and multiplying two ``int``\ s gives us another ``int``,
 this clearly satisfies the requirement to return an ``int``. (Phew, that’s a lot
 of ``int``\ s.)
 
+Note that when we say “compute”, that doesn’t have to mean math. As you saw in
+the previous unit, we can also compute with strings of text. And we can write
+methods that compute with strings just as easily as we can write mathematical
+methods. For instance this method computes the value of a greeting given a name.
+
+.. code-block:: java
+
+   public static String greeting(String name)
+   {
+       return "Hello, " + name + ".”;
+   }
+
+This method tells you how many of some kind of item you have:
+
+.. code-block:: java
+
+   public static String howMany(int count, String what)
+   {
+       return "I have " + count + " " + what + "s.";
+   }
+
+(This method will produce funny output of the value of the ``what`` parameter is
+not a word pluralized by adding “s” or if ``count`` is 1. Later, when you learn
+about ``if`` statements, you’ll be able to write a better version of this
+method.)
+
 |CodingEx| **Coding Exercises**
 ------------------------------
 
@@ -141,7 +167,28 @@ of ``int``\ s.)
        }
    }
 
-.. activecode:: bhsawesome-distance
+.. activecode:: bhsawesome-greeting
+   :language: java
+
+   This class contains a call to the ``greeting`` method shown above. Add the
+   definition of ``greeting`` to this class. Once the code runs and prints
+   ``Hello, World.`` add another line to ``main`` that prints something like,
+   ``Hello, Pat. Nice to meet you!``.
+
+   ~~~~
+   public class HelloWorld
+   {
+
+       // TODO: Add definition of greeting here
+
+       public static void main(String[] argv)
+       {
+           System.out.println(greeting("World"));
+           // TODO
+       }
+   }
+
+ .. activecode:: bhsawesome-distance
 
    The distance between two numbers, as we discussed in a problem in the
    previous section, is defined as the absolute value of their difference.
@@ -152,7 +199,8 @@ of ``int``\ s.)
    computes the distance between ``a`` and ``b``.
 
    ~~~~
-   public class DistanceCalculator {
+   public class DistanceCalculator
+   {
 
        public static double distance(double a, double b)
        {
@@ -186,6 +234,11 @@ of ``int``\ s.)
 
 .. activecode:: bhsawesome-hypotenuse
 
+   .. image:: Figures/ladder.png
+      :width: 100
+      :align: left
+      :alt: Ladder on tower
+
    As we discussed in a problem in the previous section, the Pythagorean theorem
    tells us that the length of the hypotenuse (the side opposite the right angle
    in a right triangle) is the square root of the sum of the squares of the
@@ -194,19 +247,28 @@ of ``int``\ s.)
    :math:`b` are the lengths of the legs and :math:`c` is the length of the
    hypotenuse.
 
-   Add a ``hypotenuse`` method to the class below that takes two ``double``\ s
-   representing the lengths of the legs of a right triangle and returns a
-   ``double`` which is the length of the hypotenuse of that triangle.
+   One common use for the Pythagorean theorem is to calculate the length of
+   ladder you will need to reach the balcony of your beloved, given that their
+   cruel parents have locked them in a tower surrounded by a moat. The ladder
+   will be the hypotenuse of a triangle whose legs are the height of the window
+   of your beloved’s room in the tower and the width of the moat since you have
+   to place the base of the ladder on the edge of the moat.
+
+   Add a ``ladderSizeNeeded`` method to the class below that takes two
+   ``double``\ s representing the height of the window and the width of the moat
+   and returns the length  of the ladder needed as ``double``.
 
    ~~~~
-   public class HypotenuseCalculator {
+   public class LadderHelper
+   {
 
-       // TODO: write a hypotenuse method here
+       // TODO: write a ladderSizedNeeded method here
 
        public static void main(String[] argv)
        {
-           System.out.println("hypotenuse(3, 4) = " + hypotenuse(3, 4));
-           System.out.println("hypotenuse(5, 12) = " + hypotenuse(5, 12));
+           double size = ladderSizedNeeded(30, 40);
+
+           System.out.println("Beloved, I need a " + size + " foot ladder!");
        }
    }
    ====
@@ -268,8 +330,8 @@ Note that both the parameter name has changed, from ``n`` to ``value`` and the
 way the result is computed, using addition rather than multiplication. Those are
 the details that have been abstracted away by writing the method.
 
-Writing Your Own Methods with Effects
--------------------------------------
+Writing Methods with Effects
+----------------------------
 
 You can also write your own methods that have effects rather than computing
 values. For instance, if you often wanted to abstract the pattern of printing
