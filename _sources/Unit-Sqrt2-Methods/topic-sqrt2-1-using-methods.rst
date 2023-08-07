@@ -274,6 +274,9 @@ argument.
    :math:`a` and :math:`b` are the lengths of the legs and :math:`c` is the
    length of the hypotenuse.
 
+   Which of the following are a correct expression to compute the hypotenuse of
+   a triangle with legs ``a`` and ``b`?
+
    - ``Math.sqrt(a * a + b * b)``
 
      + ✅ ``a * a`` is a squared, likewise ``b * b``. Adding them with ``+``
