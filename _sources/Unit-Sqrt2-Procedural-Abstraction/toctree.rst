@@ -6,7 +6,8 @@
 Procedural Abstraction
 ::::::::::::::::::::::
 
-In this unit, you will learn how to create and use objects in Java.
+In this unit, you will learn how to use and define methods, one of the most
+important forms of abstraction in Java.
 
 Class Periods: 13-15
 
