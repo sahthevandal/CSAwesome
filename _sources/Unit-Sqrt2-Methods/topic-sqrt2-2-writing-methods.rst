@@ -52,7 +52,7 @@ list.
    double sqrt(double n)
 
 The actual ``sqrt`` method in ``Math`` is a public method which means it can be
-invoked from any code and—as we disucssed in the previous section—also a static
+invoked from any code and—as we discussed in the previous section—also a static
 method, which allows us to reference it as ``Math.sqrt``. So the actual
 signature of ``sqrt`` would look like this:
 
@@ -289,7 +289,7 @@ value.
 .. activecode:: bhsawesome-doubled-and-twice
    :language: java
 
-   This code contains a call to ``showTwice`` from ``main``. Add the definiton
+   This code contains a call to ``showTwice`` from ``main``. Add the definition
    given above to this class so it will compile and run.
 
    After running this code, add two new methods to this class:

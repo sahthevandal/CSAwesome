@@ -31,10 +31,8 @@ terms of a much simpler set of concepts like press the gas to make the car go.
 
 Abstraction is a powerful tool that will appear over and over as you learn to
 program. In this chapter we are going to talk about **procedural abstraction**
-which just means hiding the details of how something gets done so we can focus
-instead of what the procedure achieves. A procedure is a method for doing
-something and if we abstract a procedure we hide the details of *how* it does
-things, allowing us to focus on *what* result it achieves.
+which just means hiding the details of *how* something gets done so we can focus
+instead on *what* the procedure achieves.
 
 Procedures go by many names in different programming languages: functions,
 subroutines, commands, or even procedures. In Java they are called **methods**,
@@ -71,7 +69,7 @@ we call **arguments**, and then either produce an effect in the world, such as
 printing something on the screen, or compute a value based on the arguments. And
 they hide, i.e. abstract, the details of what exactly they are doing so we can
 write code that uses them without having to worry about those details. And once
-you’ve got a method that does somethig useful, you can use that method whenever
+you’ve got a method that does something useful, you can use that method whenever
 you need to do that thing, rather than writing out the same code over and and
 over.
 
@@ -197,7 +195,7 @@ that take more than one argument and also one that takes no arguments.
        ``Math.sqrt`` which is perfectly fine.
 
 Note that some methods take no arguments but when you call them you still need
-an empty pair of paretheses. It's a common beginner mistake to leave the
+an empty pair of parentheses. It's a common beginner mistake to leave the
 parentheses off a method call that takes no arguments. ``System.out.println``
 can, in fact be called with no arguments to just print a blank line. With that
 in mind, compare these two lines of code:
