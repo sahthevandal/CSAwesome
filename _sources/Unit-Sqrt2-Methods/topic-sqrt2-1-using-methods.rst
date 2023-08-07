@@ -1,8 +1,8 @@
+.. include:: ../common.rst
+
 .. qnum::
    :prefix: √2-1-
    :start: 1
-
-.. include:: ../header.rst
 
 |Time45|
 
