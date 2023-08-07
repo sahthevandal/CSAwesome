@@ -33,19 +33,22 @@ Abstraction is a powerful tool that will appear over and over as you learn to
 program. In this chapter we are going to talk about **procedural abstraction**
 which just means hiding the details of how something gets done so we can focus
 instead of what the procedure achieves. A procedure is a method for doing
-something and if we abstract a procedure we hide the details of **how** it does
-things allowing us to focus on **what** result it achieves.
+something and if we abstract a procedure we hide the details of *how* it does
+things, allowing us to focus on *what* result it achieves.
 
 Procedures go by many names in different programming languages: functions,
 subroutines, commands, or even procedures. In Java they are called **methods**,
 as in a method of doing something.
 
-In the last chapter we talked about data types and variables. Variables are a
-form of abstraction—by giving a name to a value we can think about it in terms
-of what it means rather than as a specific value. But data is mostly inert; it
-just `is`. Any code that `does` anything will live in a method. So far we’ve
-only seen one method the ``main`` method that is run when you run a Java class.
-In this chapter we’ll see how to write other methods and how to **call** them.
+In the last unit we talked about data types and variables. Variables are a form
+of abstraction—by giving a name to a value we can think about it in terms of
+what it means rather than as a specific value. We’ve also seen how to write
+expressions that compute new values from existing values using operators. But if
+we start writing complex expressions, especially if we have to use the same
+complex expression more than once in a program, writing everything in terms of
+just values, variables, and operator will get pretty unweildy. That’s where
+methods come in. They allow us to abstract the details of a particular
+computation and give it a name and then **call** it using that name.
 
 What is a Method?
 -----------------
@@ -58,60 +61,46 @@ What is a Method?
 One way to think of a method is as a little machine that does something.
 Consider a toaster. You put bread in the toaster and turn it on and a little
 while later you get a piece of toast. Toasters don’t make toast without bread
-and they can make toast out of any kind of bread that fits in the toaster.
+but they can make toast out of any kind of bread that fits in the toaster.
 
 And even a lowly toaster is a kind of abstraction. While you probably have some
 rough idea of how a toaster works on the inside, as with a car you don't have to
-know how it works to make toast. All you have to know is, you put the bread in,
-you press the button, and a little while later you get toast out.
+know how it works to use it. All you have to know is, you put the bread in, you
+press the button, and a little while later your toast pops out.
 
-Methods are similar. We can look at them from the outside where they have a
-name, take some values as **arguments** and then do something, either producing
-a new value or having some effect such as printing to the screen.
+The other thing about a toaster is you only need one—you don’t need to get a new
+toaster every time you want to make a piece of toast. Once you’ve got a toaster
+you can use it to make all the toast you want.
 
-Then on the inside of the method there is code that defines how the method does
-what it does. The details matter a lot when you're trying to build or fix the
-method but once it's working it creates an abstraction that you can use without
-having to keep all those details in mind.
+Methods are similar. Most methods, like the toaster, require some inputs, which
+we call **arguments**, and then either produce an effect in the world, such as
+printing something on the screen, or compute a value based on the arguments. And
+they hide, i.e. abstract, the details of what exactly they are doing so we can
+write code that uses them without having to worry about those details. And once
+you’ve got a method that does somethig useful, you can use that method whenever
+you need to do that thing, rather than writing out the same code over and and
+over.
 
-One important difference, however, is that in the physical world machines can
-really only *transform* their inputs—after you make toast you don’t have the
-original bread. Methods that compute values typically don’t have any effect on
-their inputs: the 2 is not changed into a 4; a new ``int`` with the value 4 is
-created when the method is called.
+Two methods we’ve used so far in this book are ``System.out.println`` and
+``System.out.print``. Their job is to take a value and print it to the screen,
+either with or without a new line at the end. They both abstract the actual
+process of turning the value into a textual representation and then causing that
+text to be displayed on the screen. There’s a lot of things that have to happen
+under the covers to make that text come out on the screen but thankfully we
+don’t have to know any more about that than we have to know about how pressing
+on a car’s accelerator makes it go faster.
 
-Maybe a better analogy from the physical world would be something like a
-photocopier. If you ignore (abstract away!) the fact that photo copier has an
-internal supply of paper and toner, you can think of it like a method that takes
-something you want to copy as its input and produces a copy as its output. A
-method in a computer is kind of like a photocopier in that it has a reservoir of
-bits of computer memory that it can draw on to create new values whenever they
-are needed.
+Now let’s consider the other kind of method, those that compute new values from
+their arguments.
 
-Without getting too wrapped up in our analogies, let’s look at two kinds of
-methods we will write and use.
-
-Two Kinds of Methods
---------------------
-
-There are two broad categories of methods: methods that have effects and methods
-that compute values. You have seen examples of the former already:
-``System.out.println`` is a method that has the effect of causing some text to
-appear on the computer screen.
-
-.. code-block:: java
-
-   System.out.println("hello, world");
-
-A simple example of the second kind of method, one that computes a value is the
-``sqrt`` method that is part of the ``java.lang.Math`` class. Whereas
-``System.out.println`` takes its argument and writes it to the screen,
-``Math.sqrt`` takes an ``double`` argument and **returns** a value which is
-square root of the argument. A method that returns a value doesn’t have any
-observable effect when it is called—nothing shows up on the screen; the computer
-doesn’t make any sound—it just produces a new value just like an expression like
-``y * 2`` produces a new value that you need to something with like assign it to
-another variable. For instance, we might use ``sqrt`` like this:
+A simple example of this kind of method is the ``sqrt`` method that is part of
+the ``java.lang.Math`` class. ``Math.sqrt`` takes an ``double`` argument and
+**returns** a value which is square root of the argument. A method that returns
+a value doesn’t have any observable effect when it is called—nothing shows up on
+the screen; no lights blink, no bleeps or bloops are emitted—it just produces a
+new value just like an expression like ``y * 2`` produces a new value that you
+need to something with like assign it to another variable. For instance, we
+might use ``sqrt`` like this:
 
 .. code-block:: java
 
@@ -132,6 +121,103 @@ write:
 
    System.out.println("The square root of 2 is: " + Math.sqrt(2));
 
+``Math.sqrt`` is maybe more like a toaster than a car. Most of us, in this age
+of a smartphone in every pocket, are probably a bit fuzzy on how to compute
+arbitrary square roots, so maybe we don’t know exactly how ``sqrt`` works on the
+inside but in principle it’s just some math. But it sure is convenient that Java
+provides this method so we don’t have to figure that math out ourselves. (In
+fact, the source code for ``sqrt`` in the JDK is over 100 lines of pretty hairy
+math code.)
+
+Calling Methods
+---------------
+
+The main thing we can do with a method is **call** it. Calling a method is how
+we get the code in the method to run, either to produce an effect or to compute
+a value.
+
+A call to a method is made up of the name of the method followed by a pair of
+parentheses. In between the parentheses is a comma-separated list of
+expressions, one for each parameter defined in the method declaration. All the
+methods we’ve talked about so far only take one argument so the argument lists
+only contain one expression. As a quick aside, it might not be obvious at first
+glance that
+
+.. code-block:: java
+
+   "The square root of 2 is: " + Math.sqrt(2)
+
+is a single expression but it is: it’s a string concatenation expression
+combining a literal string ``"The square root of 2 is: "`` with the value
+returned from a call to ``Math.sqrt(2)``. That new string is passed as the
+single argument to ``println``.
+
+|Exercise| **Check Your Understanding**
+
+.. mchoice:: correct-calls
+
+   Knowing that ``Math.sqrt`` takes a single argument, Which of these are syntactically correct method calls to ``sqrt``?
+
+   - ``Math.sqrt(2)``
+
+     + ✅ This is a simple call to ``Math.sqrt`` with the argument 2.
+
+   - ``Math.sqrt()``
+
+     - ❌ ``Math.sqrt`` takes one argument. This would be a correct call if it took no arguments.
+
+   - ``Math.sqrt(2, 4)``
+
+     - ❌ ``Math.sqrt`` takes one argument. This would be a correct call if it took two arguments.
+
+   - ``Math.sqrt(2 + 3)``
+
+     + ✅ The argument passed to ``Math.sqrt`` is the value of the expression 2 + 3, namely 5.
+
+   - ``Math.sqrt 2``
+
+     - ❌ You must have parentheses around the arguments.
+
+   - ``Math.sqrt(Math.sqrt(2))``
+
+     + ✅ The argument passed to ``Math.sqrt`` is the value of *another* call to
+       ``Math.sqrt`` which is perfectly fine.
+
+
+
+
+there is code that defines how the method does
+what it does. The details matter a lot when you're trying to build or fix the
+method but once it's working it creates an abstraction that you can use without
+having to keep all those details in mind.
+
+One important difference, however, is that in the physical world machines can
+really only *transform* their inputs—after you make toast you don’t have the
+original bread. Methods that compute values typically don’t have any effect on
+their inputs: the 2 is not changed into a 4; a new ``int`` with the value 4 is
+created when the method is called.
+
+Maybe a better analogy from the physical world would be something like a
+photocopier. If you ignore (abstract away!) the fact that photo copier has an
+internal supply of paper and toner, you can think of it like a method that takes
+something you want to copy as its input and produces a copy as its output. A
+method in a computer is kind of like a photocopier in that it has a reservoir of
+bits of computer memory that it can draw on to create new values whenever they
+are needed.
+
+Two Kinds of Methods
+--------------------
+
+There are two broad categories of methods: methods that have effects and methods
+that compute values. You have seen examples of the former already:
+``System.out.println`` is a method that has the effect of causing some text to
+appear on the computer screen.
+
+.. code-block:: java
+
+   System.out.println("hello, world");
+
+
 Java only enforces half of the distinction between methods with effects and
 methods that compute values. If a method has ``void`` as its return type it
 definitely doesn’t return a value. Therefore the only possible thing it *can* do
@@ -149,6 +235,74 @@ As you start writing your own methods, it is best to keep the two kinds of
 methods distinct. Methods that compute values are a lot easier to understand and
 to use if that’s all they do. And since methods with effects can call methods
 that compute values, there’s no need to make methods that do both.
+
+Other ``Math`` methods
+----------------------
+
+Before we get to writing our own methods, lets take a look at some more methods
+from ``java.lang.Math``.
+
+The ``Math`` methods are almost all methods that compute values from their
+arguments. The ``Math`` methods that are part of the AP subset are ``Math.abs``,
+``Math.pow``, ``Math.sqrt``, and ``Math.random``. Some other useful methods are
+``Math.min`` and ``Math.max``. And if you are doing something that needs
+trigonometry, ``Math`` has you covered there too. You can look up the official
+documenation in the `Javadocs
+<https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html>`_ hosted by
+Oracle.
+
+When we want to use a method that computes a value we need to know four things:
+
+- Its name.
+
+- What arguments it expects.
+
+- What type of value it returns.
+
+- How is the returned value related to the arguments.
+
+If you look back to the earlier description of ``Math.sqrt``, you’ll see it
+includes exactly that information: “``Math.sqrt`` takes an ``double`` argument
+and returns a value which is square root of the argument.”
+
+You may be able to guess what ``abs`` and ``pow`` do, if you can decipher the
+abbreviations. ``Math.abs`` takes a single argument, either a ``double`` or an
+``int`` and returns a value of the same type which is the absolute value of the
+argument. So:
+
+.. code-block:: java
+
+   Math.abs(45);    // returns 45
+   Math.abs(-45);   // returns 45
+   Math.abs(33.3);  // returns 33.3
+   Math.abs(-33.3); // returns 33.3
+
+
+The next method ``Math.pow`` takes two argument, both ``double``\ s and returns
+a ``double`` which is the first argument raised to the power of the second
+argument.
+
+.. code-block:: java
+
+   Math.pow(2.0, 3.0); // returns 8.0
+   Math.pow(10, 6);    // returns 1000000.0
+   Math.pow(2, -3);    // returns 0.125
+
+The ``Math.random`` method is a bit of an odd duck. It takes no arguments and
+each time it is called returns an essentially random ``double`` value that is
+greater than or equal to 0 and less than 1. In a later section we’ll talk about
+how to use this method to generate random ``ints`` in specifc but for now let’s
+ask a different question: is this a method called for effect or to compute a
+value?
+
+It’s not a ``void`` method so that suggests it’s not a method called for effect.
+Yet the value it returns is not just a function of it’s arguments because it
+doesn’t take any arguments and it returns a different value every time you call
+it. So it’s a bit of both—maybe rather than an odd duck it’s more of a platypus,
+a mammal that lays eggs. What’s going on is there is some hidden state that is
+used to determine what number is returned and then changed each time you call
+``random``. So a call to ``random`` has a hidden effect of changing that state
+and then computes a value based on that state.
 
 
 The Structure of a Method
@@ -207,55 +361,6 @@ multiply the value passed to this method by 2. Since ``n`` was declared to be an
 ``int`` and ``2`` is an ``int`` and multiplying two ``int``\ s gives us another
 ``int``, this clearly satisfies the requirement to return an ``int``. (Phew,
 that’s a lot of ``int``\ s.)
-
-Calling a Method
-----------------
-
-The main thing we can do with a method is **call** it. Calling a method is how
-we get the code in the method to run, either to produce an effect or to compute
-a value.
-
-A call to a method is made up of the name of the method followed by a pair of
-parentheses. In between the parentheses is a comma-separated list of
-expressions, one for each parameter defined in the method declaration. In this
-case ``doubled`` just takes one argument so we only need one expression. Thus,
-to call ``doubled`` with the argument 2, we would write:
-
-.. code-block:: java
-
-   double(2)
-
-|Exercise| **Check Your Understanding**
-
-.. mchoice:: correct-calls
-
-   Which of these are syntactically correct method calls of ``double``?
-
-   - ``double(2)``
-
-     + ✅ This is a simple call to double with the value 2.
-
-   - ``double()``
-
-     - ❌ ``double`` takes one argument. This would be a correct call if it took no arguments.
-
-   - ``double(2, 4)``
-
-     - ❌ ``double`` takes one argument. This would be a correct call if it took two arguments.
-
-   - ``double(2 + 3)``
-
-     + ✅ The argument passed to ``double`` is the value of the expression 2 + 3, namely 5.
-
-   - ``double 2``
-
-     - ❌ You must have parentheses around the arguments.
-
-   - ``double(double(2))``
-
-     + ✅ The argument passed to ``double`` is the value of *another* call to
-       ``double`` which is perfectly fine.
-
 
 |CodingEx| **Coding Exercise**
 
