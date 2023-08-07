@@ -147,13 +147,17 @@ of ``int``\ s.)
    previous section, is defined as the absolute value of their difference.
    (There difference is just what you get when you subtract one from the other.)
 
-   Add a ``distance`` method to the class below that takes two ``double``\ s and
-   returns a ``double`` of the distance between the two arguments.
+   The code below contains a method signature and empty body for a method
+   ``distance`` which is called from ``main``. Fill in the body so it correctly
+   computes the distance between ``a`` and ``b``.
 
    ~~~~
    public class DistanceCalculator {
 
-       // TODO: implement distance here.
+       public static double distance(double a, double b)
+       {
+           // TODO: implement distance here
+       }
 
        public static void main(String[] argv)
        {
@@ -197,7 +201,7 @@ of ``int``\ s.)
    ~~~~
    public class HypotenuseCalculator {
 
-       // TODO: implement hypotenuse here
+       // TODO: write a hypotenuse method here
 
        public static void main(String[] argv)
        {
