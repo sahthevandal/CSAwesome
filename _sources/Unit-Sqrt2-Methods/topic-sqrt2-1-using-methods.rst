@@ -246,7 +246,7 @@ methods in the `Javadocs
 You may be able to guess what ``abs`` and ``pow`` do, if you can decipher the
 abbreviations. ``Math.abs`` takes a single argument, either a ``double`` or an
 ``int`` and returns a value of the same type which is the absolute value of the
-argument. The absolute value of a number is its positive value without its sign or its distance from 0. So:
+argument. The absolute value of a number is its positive value without its sign. You can also think of it as the  distance the number is from 0. So:
 
 .. code-block:: java
 
