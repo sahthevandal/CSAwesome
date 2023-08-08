@@ -262,11 +262,11 @@ method.)
    public class LadderHelper
    {
 
-       // TODO: write a ladderSizedNeeded method here
+       // TODO: write a ladderSizeNeeded method here
 
        public static void main(String[] argv)
        {
-           double size = ladderSizedNeeded(30, 40);
+           double size = ladderSizeNeeded(30, 40);
 
            System.out.println("Beloved, I need a " + size + " foot ladder!");
        }
