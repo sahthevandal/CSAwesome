@@ -389,8 +389,8 @@ value.
        }
    }
 
-Using Methods in Your Code
---------------------------
+Getting Good at Methods
+-----------------------
 
 This unit has just covered the mechanics of calling existing methods and writing
 and calling your own methods. Actually learning to use methods well is a big
