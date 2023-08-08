@@ -189,6 +189,7 @@ method.)
    }
 
  .. activecode:: bhsawesome-distance
+   :language: java
 
    The distance between two numbers, as we discussed in a problem in the
    previous section, is defined as the absolute value of their difference.
