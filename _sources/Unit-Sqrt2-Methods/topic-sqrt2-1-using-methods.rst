@@ -556,34 +556,44 @@ of the range. Then if you want an integer value, cast to ``int`` to discard the
 part after the decimal point. Then shift the value up by adding the minimum
 value. The table below shows some applications of that general recipe.
 
-.. list-table:: Random recipes
-   :widths: 70 10 10 10
-   :header-rows: 1
+.. rst-class:: random-recipes
 
-   * - Expression
-     - Minimum (inclusive)
-     - Maximum (exclusive)
-     - Possible values
-   * - ``Math.random()``
-     - 0.0
-     - 1.0
-     - Over 9 quadrillion
-   * - ``Math.random() * 100``
-     - 0.0
-     - 100.0
-     - Over 9 quadrillion
-   * - ``(int)(Math.random() * max)``
-     - 0
-     - max
-     - max
-   * - ``(int)(Math.random() * range) + shift``
-     - min
-     - min + range
-     - range
-   * - ``(int)(Math.random() * (max - min)) + min``
-     - min
-     - max
-     - max - min
+   .. list-table:: Random recipes
+      :widths: 70 10 10 10
+      :header-rows: 1
+
+      * - Expression
+        - Minimum (inclusive)
+        - Maximum (exclusive)
+        - Possible values
+      * - ``Math.random()``
+        - 0.0
+        - 1.0
+        - Over 9 quadrillion
+      * - ``Math.random() * 100``
+        - 0.0
+        - 100.0
+        - Over 9 quadrillion
+      * - ``(int)(Math.random() * 100)``
+        - 0
+        - 100
+        - 100
+      * - ``(int)(Math.random() * 50) + 25``
+        - 25
+        - 75
+        - 50
+      * - ``(int)(Math.random() * max)``
+        - 0
+        - max
+        - max
+      * - ``(int)(Math.random() * range) + min``
+        - min
+        - min + range
+        - range
+      * - ``(int)(Math.random() * (max - min)) + min``
+        - min
+        - max
+        - max - min
 
 |Exercise| **Check your understanding**
 

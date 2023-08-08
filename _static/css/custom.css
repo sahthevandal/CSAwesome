@@ -151,16 +151,16 @@ div.highlight-java + p,
 /* Padding for table of unit test responses.
    until Brad adds it to the template.
 */
-.runestone-sphinx .ac-feedback, 
+.runestone-sphinx .ac-feedback,
 .ptx-runestone-container .ac-feedback {
     border: 1px solid black;
     padding: 3px;
 }
 
-/* Changing font in code window in active codes 
+/* Changing font in code window in active codes
    Default is washed out in Windows Chrome.
 */
-.ptx-runestone-container .ac_section .CodeMirror pre, 
+.ptx-runestone-container .ac_section .CodeMirror pre,
 .runestone-sphinx .ac_section .CodeMirror pre {
   font-family: Menlo, Monaco, Consolas,"Courier New", monospace;
 }
@@ -176,7 +176,11 @@ div.highlight-java + p,
 }
 
 /* For tables in the FRQs (default 0) */
-.ptx-runestone-container td, .ptx-runestone-container th, 
+.ptx-runestone-container td, .ptx-runestone-container th,
 .runestone-sphinx td, .runestone-sphinx th {
     padding: 5px;
+}
+
+table.random-recipes tbody tr td:first-child {
+  text-align: left;
 }
