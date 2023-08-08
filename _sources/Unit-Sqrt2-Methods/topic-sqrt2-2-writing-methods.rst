@@ -233,6 +233,7 @@ method.)
    }
 
 .. activecode:: bhsawesome-hypotenuse
+   :language: java
 
    .. image:: Figures/ladder.png
       :width: 100
@@ -248,7 +249,7 @@ method.)
    hypotenuse.
 
    One common use for the Pythagorean theorem is to calculate the length of
-   ladder you will need to reach the balcony of your beloved, given that their
+   ladder you will need to reach the window of your beloved, given that their
    cruel parents have locked them in a tower surrounded by a moat. The ladder
    will be the hypotenuse of a triangle whose legs are the height of the window
    of your beloved’s room in the tower and the width of the moat since you have
@@ -284,7 +285,7 @@ method.)
        public void testMain() throws IOException
        {
            String output = getMethodOutput("main");
-           String expected = "hypotenuse(3, 4) = 5\nhypotenuse(5, 12) = 13\n";
+           String expected = "Beloved, I need a 50.0 foot ladder!"
            assertTrue(getResults(expected, output, "Expected output from main"));
        }
    }
@@ -375,7 +376,7 @@ value.
 
        // TODO: Implement showThrice method that calls tripled
 
-       public int doubled(int n)
+       public static int doubled(int n)
        {
            return n * 2;
        }
@@ -419,7 +420,7 @@ And each of those ten methods could be further broken down into ten smaller
 pieces, and so on. If you kept going it would only take six levels until your
 whole program consisted of 10-line methods. You'd still have a million lines of
 code and you'd have written a lot of methods. But you could read each method and
-understand, at a certain level of abstraction, what it does while only having to
+understand—at a certain level of abstraction—what it does while only having to
 think about ten things at a time.
 
 There’s no silver bullet to making a million-line program trivial to understand

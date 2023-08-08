@@ -220,6 +220,11 @@ in mind, compare these two lines of code:
 Other ``Math`` methods - ``abs`` and ``pow``
 --------------------------------------------
 
+.. image:: Figures/pow.png
+    :width: 100
+    :align: left
+    :alt: Pow!
+
 ``Math.sqrt`` is just one of many static methods in the ``Math`` class. Several
 other ``Math`` methods are part of the AP subset in addition to ``sqrt``:
 ``abs``, ``pow``, and ``random``. And if you need to do complex mathematical
@@ -326,6 +331,11 @@ argument.
 Other ``Math`` methods - ``random``
 -----------------------------------
 
+.. image:: Figures/dice.png
+    :width: 100
+    :align: left
+    :alt: Dice
+
 The ``Math.random`` method is a bit of an odd duck. It takes no arguments and
 each time it is called returns an essentially random ``double`` value that is
 greater than or equal to 0 and less than 1. (Technically the numbers returned
@@ -406,12 +416,12 @@ Getting a number between 0, inclusive, and 1, exclusive, may not seem all that
 useful. But we can expand the range easily enough. To see how, imagine you had
 less than a dollar to your name and you wanted to be richer—you’d want to find a
 way to **multiply** your money. If you could invest every penny you had in
-something that would multiply your money by 1,000 then instead of having
-somewhere between $0 and $1, then you’d have somewhere between $0 (inclusive—if
-you started with $0) and $1,000 (exclusive, since if you had even a fraction of
-a penny less than $1 multiplying by 1,000 would still leave you just a bit shy
-of $1,000.) If the investment multiplied your original money by a million,
-you’d have between $0 and $1,000,000! (But never *quite* $1,000,000.)
+something that would multiply your money by 1,000, then instead of having
+somewhere between $0 and $1 you’d have somewhere between $0 (inclusive—if you
+started with $0) and $1,000 (exclusive, since if you had even a fraction of a
+penny less than $1 multiplying by 1,000 would still leave you just a bit shy of
+$1,000.) If the investment multiplied your original money by a million, you’d
+have between $0 and $1,000,000! (But never *quite* $1,000,000.)
 
 Same trick applies to random numbers. The value ``Math.random`` returns is like
 the initial amount of money in your pocket, always a bit less than $1. If you
@@ -559,7 +569,7 @@ value. The table below shows some applications of that general recipe.
 .. rst-class:: random-recipes
 
    .. list-table:: Random recipes
-      :widths: 70 10 10 10
+      :widths: 55 15 15 15
       :header-rows: 1
 
       * - Expression
@@ -582,6 +592,10 @@ value. The table below shows some applications of that general recipe.
         - 25
         - 75
         - 50
+      * - ``(int)(Math.random() * 11) - 5``
+        - -5
+        - 5
+        - 11
       * - ``(int)(Math.random() * max)``
         - 0
         - max
@@ -594,6 +608,7 @@ value. The table below shows some applications of that general recipe.
         - min
         - max
         - max - min
+
 
 |Exercise| **Check your understanding**
 

@@ -157,3 +157,5 @@ We acknowledge icons used from https://www.flaticon.com/ and
 https://icons.getbootstrap.com/icons/ which are licensed by http://creativecommons.org/licenses/by/3.0/.
 
 Toaster image adapted from from https://commons.wikimedia.org/wiki/File:Toaster.jpg
+Pow comic book image from https://pixabay.com/illustrations/pow-comic-comic-book-fight-1601674/
+Dice image from  https://pixabay.com/vectors/dice-red-two-game-rolling-chance-25637/
