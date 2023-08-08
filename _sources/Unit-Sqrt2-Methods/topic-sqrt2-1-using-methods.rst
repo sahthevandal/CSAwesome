@@ -370,7 +370,7 @@ never returns 1.
 When we need to be precise about this we’d say that it returns a number between
 0, *inclusive*, and 1, *exclusive*, meaning *include* 0 but *exclude* 1. Lots of
 ranges in Java are expressed this way, as you’ll see later on with an inclusive
-bottom and exclusive top.
+bottom and an exclusive top.
 
 With that out of the way, let’s take a look at the values we get from just
 calling ``Math.random``:
