@@ -91,9 +91,9 @@ takes an ``int`` value and returns an ``int`` whose value is twice the argument.
        return n * 2;
    }
 
-The method signature is similar to the signature for ``sqrt`` except the the
+The method signature is similar to the signature for ``sqrt`` except the 
 method name is obviously different and the return type and argument type is
-``int`` instead of ``double``. (Note, however, tat the rules for variable and
+``int`` instead of ``double``. (Note, however, that the rules for variable and
 method names also say that they cannot be any of Java’s special **keywords**.
 Since the names of primitive types are keywords we can't call this method
 ``double`` since that’s the name of a type.)
@@ -193,7 +193,7 @@ method.)
 
    The distance between two numbers, as we discussed in a problem in the
    previous section, is defined as the absolute value of their difference.
-   (There difference is just what you get when you subtract one from the other.)
+   (Their difference is just what you get when you subtract one from the other.)
 
    The code below contains a method signature and empty body for a method
    ``distance`` which is called from ``main``. Fill in the body so it correctly
