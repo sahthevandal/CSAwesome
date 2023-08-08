@@ -94,7 +94,7 @@ computation, not just doing math.
 A simple example of this kind of method from ``Math`` is the ``sqrt`` method.
 ``Math.sqrt`` takes an ``double`` argument and **returns** a ``double`` value
 which is square root of the argument. We say that the **return type** of
-``sqrt`` is ``double``.
+``sqrt`` is ``double``. For example, the square root of 9 is 3 because 3 squared is 9.
 
 .. note::
 
@@ -104,7 +104,7 @@ which is square root of the argument. We say that the **return type** of
   If you write a static method in your own class, as you will do later in this
   unit, you can call the method using just the name of the method.
 
-Methods that return a value typically doesn’t have any observable effect when
+Methods that return a value typically don’t have any observable effect when
 they are called—nothing shows up on the screen; no lights blink, no bleeps or
 bloops are emitted—they just produces a new value that you need to something
 with like assigning it to a variable. For instance, we might use ``sqrt`` like
@@ -246,7 +246,7 @@ methods in the `Javadocs
 You may be able to guess what ``abs`` and ``pow`` do, if you can decipher the
 abbreviations. ``Math.abs`` takes a single argument, either a ``double`` or an
 ``int`` and returns a value of the same type which is the absolute value of the
-argument. So:
+argument. The absolute value of a number is its positive value without its sign. You can also think of it as the  distance the number is from 0. So:
 
 .. code-block:: java
 
@@ -271,10 +271,10 @@ argument.
    :multiple_answers:
    :random:
 
-   The distance between two numbers is defined as the absolute value of their
-   difference. (There difference is just what you get when you subtract one from
-   the other.) Which of the following are a correct expression to compute the
-   distance between ``a`` and ``b``.
+   The distance between two numbers on a number line is defined as the absolute value of their
+   difference. (Their difference is just what you get when you subtract one from
+   the other.) Which of the following are correct expressions to compute the
+   distance between the numbers ``a`` and ``b``.
 
    - ``Math.abs(a - b)``
 
@@ -370,7 +370,7 @@ never returns 1.
 When we need to be precise about this we’d say that it returns a number between
 0, *inclusive*, and 1, *exclusive*, meaning *include* 0 but *exclude* 1. Lots of
 ranges in Java are expressed this way, as you’ll see later on with an inclusive
-bottom and and exclusive top.
+bottom and an exclusive top.
 
 With that out of the way, let’s take a look at the values we get from just
 calling ``Math.random``:
