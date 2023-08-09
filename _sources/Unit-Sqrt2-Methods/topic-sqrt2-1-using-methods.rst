@@ -271,10 +271,20 @@ argument.
    :multiple_answers:
    :random:
 
-   The distance between two numbers on a number line is defined as the absolute value of their
-   difference. (Their difference is just what you get when you subtract one from
-   the other.) Which of the following are correct expressions to compute the
-   distance between the numbers ``a`` and ``b``.
+   The distance between two numbers on the number line is defined as the
+   absolute value of their difference. Their difference is just what you get
+   when you subtract one from the other. For example, the distance from 0 to 3
+   is 3 because the difference is either 3 or -3 depending on whether we
+   subtract 0 from 3 or 3 from 0. Similarly, the distance from -3 to 1 is 4,
+   the absolute value of either -4 or 4.
+
+   .. image:: Figures/number-line.svg
+      :width: 500
+      :align: center
+      :alt: number line
+
+   Which of the following are correct expressions to compute the distance
+   between the numbers ``a`` and ``b``.
 
    - ``Math.abs(a - b)``
 
