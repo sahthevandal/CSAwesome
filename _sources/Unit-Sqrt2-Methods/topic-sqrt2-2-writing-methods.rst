@@ -91,7 +91,7 @@ takes an ``int`` value and returns an ``int`` whose value is twice the argument.
        return n * 2;
    }
 
-The method signature is similar to the signature for ``sqrt`` except the 
+The method signature is similar to the signature for ``sqrt`` except the
 method name is obviously different and the return type and argument type is
 ``int`` instead of ``double``. (Note, however, that the rules for variable and
 method names also say that they cannot be any of Java’s special **keywords**.
@@ -122,7 +122,7 @@ methods. For instance this method computes the value of a greeting given a name.
 
    public static String greeting(String name)
    {
-       return "Hello, " + name + ".”;
+       return "Hello, " + name + ".";
    }
 
 This method tells you how many of some kind of item you have:
@@ -166,6 +166,35 @@ method.)
            doubled(4); // Notice that this has no effect when you run the program.
        }
    }
+   ====
+   import org.junit.Test;
+
+   public class RunestoneTests extends CodeTestHelper {
+
+       private void check(int n) {
+         expect(n * 2, Doubler.doubled(n), "Hey! doubled(" + n + ")");
+       }
+
+       @Test
+       public void testDoubledPositiveNumber() {
+         check(10);
+       }
+
+       @Test
+       public void testDoubledNegativeNumber() {
+         check(-5);
+       }
+
+       @Test
+       public void testDoubledZero() {
+         check(0);
+       }
+
+       @Test
+       public void testDoubledLargeNumber() {
+         check(Integer.MAX_VALUE / 2);
+       }
+   }
 
 .. activecode:: bhsawesome-greeting
    :language: java
@@ -183,12 +212,42 @@ method.)
 
        public static void main(String[] argv)
        {
-           System.out.println(greeting("World"));
+           System.out.println(greeting("world"));
            // TODO
        }
    }
+   ====
+   import org.junit.Test;
 
- .. activecode:: bhsawesome-distance
+   public class RunestoneTests extends CodeTestHelper
+   {
+
+       private void check(String arg)
+       {
+           expect("Hello, " + arg + ".", HelloWorld.greeting(arg), "greeting(\"" + arg + "\")");
+       }
+
+       @Test
+       public void testHelloWorld()
+       {
+           check("world");
+       }
+
+       @Test
+       public void testHelloFred()
+       {
+           check("Fred");
+       }
+
+       @Test
+       public void testLong()
+       {
+           check("it is very nice to meet you!");
+       }
+
+   }
+
+.. activecode:: bhsawesome-distance
    :language: java
 
    The distance between two numbers, as we discussed in a problem in the
@@ -216,8 +275,6 @@ method.)
        }
    }
    ====
-   import static org.junit.Assert.*;
-
    import org.junit.*;
 
    import java.io.*;
@@ -225,11 +282,21 @@ method.)
    public class RunestoneTests extends CodeTestHelper
    {
        @Test
-       public void testMain() throws IOException
+       public void testNearToFar() throws IOException
        {
-           String output = getMethodOutput("main");
-           String expected = "distance(13.5, 26.2) = 12.7\ndistance(26.2, 13.5) = 12.7\ntrue\n”;
-           assertTrue(getResults(expected, output, "Expected output from main"));
+         expectExact(12.7, DistanceCalculator.distance(13.5, 26.2), "distance(26.2, 13.5)");
+       }
+
+       @Test
+       public void testFarToNear() throws IOException
+       {
+         expectExact(12.7, DistanceCalculator.distance(26.2, 13.5), "distance(13.5, 26.2)");
+       }
+
+       @Test
+       public void testZeroDistance() throws IOException
+       {
+         expectExact(0, DistanceCalculator.distance(26.2, 26.2), "distance(26.2, 26.2)");
        }
    }
 
