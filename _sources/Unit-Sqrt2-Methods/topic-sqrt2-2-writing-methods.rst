@@ -275,9 +275,7 @@ method.)
        }
    }
    ====
-   import org.junit.*;
-
-   import java.io.*;
+   import org.junit.Test;
 
    public class RunestoneTests extends CodeTestHelper
    {
@@ -341,21 +339,42 @@ method.)
        }
    }
    ====
-   import static org.junit.Assert.*;
-
-   import org.junit.*;
-
-   import java.io.*;
+   import org.junit.Test;
+   import java.io.IOException;
 
    public class RunestoneTests extends CodeTestHelper
    {
+       private void check(double height, double width)
+       {
+           double expected = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
+           double got = LadderHelper.ladderSizeNeeded(height, width);
+           String label = "ladderSizeNeeded(" + height + ", " + width + ")";
+           expectExact(expected, got, label);
+       }
+
        @Test
        public void testMain() throws IOException
        {
-           String output = getMethodOutput("main");
-           String expected = "Beloved, I need a 50.0 foot ladder!"
-           assertTrue(getResults(expected, output, "Expected output from main"));
+           String expected = "Beloved, I need a 50.0 foot ladder!";
+           expect(expected, getMethodOutput("main"), "Expected output from main");
        }
+
+       @Test
+       public void testShort() {
+         check(3, 4);
+       }
+       @Test
+       public void testTall() {
+         check(30, 40);
+       }
+
+       @Test
+       public void testRandom() {
+         check(Math.random() * 100, Math.random() * 50);
+       }
+
+
+
    }
 
 Inside the Method During the Call
