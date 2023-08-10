@@ -91,7 +91,7 @@ takes an ``int`` value and returns an ``int`` whose value is twice the argument.
        return n * 2;
    }
 
-The method signature is similar to the signature for ``sqrt`` except the 
+The method signature is similar to the signature for ``sqrt`` except the
 method name is obviously different and the return type and argument type is
 ``int`` instead of ``double``. (Note, however, that the rules for variable and
 method names also say that they cannot be any of Java’s special **keywords**.
@@ -237,7 +237,7 @@ method.)
    :language: java
 
    .. image:: Figures/ladder.png
-      :width: 100
+      :width: 100px
       :align: left
       :alt: Ladder on tower
 
