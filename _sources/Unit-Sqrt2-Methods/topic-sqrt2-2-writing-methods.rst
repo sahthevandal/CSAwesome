@@ -172,7 +172,7 @@ method.)
    public class RunestoneTests extends CodeTestHelper {
 
        private void check(int n) {
-         expect(n * 2, Doubler.doubled(n), "Hey! doubled(" + n + ")");
+         expect(n * 2, Doubler.doubled(n), "doubled(" + n + ")");
        }
 
        @Test
