@@ -27,8 +27,12 @@ A new object is created with the ``new`` keyword followed by the class name (``n
 
 .. code-block:: java
 
-    // To create a new object and call a constructor write:
-    // ClassName variableName = new ClassName(parameters);
+    // To create a new object and assign it to a variable write:
+    //
+    //   ClassName variableName = new ClassName(parameters);
+    //
+    // For instance:
+
     World habitat = new World();    // create a new World object
     Turtle t = new Turtle(habitat); // create a new Turtle object
 
@@ -647,28 +651,40 @@ You will use the constructor(s) to create the CustomTurtles below. You can speci
     }
 
 Summary
--------------------
-
+-------
 
 - **Constructors** initialize the attributes in newly created objects.  They have the same name as the class.
 
-- A **constructor signature** is the constructor name followed by the parameter list which is a list of the types of the parameters and the variable names used to refer to them in the constructor.
+- A **constructor signature** is the constructor name followed by the parameter
+  list which is a list of the types of the parameters and the variable names
+  used to refer to them in the constructor.
 
-- **Overloading** is when there is more than one constructor.  They must differ in the number, type, or order of parameters.
+- **Overloading** is when there is more than one constructor. They must differ
+  in the number, type, or order of parameters.
 
-- **New** is a keyword that is used to create a new object of a class.  The syntax is ``new ClassName()``.  It creates a new object of the specified class and calls a constructor.
+- ``new`` is a keyword that is used to create a new object of a class. The
+  syntax is ``new ClassName()``. It creates a new object of the specified class
+  and calls a constructor.
 
-- A **no-argument constructor** is a constructor that doesn't take any passed in values (arguments).
+- A **no-argument constructor** is a constructor that doesn't take any passed in
+  values (arguments).
 
-- **Parameters** allow values to be passed to the constructor to initialize the newly created object's attributes.
+- **Parameters** allow values to be passed to the constructor to initialize the
+  newly created object's attributes.
 
-- The **parameter list**, in the header of a constructor, is a list of the type of the value being passed and a variable name. These variables are called the **formal parameters**.
+- The **parameter list**, in the header of a constructor, is a list of the type
+  of the value being passed and a variable name. These variables are called the
+  **formal parameters**.
 
-- **Actual parameters** are the values being passed to a constructor.  The formal parameters are set to a copy of the value of the actual parameters.
+- **Actual parameters** are the values being passed to a constructor. The formal
+  parameters are set to a copy of the value of the actual parameters.
 
-- **Formal parameters** are the specification of the parameters in the constructor header.  In Java this is a list of the type and name for each parameter (``World(int width, int height``).
+- **Formal parameters** are the specification of the parameters in the
+  constructor header. In Java this is a list of the type and name for each
+  parameter (``World(int width, int height``).
 
-- **Call by value** means that when you pass a value to a constructor or method it passes a copy of the value.
+- **Call by value** means that when you pass a value to a constructor or method
+  it passes a copy of the value.
 
 AP Practice
 ------------
