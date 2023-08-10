@@ -302,7 +302,7 @@ method.)
    :language: java
 
    .. image:: Figures/ladder.png
-      :width: 100
+      :width: 100px
       :align: left
       :alt: Ladder on tower
 

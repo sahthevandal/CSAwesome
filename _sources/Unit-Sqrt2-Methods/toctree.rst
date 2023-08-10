@@ -1,5 +1,5 @@
 .. image:: ../../_static/BHSawesomeLogo.png
-    :width: 350
+    :width: 350px
     :align: center
 
 

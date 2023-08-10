@@ -46,7 +46,7 @@ What is a Method?
 -----------------
 
 .. image:: Figures/Toaster.png
-    :width: 100
+    :width: 100px
     :align: left
     :alt: Toaster
 
@@ -221,7 +221,7 @@ Other ``Math`` methods - ``abs`` and ``pow``
 --------------------------------------------
 
 .. image:: Figures/pow.png
-    :width: 100
+    :width: 100px
     :align: left
     :alt: Pow!
 
@@ -279,7 +279,7 @@ argument.
    the absolute value of either -4 or 4.
 
    .. image:: Figures/number-line.svg
-      :width: 500
+      :width: 500px
       :align: center
       :alt: number line
 
@@ -342,7 +342,7 @@ Other ``Math`` methods - ``random``
 -----------------------------------
 
 .. image:: Figures/dice.png
-    :width: 100
+    :width: 100px
     :align: left
     :alt: Dice
 
