@@ -122,7 +122,7 @@ methods. For instance this method computes the value of a greeting given a name.
 
    public static String greeting(String name)
    {
-       return "Hello, " + name + ".”;
+       return "Hello, " + name + ".";
    }
 
 This method tells you how many of some kind of item you have:
@@ -166,6 +166,35 @@ method.)
            doubled(4); // Notice that this has no effect when you run the program.
        }
    }
+   ====
+   import org.junit.Test;
+
+   public class RunestoneTests extends CodeTestHelper {
+
+       private void check(int n) {
+         expect(n * 2, Doubler.doubled(n), "Hey! doubled(" + n + ")");
+       }
+
+       @Test
+       public void testDoubledPositiveNumber() {
+         check(10);
+       }
+
+       @Test
+       public void testDoubledNegativeNumber() {
+         check(-5);
+       }
+
+       @Test
+       public void testDoubledZero() {
+         check(0);
+       }
+
+       @Test
+       public void testDoubledLargeNumber() {
+         check(Integer.MAX_VALUE / 2);
+       }
+   }
 
 .. activecode:: bhsawesome-greeting
    :language: java
@@ -183,12 +212,42 @@ method.)
 
        public static void main(String[] argv)
        {
-           System.out.println(greeting("World"));
+           System.out.println(greeting("world"));
            // TODO
        }
    }
+   ====
+   import org.junit.Test;
 
- .. activecode:: bhsawesome-distance
+   public class RunestoneTests extends CodeTestHelper
+   {
+
+       private void check(String arg)
+       {
+           expect("Hello, " + arg + ".", HelloWorld.greeting(arg), "greeting(\"" + arg + "\")");
+       }
+
+       @Test
+       public void testHelloWorld()
+       {
+           check("world");
+       }
+
+       @Test
+       public void testHelloFred()
+       {
+           check("Fred");
+       }
+
+       @Test
+       public void testLong()
+       {
+           check("it is very nice to meet you!");
+       }
+
+   }
+
+.. activecode:: bhsawesome-distance
    :language: java
 
    The distance between two numbers, as we discussed in a problem in the
@@ -216,20 +275,26 @@ method.)
        }
    }
    ====
-   import static org.junit.Assert.*;
-
-   import org.junit.*;
-
-   import java.io.*;
+   import org.junit.Test;
 
    public class RunestoneTests extends CodeTestHelper
    {
        @Test
-       public void testMain() throws IOException
+       public void testNearToFar() throws IOException
        {
-           String output = getMethodOutput("main");
-           String expected = "distance(13.5, 26.2) = 12.7\ndistance(26.2, 13.5) = 12.7\ntrue\n”;
-           assertTrue(getResults(expected, output, "Expected output from main"));
+         expectExact(12.7, DistanceCalculator.distance(13.5, 26.2), "distance(26.2, 13.5)");
+       }
+
+       @Test
+       public void testFarToNear() throws IOException
+       {
+         expectExact(12.7, DistanceCalculator.distance(26.2, 13.5), "distance(13.5, 26.2)");
+       }
+
+       @Test
+       public void testZeroDistance() throws IOException
+       {
+         expectExact(0, DistanceCalculator.distance(26.2, 26.2), "distance(26.2, 26.2)");
        }
    }
 
@@ -274,21 +339,42 @@ method.)
        }
    }
    ====
-   import static org.junit.Assert.*;
-
-   import org.junit.*;
-
-   import java.io.*;
+   import org.junit.Test;
+   import java.io.IOException;
 
    public class RunestoneTests extends CodeTestHelper
    {
+       private void check(double height, double width)
+       {
+           double expected = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
+           double got = LadderHelper.ladderSizeNeeded(height, width);
+           String label = "ladderSizeNeeded(" + height + ", " + width + ")";
+           expectExact(expected, got, label);
+       }
+
        @Test
        public void testMain() throws IOException
        {
-           String output = getMethodOutput("main");
-           String expected = "Beloved, I need a 50.0 foot ladder!"
-           assertTrue(getResults(expected, output, "Expected output from main"));
+           String expected = "Beloved, I need a 50.0 foot ladder!";
+           expect(expected, getMethodOutput("main"), "Expected output from main");
        }
+
+       @Test
+       public void testShort() {
+         check(3, 4);
+       }
+       @Test
+       public void testTall() {
+         check(30, 40);
+       }
+
+       @Test
+       public void testRandom() {
+         check(Math.random() * 100, Math.random() * 50);
+       }
+
+
+
    }
 
 Inside the Method During the Call
