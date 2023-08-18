@@ -26,11 +26,11 @@ const numbers = [
   "14",
   "15",
   "16",
-  "17"
+  "17",
 ];
 
 // Adjust these two values. They are indices, not the unit numbers.
-const practiceUnitsStart = 10;
+const practiceUnitsStart = 11;
 const practiceUnits = 5;
 const unitsAfterPractice = 1;
 
