@@ -18,7 +18,10 @@ What is a Variable?
 .. index::
    single: variable
 
-A **variable** is a name associated with a memory location in the computer, where you can store a value that can change or vary. The following `video <https://youtu.be/pHgYlVjagmA>`_ explains what a variable is and gives a couple of real word examples of variables.
+A **variable** is a name associated with a memory location in the computer,
+where you can store a value that can change or vary. The following `video
+<https://youtu.be/pHgYlVjagmA>`_ explains what a variable is and gives a couple
+of real word examples of variables.
 
 .. youtube:: pHgYlVjagmA
     :width: 700
@@ -26,7 +29,8 @@ A **variable** is a name associated with a memory location in the computer, wher
     :align: center
 
 
-When you play a game, it will often have a score.  Scores often start at 0 and increase, so they can change.  A score can be stored in a variable.
+When you play a game, it will often have a score. Scores often start at 0 and
+increase, so they can change. A score can be stored in a variable.
 
 .. figure:: Figures/pongScore.png
     :width: 300px
@@ -52,22 +56,30 @@ Data Types
    pair: variable; Boolean
    pair: variable; String
 
-There are two types of variables in Java: **primitive variables** that hold primitive types and **object or reference variables** that hold a reference to an object of a class.  A reference is a way to find the object (like a UPS tracking number helps you find your package).  The primitive types on the Advanced Placement Computer Science A exam are:
+There are two types of variables in Java: **primitive variables** that hold
+primitive types and **object or reference variables** that hold a reference to
+an object of a class. A reference is a way to find the object (like a UPS
+tracking number helps you find your package). The primitive types on the
+Advanced Placement Computer Science A exam are:
 
-    -  int - which store integers (numbers like 3, -76, 20393)
+- ``int`` which represent integers, i.e. whole numbers like 3, -76, 20393.
 
-    -  double - which store floating point numbers (decimal numbers like 6.3 -0.9, and 60293.93032)
+- ``double`` which represent non-integer numbers like 6.3 -0.9, and 60293.93032. Computer people call these “floating point” numbers because the decimal point “floats” similar relative to the magnitude of the number, similar to the way it does in scientific notation like :math:`6.5 ✕ 10^8`
 
-    -  boolean - which store Boolean values (either true or false).
+- ``boolean`` which can represent only two values: ``true`` and ``false``. (The data type is named for George Boole, a 19th century English mathematician who invented Boolean algebra, a system for dealing with statements made up of only true and false values.)
 
-**String** is one of the object types on the exam and is the name of a class in Java.  A *string* object has a sequence of characters enclosed in a pair of double quotes - like "Hello".  You will learn more about ``String`` objects in Unit 2.
-
+``String`` is one of the object types on the exam and is the name of a class in
+Java. A ``String`` is written in a Java program as a sequence of characters
+enclosed in a pair of double quotes - like ``"Hello"``. You will learn more
+about ``String`` objects in Unit 2.
 
 .. note::
 
    Some languages use 0 to represent false and 1 to represent true, but Java uses the keywords ``true`` and ``false`` in boolean variables.
 
-A type is a set of values (a domain) and a set of operations on them. For example, you can do addition with int's and double's but not with booleans and Strings.
+A type is a set of values (a domain) and a set of operations on them. For
+example, you can do addition with ``int``\ 's and ``double``\ 's but not with
+``booleans``.
 
 |Exercise| **Check your understanding**
 
@@ -153,10 +165,29 @@ Declaring Variables in Java
    pair: variable; declare
 
 
-To create a variable, you must tell Java its data type and its name.  Creating a variable is also called **declaring a variable**.  The type is a keyword like int, double, or boolean, but you get to make up the name for the variable.  When you create a **primitive variable** Java will set aside enough bits in memory for that primitive type and associate that memory location with the name that you used.
+To create a variable, you must tell Java its data type and its name. Creating a
+variable is also called **declaring a variable**. The type is a keyword like
+``int``, ``double``, or ``boolean``, but you get to make up the name for the
+variable. When you create a **primitive variable** Java will set aside enough
+bits in memory for that primitive type and associate that memory location with
+the name that you used.
 
-Computers store all values using **bits** (binary digits).  A **bit** can represent two values and we usually say that the value of a bit is either 0 or 1. When you declare a variable, you have to tell Java the type of the variable because Java needs to know how many bits to use and how to represent the value.  The 3 different primitive types
-all require different number of bits.  An integer gets 32 bits of memory, a double gets 64 bits of memory and a boolean could be represented by just one bit.
+The fact that you need to declare the type of a variable is one of the ways Java
+differs from languages like Python, Javascript, and Snap! In those languages a
+variable is just a name for a value and the value can be of any type. In Java
+you have to say what type of value a variable will be used to name and the Java
+compiler will make sure you never try to use a variable to hold a different kind
+of variable. While it creates some extra work when declaring variables it also
+helps avoid bugs caused by different parts of your program not agreeing on the
+types of values they are working with.
+
+Computers store all values using **bits** (binary digits). A **bit** can
+represent two values and we usually say that the value of a bit is either 0
+or 1. When you declare a variable, you have to tell Java the type of the
+variable because Java needs to know how many bits to use and how to represent
+the value. The 3 different primitive types all require different number of bits.
+An integer gets 32 bits of memory, a double gets 64 bits of memory and a boolean
+could be represented by just one bit.
 
 .. figure:: Figures/typesAndSpace.png
     :width: 500px
@@ -185,7 +216,30 @@ Or you can set an initial value for the variable in the variable declaration. He
 
   int score = 4;
 
-When you are printing out variables, you can use the **string concatenation** operator ``+`` to add them to another string inside System.out.print. Never put variables inside quotes ``""`` because that will print out the variable name letter by letter. You do not want to print out the variable name, but the value of the variable in memory. If you're not sure what this means, try putting quotes around the variable and see what happens. In the print out, if you want spaces between words and variables, you must put the space in the quotes. If you forget to add spaces, you will get smushed output like "HiJose" instead of "Hi Jose".
+You can print the value of variables by passing them to ``System.out.print`` and
+``System.out.println`` like this:
+
+.. code-block:: java
+
+   System.out.println(score);
+
+You can also **concatenate** values with a ``String`` using the ``+`` operator.
+Concatenation just means “smoosh together” so ``"Score: " + score`` is an
+expression that smooshes together the string ``"Score: "`` with the value of the
+variable ``score`` converted to a ``String``, giving us ``"Score: 4"``. We can
+then print that new value like this:
+
+.. code-block:: java
+
+   System.out.println("Score: " + score);
+
+Remember when you are trying to print the value of a variable you do *not* put
+the name of the variable in quotes. ``score`` is the name of a variable;
+``"score"`` is a string containing the word “score”.
+
+If you want spaces between words and variables, you must put the spaces inside
+the quotes of some ``String``. If you forget to add spaces, you will get smushed
+output like ``Score:4`` instead of ``Score: 4``.
 
 |CodingEx| **Coding Exercise:**
 
@@ -194,7 +248,10 @@ When you are printing out variables, you can use the **string concatenation** op
    :language: java
    :autograde: unittest
 
-   Run the following code to see what is printed. Then, change the values and run it again. Try adding quotes to variables and removing spaces in the print statements to see what happens.
+   Run the following code to see what is printed. Then, change the values and
+   run it again. Try adding quotes around some variables and removing spaces
+   from some of the strings to see what happens.
+
    ~~~~
    public class Test2
    {
@@ -240,9 +297,12 @@ When you are printing out variables, you can use the **string concatenation** op
        }
    }
 
-.. note::
-
-    Variables are never put inside quotes ("") in System.out.print statements. This would print the variable name out letter by letter instead of printing its value.
+The equal sign here ``=`` doesn't mean the same as it does in a mathematical
+equation where it implies that the two sides are equal. Here it means set the
+value in the memory location associated with the variable name on the left to a
+*copy* of the value on the right. The first line above sets the value in the box
+called score to 4. A variable always has to be on the left side of the ``=`` and
+a value or expression on the right.
 
 
 |Exercise| **Check Your Understanding**
@@ -286,9 +346,6 @@ When you are printing out variables, you can use the **string concatenation** op
             :click-incorrect:System.out.println(powerUp);:endclick:
         :click-incorrect:}:endclick:
     :click-incorrect:}:endclick:
-
-The equal sign here ``=`` doesn't mean the same as it does in a mathematical equation where it implies that the two sides are equal.  Here it means set the value in the memory location associated with the variable name on the left to a *copy* of the value on the right. The first line above sets the value in the box called score to 4.  A variable always has to be on the left side of the ``=`` and a value or expression on the right.
-
 
 |CodingEx| **Coding Exercise:**
 
@@ -378,7 +435,9 @@ The equal sign here ``=`` doesn't mean the same as it does in a mathematical equ
 
 
 
-The keyword **final** can be used in front of a variable declaration to make it a constant that cannot be changed. Constants are traditionally capitalized.
+The keyword **final** can be used in front of a variable declaration to make it
+a constant that cannot be changed. Constants are traditionally written in all
+upper case.
 
 .. code-block:: java
 
@@ -433,30 +492,47 @@ While you can name your variable almost anything, there are some rules.  A varia
 
 You can't use any of the keywords or reserved words as variable names in Java (``for``, ``if``, ``class``, ``static``, ``int``, ``double``, etc).  For a complete list of keywords and reserved words, see https://docs.oracle.com/javase/specs/jls/se14/html/jls-3.html#jls-3.9.
 
-The name of the variable should describe the data it holds.  A name like ``score`` helps make your code easier to read. A name like ``x`` is not a good variable name in programming, because it gives no clues as to what kind of data it holds.  Do not name
-your variables crazy things like ``thisIsAReallyLongName``, especially on the AP exam. You want to make your code easy to understand, not harder.
+The name of the variable should describe the data it holds. A name like
+``score`` helps make your code easier to read. A name like ``x`` is not a good
+in most contexts, because it gives no clues as to what kind of data it holds. On
+the other hand, don’t name your variables crazy things like
+``thisIsAReallyLongName``, especially on the AP exam. You want to make your code
+easy to understand, not harder.
 
 .. note::
 
+   - Use meaningful variable names!
 
-    - Use meaningful variable names!
-    - Start variable names with a lower case letter and use camelCase.
-    - Variable names are case-sensitive and spelling sensitive! Each use of the variable in the code must match the variable name in the declaration exactly.
-    - Never put variables inside quotes (" ").
+   - Start variable names with a lower case letter and use camelCase.
+
+   - Variable names are case-sensitive and spelling matters. Each use of the
+     variable in the code must match the variable name in the declaration
+     exactly.
+
+   - A variable name inside quotes is just a ``String`` not a reference to the
+     variable.
 
 .. index::
     single: camel case
     pair: variable; naming convention
 
-The convention in Java and many programming languages is to always start a variable name with a lower case letter and then uppercase the first letter of each additional word, for example ``gameScore``. Variable names can not include spaces so uppercasing the first letter of each additional word makes it easier to read the name.  Uppercasing the first letter of each additional word is called **camel case** because it looks like the humps of a camel. Another option is to use underscore ``_`` to separate words, but you cannot have spaces in a variable name.
-
-
+The convention in Java and many programming languages is to always start a
+variable name with a lower case letter and then capitalize the first letter of
+each additional word, for example ``gameScore``. Since variable names can not
+include spaces, capitalizing the first letter of each word after the first makes
+it easier to read the name. This style is called **camel case** because it looks
+like the humps of a camel. Another option is to use underscore to separate
+words, known as **snake case**, so ``game_score`` rather than ``gameScore``. But
+snake case it is almost never used in Java. (Programmers working in the language
+Python—appropriately enough—almost always use snake case.)
 
 .. activecode:: lcnv1
    :language: java
    :autograde: unittest
 
-   Java is case sensitive so ``gameScore`` and ``gamescore`` are not the same.  Run and fix the code below to use the right variable name.
+   Java is case sensitive so ``gameScore`` and ``gamescore`` are not the same.
+   Run and fix the code below to use the right variable name.
+
    ~~~~
    public class CaseSensitiveClass
    {
@@ -563,21 +639,30 @@ The convention in Java and many programming languages is to always start a varia
 Summary
 -------------------
 
-- A **variable** is a name for a memory location where you can store a value that can change or vary.
+- A **variable** is a name for a memory location where you can store a value
+  that can change or vary.
 
-- A variable can be declared and initialized with the following code:
+- A variable can be declared or declared and initialized as shown in the the
+  following code:
 
-.. code-block:: java
+  .. code-block:: java
 
-  int score;
-  double gpa = 3.5;
+    int score;
+    double gpa = 3.5;
 
+- **Data types** can be primitive types (like ``int``) or reference types (like
+  ``String``).
 
-- **Data types** can be primitive types (like int) or reference types (like String).
-- The three primitive data types used in this course are **int** (integer numbers), **double** (decimal numbers), and **boolean** (true or false).
+- The three primitive data types used in this course are ``int`` (whole
+  numbers), ``double`` (decimal numbers), and ``boolean`` (true or false).
+
 - Each variable has associated memory that is used to hold its value.
-- The memory associated with a variable of a primitive type holds an actual primitive value.
-- When a variable is declared final, its value cannot be changed once it is initialized.
+
+- The memory associated with a variable of a primitive type holds an actual
+  primitive value.
+
+- When a variable is declared final, its value cannot be changed once it is
+  initialized.
 
 AP Practice
 ------------
