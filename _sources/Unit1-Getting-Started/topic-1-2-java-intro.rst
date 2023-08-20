@@ -228,7 +228,17 @@ Java has two different methods to print output to the screen:
        }
    }
 
-Special words—also called **keywords**—such as ``public``, ``class``, and ``if`` must be in lowercase, but class names such as ``System`` and ``String`` are capitalized. Lines in a Java program that express a complete action such as assigning a value to a variable must end with a semicolon (``;``). Such a line is called a **statement**. You can think of the semicolon (``;``) in Java like a period (``.``) in English. The same way you use a period to end a sentence in English, you use a semicolon to end a statement in Java.  You will not be penalized on the exam if you forget a needed semicolon but the Java compiler is not so lenient; your program won't compile without it. Note also that not *every* line ends with a semicolon; if the line starts a construct like an `if` statement, there is no semicolon before the opening ``{`` nor one after the closing ``}``.
+Special words—also called **keywords**—such as ``public`` and ``class`` must be
+in lowercase, but class names such as ``System`` and ``String`` are capitalized.
+Lines in a Java program that express a complete action such as assigning a value
+to a variable must end with a semicolon (``;``). Such a line is called a
+**statement**. You can think of the semicolon (``;``) in Java like a period
+(``.``) in English. The same way you use a period to end a sentence in English,
+you use a semicolon to end a statement in Java. You will not be penalized on the
+exam if you forget a needed semicolon but the Java compiler is not so lenient;
+your program won't compile without it. Note also that not *every* line ends with
+a semicolon; for instance there is no semicolon after the name of the class nor
+one on any line ending with a ``{`` or ``}``.
 
 
 .. hparsons:: mp-print-order-1
@@ -402,7 +412,7 @@ Now look at the next two lines. The very next line is just the line of code
 from your program. But below that is a very important line containing a
 single caret (``^``) positioned to point at exactly where in the line the
 Java compiler thinks the problem is. In this case it’s pointing at the
-quotation mark (``”``) before “Hi”. So it’s complaining about something being
+quotation mark (``"``) before “Hi”. So it’s complaining about something being
 unclosed and it’s pointing us at a quotation mark. Usually quotation marks
 come in pairs called the open quote and the close quote, right? And if you
 look at the line of code you’ll see that there’s no closing quotation mark.
