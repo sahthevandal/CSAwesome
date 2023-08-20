@@ -46,10 +46,14 @@ As we saw in the video, we can set one variable's value to a *copy* of the value
 
    <a href="http://www.pythontutor.com/visualize.html#code=public+class+Test2%0A%7B%0A+++public+static+void+main(String%5B%5D+args%29%0A+++%7B%0A+++++int+x+%3D+3%3B%0A+++++int+y+%3D+2%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++x+%3D+y%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++++y+%3D+5%3B%0A+++++System.out.println(x%29%3B%0A+++++System.out.println(y%29%3B%0A+++%7D%0A%7D&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=java&rawInputLstJSON=%5B%5D&curInstr=0" target="_blank"  style="text-decoration:underline">Java visualizer</a>
 
-Let's step through the following code in the |Java visualizer| to see the values in memory. Click on the Next button at the bottom of the code to see how the values of the variables change. You can run the visualizer on any Active Code in this e-book by just clicking on the Code Lens button at the top of each Active Code.
+Let's step through the following code in the |Java visualizer| to see the values
+in memory. Click on the “Show in CodeLens” button to access the visualizer and then
+click the “Next” button at the bottom of the code to see how the values of the
+variables change. You can run the visualizer on any Active Code in this e-book
+by just clicking on the Show in CodeLens button at the top of each Active Code.
 
 
-.. codelens:: asgn_viz1
+.. activecode:: asgn_viz1
     :language: java
     :optional:
 
