@@ -231,7 +231,7 @@ Trace through the following code:
 
 .. |Operators Maze game| raw:: html
 
-   <a href="https://docs.google.com/document/d/1ZjA8oKeo8FYx2nXX4OOq5lUihopIQQ_HY-eoE5yZkk8/edit?usp=sharing" target="_blank" style="text-decoration:underline">Operators Maze game</a>
+   <a href="https://docs.google.com/document/d/1h44UlUKcVyQd_2Mb523XUF7Cxs13J2MDjaDslHsKjmM/edit" target="_blank" style="text-decoration:underline">Operators Maze game</a>
 
 
 
