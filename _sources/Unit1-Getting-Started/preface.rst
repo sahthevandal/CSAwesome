@@ -159,3 +159,4 @@ https://icons.getbootstrap.com/icons/ which are licensed by http://creativecommo
 Toaster image adapted from from https://commons.wikimedia.org/wiki/File:Toaster.jpg
 Pow comic book image from https://pixabay.com/illustrations/pow-comic-comic-book-fight-1601674/
 Dice image from  https://pixabay.com/vectors/dice-red-two-game-rolling-chance-25637/
+Bronze casting image in 1.6 from https://commons.wikimedia.org/wiki/File:Lost_wax_casting.jpg
