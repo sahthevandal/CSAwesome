@@ -37,7 +37,9 @@ an ``int`` by a ``double`` or an ``int`` cast to a ``double`` divided by an
    :language: java
    :autograde: unittest
 
-   What happens when you divide an int by an int or with a double operand or with the type cast (double) on one of the operands?
+   What happens when you divide an int by an int or with a double operand or
+   with the type cast (double) on one of the operands?
+
    ~~~~
    public class OperatorTest
    {
