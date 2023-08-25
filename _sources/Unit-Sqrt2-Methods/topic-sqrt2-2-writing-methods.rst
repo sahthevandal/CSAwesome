@@ -276,6 +276,7 @@ method.)
    }
    ====
    import org.junit.Test;
+   import java.io.IOException;
 
    public class RunestoneTests extends CodeTestHelper
    {
@@ -427,7 +428,7 @@ out “Twice <something> is: <something>” you could write a method that does t
 
 .. code-block:: java
 
-   public void showTwice(int n)
+   public static void showTwice(int n)
    {
        System.out.println("Twice " + n + " is: " + doubled(n));
    }
