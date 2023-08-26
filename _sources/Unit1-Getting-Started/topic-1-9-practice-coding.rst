@@ -979,15 +979,21 @@ Coding Practice
               :autograde: unittest
               :practice: T
 
-              Write the code to calculate the number of miles you can drive if you have a 10 gallon gas tank and are down to a quarter of a tank of gas and your car gets 32 miles per gallon.
+              Write the code to calculate the number of miles you can drive if
+              you have a 10 gallon gas tank and are down to a quarter of a tank
+              of gas and your car gets 32 miles per gallon.
+
               ~~~~
               public class Test1
               {
                   public static void main(String[] args)
                   {
-                      // Your code should use the variables
-                      // numGallons, milesPerGallon, and miles
-                      // and print out miles
+                      // Your code should declare and initialize variables
+                      // tankSize and milesPerGallon to hold the values
+                      // given above and then declare and initialize variables
+                      // gallonsLeft and miles with computed values.
+                      //
+                      // Then print the value of miles.
                   }
               }
 
@@ -1011,10 +1017,27 @@ Coding Practice
                   }
 
                   @Test
+                  public void testFormulaGallonsLeft() throws IOException
+                  {
+                      String target1 = removeSpaces("tankSize / 4");
+                      String target2 = removeSpaces("tankSize * 0.25");
+
+                      String code = removeSpaces(getCode());
+                      code = code.replaceAll("\\(", "").replaceAll("\\)", "");
+
+                      boolean passed = code.contains(target1) || code.contains(target2);
+                      getResults(
+                              "true",
+                              "" + passed,
+                              "Formula variant for gallonsLeft in terms of tankSize",
+                              passed);
+                      assertTrue(passed);
+                  }
+                  @Test
                   public void testFormulaMiles() throws IOException
                   {
-                      String target1 = removeSpaces("numGallons * milesPerGallon");
-                      String target2 = removeSpaces("milesPerGallon * numGallons");
+                      String target1 = removeSpaces("gallonsLeft * milesPerGallon");
+                      String target2 = removeSpaces("milesPerGallon * gallonsLeft");
 
                       String code = removeSpaces(getCode());
                       code = code.replaceAll("\\(", "").replaceAll("\\)", "");
@@ -1024,7 +1047,7 @@ Coding Practice
                               "true",
                               "" + passed,
                               "Formula variant for miles using milesPerGallon and"
-                                  + " numGallons",
+                                  + " gallonsLeft",
                               passed);
                       assertTrue(passed);
                   }
@@ -1229,4 +1252,3 @@ Coding Practice
             .. disqus::
                 :shortname: cslearn4u
                 :identifier: javareview_ch3ex10d
-
