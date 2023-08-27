@@ -14,7 +14,7 @@ In this lesson, you will learn about assignment statements and expressions that 
 Assignment Statements
 ---------------------
 
-**Assignment statements** initialize or change the value stored in a variable using the assignment operator =.  An assignment statement always has a single variable on the left hand side. The value of the **expression** (which can contain math operators and other variables) on the right of the = sign is stored in the variable on the left.
+**Assignment statements** initialize or change the value stored in a variable using the assignment operator ``=``.  An assignment statement always has a single variable on the left hand side. The value of the **expression** (which can contain math operators and other variables) on the right of the ``=`` sign is stored in the variable on the left.
 
 
 .. figure:: Figures/assignment.png
@@ -454,8 +454,8 @@ Here’s the |video2|.
    :answer_b: 16
    :answer_c: 8
    :correct: c
-   :feedback_a: This would be the result of 158 divided by 10.  Remainder gives you the remainder.
-   :feedback_b: Remainder gives you the remainder after the division.
+   :feedback_a: This would be the result of 158 divided by 10.  % gives you the remainder.
+   :feedback_b: % gives you the remainder after the division.
    :feedback_c: When you divide 158 by 10 you get a remainder of 8.
 
    What is the result of 158 % 10?
