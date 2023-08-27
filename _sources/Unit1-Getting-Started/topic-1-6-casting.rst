@@ -20,7 +20,7 @@ the "shape" (or type) of the value.
     :width: 300px
     :figclass: align-center
 
-    Figure 1: Casting bronze.
+    Figure 1: Bronze casting changes the shape of the metal.
 
 
 The **cast operator**, which looks like ``(int)`` and ``(double)`` placed before
@@ -77,20 +77,20 @@ an ``int`` by a ``double`` or an ``int`` cast to a ``double`` divided by an
        }
    }
 
-When Java divides two ``int``\ s, it produces an ``int`` result by truncatating
+When Java divides two ``int``\ s, it produces an ``int`` result by truncating
 the actual mathematical result, removing anything after the decimal point. Thus
 ``9 / 10`` evaluates to ``0``, not ``0.9``. (It also does not evaluate to ``1``;
 truncating is not the same as rounding.)
 
 But in any expression involving a ``double``, the ``double`` is “contagious” and
 will cause the value of that expression to also be a ``double``. Thus the
-expression ``9.0 / 10`` is evaluated as if it had be written ``9.0 / 10.0`` and
-produces the ``double`` value ``0.9``.
+expression ``9.0 / 10`` is evaluated as if it had been written ``9.0 / 10.0``
+and produces the ``double`` value ``0.9``.
 
 Casting an ``int`` to ``double``, as shown in the code above, produces a
 ``double`` value which will then causes any expression it is part of to produce
-a ``double``. This is especiallly useful when you have ``int`` variables that
-you want to do non-integer division with:
+a ``double``. This is especially useful when you have ``int`` variables that you
+want to do non-integer division with:
 
 .. code-block:: java
 
@@ -108,7 +108,7 @@ because a ``double`` can represent any ``int`` value but not vice versa; thus a
 
    ``int``\ s in Java are always 32-bit signed values which mean they can
    represent values from :math:`-2^{31}` to :math:`2^{31} - 1`, inclusive, while
-   the range of consecutive interger values that can be reprenested by a double
+   the range of consecutive integer values that can be represented by a double
    is from :math:`-2^{53}` to :math:`2^{53}`, inclusive. (A ``double`` can also
    represent much larger values but with limited precision.) You can refer to
    the minimum and maximum ``int`` values with the constants
@@ -574,7 +574,7 @@ This would be a good project to work together in pairs, and switch drivers (who 
 
 .. |repl| raw:: html
 
-   <a href="https://repl.it" target="_blank">repl.it</a>
+   <a href="https://replit.com" target="_blank">replit</a>
 
 
 .. |Scanner| raw:: html
