@@ -1012,7 +1012,7 @@ Coding Practice
                       String output = getMethodOutput("main");
                       String expect = "80.0\n";
                       boolean passed =
-                              getResults(expect, output, "Expected output from main");
+                              getResults(expect, output, "Expected output from main (use doubles!)");
                       assertTrue(passed);
                   }
 
@@ -1095,9 +1095,11 @@ Coding Practice
               {
                   public static void main(String[] args)
                   {
-                      // Your code should use the variables
-                      // secondsInDay and secondsInThreeDays
-                      // and print out secondsInThreeDays
+                      // Your code should declare the variables
+                      // secondsInDay and secondsInThreeDays and
+                      // initialize or calculate secondsInDay
+                      // and calculate secondsInThreeDays using secondsInDay
+                      // and print out secondsInThreeDays.
 
                   }
               }
@@ -1125,9 +1127,9 @@ Coding Practice
                   public void testFormulaMiles() throws IOException
                   {
                       String target1 =
-                              removeSpaces("int secondsInThreeDays = secondsInDay * 3;");
+                              removeSpaces("secondsInDay * 3;");
                       String target2 =
-                              removeSpaces("int secondsInThreeDays = 3 * secondsInDay;");
+                              removeSpaces("3 * secondsInDay;");
                       String code = removeSpaces(getCode());
                       boolean passed1 = code.contains(target1);
                       boolean passed2 = code.contains(target2);
@@ -1136,7 +1138,7 @@ Coding Practice
                       getResults(
                               "true",
                               "" + passed,
-                              "formula for secondsInThreeDays using secondsInDay",
+                              "formula for secondsInThreeDays using the variable secondsInDay",
                               passed);
                       assertTrue(passed);
                   }
@@ -1188,7 +1190,9 @@ Coding Practice
                   public static void main(String[] args)
                   {
                       // Your code should use the variables
-                      // money, pricePerWing, numWings
+                      // money, pricePerWing, numWings, and
+                      // initialize money and pricePerWing using the values above,
+                      // and calculate numWings using money and pricePerWing and type casting to int
                       // and print out numWings
 
                   }
@@ -1216,11 +1220,12 @@ Coding Practice
                   @Test
                   public void testFormulaWings() throws IOException
                   {
-                      String target = "int numWings = (int)(money / pricePerWing)";
+                      // codeContains will remove spaces
+                      String target = "numWings = (int)(money / pricePerWing)";
                       boolean passed =
                               checkCodeContains(
                                       "formula for numWings using money and pricePerWing,"
-                                          + " and type casting",
+                                          + " and type casting to int with correct parentheses",
                                       target);
                       assertTrue(passed);
                   }

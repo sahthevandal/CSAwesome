@@ -24,8 +24,8 @@ the "shape" (or type) of the value.
 
 
 The **cast operator**, which looks like ``(int)`` and ``(double)`` placed before
-any expression: a literal a number, a variable, or more complex expression in
-parentheses, produces a value of the given type by converting the value of the
+any expression—a literal a number, a variable, or more complex expression in
+parentheses—produces a value of the given type by converting the value of the
 originial expression to the new type.
 
 For example, ``(double) 1 / 3`` will evaluate to a ``double`` value instead of an
@@ -79,8 +79,8 @@ an ``int`` by a ``double`` or an ``int`` cast to a ``double`` divided by an
 
 When Java divides two ``int``\ s, it produces an ``int`` result by truncating
 the actual mathematical result, removing anything after the decimal point. Thus
-``9 / 10`` evaluates to ``0``, not ``0.9``. (It also does not evaluate to ``1``;
-truncating is not the same as rounding.)
+``9 / 10`` evaluates to ``0``, not ``0.9``. It also does not evaluate to ``1``;
+truncating is not the same as rounding!
 
 But in any expression involving a ``double``, the ``double`` is “contagious” and
 will cause the value of that expression to also be a ``double``. Thus the
@@ -98,7 +98,7 @@ want to do non-integer division with:
    int count; // the number of ints that went into total
 
    // Compute the average of the bunch of ints summed into total.
-   double average = (double)total / count;
+   double average = (double) total / count;
 
 A conversion from ``int`` to ``double`` is called a **widening conversion**
 because a ``double`` can represent any ``int`` value but not vice versa; thus a
@@ -635,9 +635,9 @@ Java code that casts numbers to ``char``; for many codepoints that will work but
 not on more recently added codepoints including, critically those for Emoji. 😞
 So better to use ``Character.toString`` and ignore ``char``.)
 
-Try the following program which prints out an English “A”, a |Chinese
-character|, and an |emoji|. Then look up other characters at this |Unicode
-Lookup| site and change the code to print them out. (Use the Dec column in site
+Try the following program which prints out an English “A”, a
+|Chinese character|, and an |emoji|. Then look up other characters at this
+|Unicode Lookup| site and change the code to print them out. (Use the Dec column in site
 to get the decimal number.) Can you print out letters from 3 different
 languages?
 
