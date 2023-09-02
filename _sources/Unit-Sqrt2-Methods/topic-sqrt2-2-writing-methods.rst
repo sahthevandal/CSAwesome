@@ -104,14 +104,14 @@ refer to the variables defined in the parameter list. The only requirement is
 that the body return a value of the correct type using a ``return`` statement.
 
 In this case that means we need to return an ``int``. To return a value we use a
-return statement which consists of the word ``return`` followed by an expression
-that will produce the value to be returned. As you can see in this method, the
-code in the method body can refer to the variables defined in the method’s
-parameter list. The expression in the return statement ``n * 2`` means, multiply
-the value passed to this method by 2. Since ``n`` was declared to be an ``int``
-and ``2`` is an ``int`` and multiplying two ``int``\ s gives us another ``int``,
-this clearly satisfies the requirement to return an ``int``. (Phew, that’s a lot
-of ``int``\ s.)
+**return statement** which consists of the word ``return`` followed by an
+expression that will produce the value to be returned. As you can see in this
+method, the code in the method body can refer to the variables defined in the
+method’s parameter list. The expression in the return statement ``n * 2`` means,
+multiply the value passed to this method by 2. Since ``n`` was declared to be an
+``int`` and ``2`` is an ``int`` and multiplying two ``int``\ s gives us another
+``int``, this clearly satisfies the requirement to return an ``int``. (Phew,
+that’s a lot of ``int``\ s.)
 
 Note that when we say “compute”, that doesn’t have to mean math. As you saw in
 the previous unit, we can also compute with strings of text. And we can write
