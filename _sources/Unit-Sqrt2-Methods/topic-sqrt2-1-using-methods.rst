@@ -74,8 +74,7 @@ much anything.
 Methods also hide, i.e. abstract, the details of what exactly they are doing
 which lets us write code without having to worry about those details. And once
 you’ve got a method that does something useful, you can use that method whenever
-you need to do that thing, rather than writing out the same code over and and
-over.
+you need to do that thing, rather than writing out the same code over and over.
 
 Two methods we’ve used so far in this book are ``System.out.println`` and
 ``System.out.print``. Their job is to take a value and print it to the screen,
@@ -84,7 +83,7 @@ process of turning the value into a textual representation and then causing that
 text to be displayed on the screen. There’s a lot of things that have to happen
 under the covers to make that text come out on the screen but thankfully we
 don’t have to know any more about that than we have to know about how pressing
-on a car’s accelerator makes it go faster.
+on a car’s accelerator makes it go.
 
 Now let’s consider the other kind of method, those that compute new values from
 their arguments. We'll start with some methods from the ``Math`` class that
@@ -255,9 +254,9 @@ argument. The absolute value of a number is its positive value without its sign.
    Math.abs(33.3);  // returns 33.3
    Math.abs(-33.3); // returns 33.3
 
-The next method ``Math.pow`` takes two argument, both ``double``\ s and returns
-a ``double`` which is the first argument raised to the power of the second
-argument.
+The next method ``Math.pow`` takes two arguments, both ``double``\ s, and
+returns a ``double`` which is the first argument raised to the power of the
+second argument.
 
 .. code-block:: java
 
@@ -315,7 +314,7 @@ argument.
    :math:`\sqrt{2}` is irrational.)
 
    Which of the following are a correct expression to compute the hypotenuse of
-   a triangle with legs ``a`` and ``b`?
+   a triangle with legs ``a`` and ``b``?
 
    - ``Math.sqrt(a * a + b * b)``
 
@@ -366,21 +365,21 @@ numbers to generate different possibilities and there are many kinds of
 simulations that depend on randomly generating possible outcomes.
 
 For some applications you may need to use other, more special purpose sources of
-randomness but for simple cases, ``Math.random`` is just the thing so it’s handy
-to know a few recipes for generating various kinds of random numbers starting
-from the random output of ``Math.random``.
+randomness but for simple cases, ``Math.random`` is just the thing, so it’s
+handy to know a few recipes for generating various kinds of random numbers
+starting from the random output of ``Math.random``.
 
 Before we start, let’s introduce one very handy bit of terminology that you may
 or may not have heard of before. When we talk about ranges of numbers sometimes
 we need to be precise about whether the ends of the range are part of the range.
-For example, ``Math.random`` returns a number between 0 and 1, but does that
-mean it can return exactly 0? Or exactly 1? As it turns out it can return 0 but
-never returns 1.
+For example, ``Math.random`` returns a number between 0.0 and 1.0, but does that
+mean it can return exactly 0.0? Or exactly 1.0? As it turns out it can return
+0.0 but never returns 1.0.
 
 When we need to be precise about this we’d say that it returns a number between
-0, *inclusive*, and 1, *exclusive*, meaning *include* 0 but *exclude* 1. Lots of
-ranges in Java are expressed this way, as you’ll see later on with an inclusive
-bottom and an exclusive top.
+0.0, *inclusive*, and 1.0, *exclusive*, meaning *include* 0.0 but *exclude* 1.0.
+Lots of ranges in Java are expressed this way, as you’ll see later on with an
+inclusive bottom and an exclusive top.
 
 With that out of the way, let’s take a look at the values we get from just
 calling ``Math.random``:
@@ -422,11 +421,11 @@ calling ``Math.random``:
        }
    }
 
-Getting a number between 0, inclusive, and 1, exclusive, may not seem all that
-useful. But we can expand the range easily enough. To see how, imagine you had
-less than a dollar to your name and you wanted to be richer—you’d want to find a
-way to **multiply** your money. If you could invest every penny you had in
-something that would multiply your money by 1,000, then instead of having
+Getting a number between 0.0, inclusive, and 1.0, exclusive, may not seem all
+that useful. But we can expand the range easily enough. To see how, imagine you
+had less than a dollar to your name and you wanted to be richer—you’d want to
+find a way to **multiply** your money. If you could invest every penny you had
+in something that would multiply your money by 1,000, then instead of having
 somewhere between $0 and $1 you’d have somewhere between $0 (inclusive—if you
 started with $0) and $1,000 (exclusive, since if you had even a fraction of a
 penny less than $1 multiplying by 1,000 would still leave you just a bit shy of
@@ -444,7 +443,7 @@ multiply that value by any amount, it will stretch it into the range you want:
    :autograde: unittest
 
    Try out the following code. Run it several times to see what it prints each
-   time. Did you ever see 0.0? How about 1.0?
+   time. Did you ever see 0.0? How about 10.0?
 
    ~~~~
    public class StretchedRandom
@@ -474,11 +473,11 @@ multiply that value by any amount, it will stretch it into the range you want:
        }
    }
 
-You may have noticed that while the numbers generated were always in the range 0
-to 10, all the numbers probably had a lot a digits after the decimal point.
-Often we want a random integer, with nothing after the decimal point. Easy
-enough—recall that casting a ``double`` to an ``int`` will throw away any values
-after the decimal point.
+You may have noticed that while the numbers generated were always in the range
+0.0 to 10.0, all the numbers probably had a lot a digits after the decimal
+point. Often we want a random integer, with nothing after the decimal point.
+Easy enough—recall that casting a ``double`` to an ``int`` will throw away any
+values after the decimal point.
 
 |CodingEx| **Coding Exercise**
 
@@ -625,7 +624,7 @@ value. The table below shows some applications of that general recipe.
 .. mchoice:: bhsawesome-qrand_1
    :practice: T
    :answer_a: Math.random() < 0.4
-   :answer_b: Math.random() > 0.4
+   :answer_b: Math.random() >= 0.4
    :answer_c: Math.random() == 0.4
    :correct: a
    :feedback_a: This is true about 40% of the time since Math.random returns a value from 0 to not quite 1.
@@ -661,7 +660,7 @@ value. The table below shows some applications of that general recipe.
 .. mchoice:: bhsawesome-qrand_4
    :practice: T
    :answer_a: Math.random() < 0.25
-   :answer_b: Math.random() > 0.25
+   :answer_b: Math.random() >= 0.25
    :answer_c: Math.random() == 0.25
    :correct: b
    :feedback_a: This is true about 25% of the time, since it will be a number from 0 to not quite 1.
@@ -686,7 +685,7 @@ value. The table below shows some applications of that general recipe.
    :feedback_d: Yes, (int)(Math.random()*36) + 25 moves the random number into a range of 36 numbers starting from a minimum number 25 up to 60. The range is (max number - min number + 1) which is (60-25 +1) = 36.
    :feedback_e: This would give us random numbers from 25 to 85. Remember that you can compute the range you need with (max number - min number + 1).
 
-   Which of the following statements assigns a random integer between 25 and 60, inclusive, to rn?
+   Which of the following statements assigns a random integer between 25 and 60, inclusive, to ``rn``?
 
 Summary
 -------------------
@@ -702,7 +701,7 @@ Summary
   defined in, a dot, and the name of the method, e.g. ``Math.sqrt`` to reference
   the ``sqrt`` method defined in the class ``Math``.
 
-- The following static ``Math`` methods are part of the Java Quick Reference:
+- The following static ``Math`` methods are part of the |AP CSA Reference Sheet|:
 
   - ``int abs(int)``\ : Returns the absolute value of an int value (which means
     no negatives).
