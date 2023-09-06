@@ -78,7 +78,7 @@ parameter named ``n`` which presumably stands for “number”.
 For now all the methods you will be asked to write will be public static methods
 so you will mark them with ``public static`` before the return type.
 
-Writing Methods that Computes Values
+Writing Methods that Compute Values
 ------------------------------------
 
 Now, in order to see how the body fits in, let’s look at a simple method that
