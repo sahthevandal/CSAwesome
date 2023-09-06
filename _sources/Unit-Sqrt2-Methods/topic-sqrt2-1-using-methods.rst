@@ -306,7 +306,7 @@ second argument.
    The Pythagorean theorem tells us that the length of the hypotenuse (the side
    opposite the right angle in a right triangle) is the square root of the sum
    of the squares of the lengths of the other two sides, also called the “legs”
-   of the triangle. In other words :math:`c^{2} = \sqrt{a^{2} + b^{2}}` where
+   of the triangle. In other words :math:`c = \sqrt{a^{2} + b^{2}}` where
    :math:`a` and :math:`b` are the lengths of the legs and :math:`c` is the
    length of the hypotenuse. (Incidentally, the Pythagorean theorem is named for
    Pythagoras who was also the leader of the gang of Greek mathematicians who
