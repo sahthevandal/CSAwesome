@@ -91,7 +91,7 @@ comes with Java but remember that methods are useful for all kinds of
 computation, not just doing math.
 
 A simple example of this kind of method from ``Math`` is the ``sqrt`` method.
-``Math.sqrt`` takes an ``double`` argument and **returns** a ``double`` value
+``Math.sqrt`` takes a ``double`` argument and **returns** a ``double`` value
 which is square root of the argument. We say that the **return type** of
 ``sqrt`` is ``double``. For example, the square root of 9 is 3 because 3 squared is 9.
 
@@ -163,7 +163,7 @@ things:
 - How the returned value is related to the arguments.
 
 If you look back to the earlier description of ``Math.sqrt``, you’ll see it
-includes exactly that information: “``Math.sqrt`` takes an ``double`` argument
+includes exactly that information: “``Math.sqrt`` takes a ``double`` argument
 and returns a ``double`` value which is square root of the argument.” (If you
 look at the official documentation you’ll see they are even more precise: it is
 documented to return the “correctly rounded positive square root of a double
