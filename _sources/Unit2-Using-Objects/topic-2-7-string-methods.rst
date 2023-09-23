@@ -38,15 +38,15 @@ A string holds characters in a sequence.  Each character is at a position or **i
 For the AP CSA exam, you only need to know how to use the following String methods.  All of the String method descriptions are included in the |AP CSA Reference Sheet| that you get during the exam so you don't have to memorize these.
 
 
-    -  **int length()** method returns the number of characters in the string, including spaces and special characters like punctuation.
+-  **int length()** method returns the number of characters in the string, including spaces and special characters like punctuation.
 
-    -  **String substring(int from, int to)** method returns a new string with the characters in the current string starting with the character at the ``from`` index and ending at the character *before* the ``to`` index (if the ``to`` index is specified, and if not specified it will contain the rest of the string).
+-  **String substring(int from, int to)** method returns a new string with the characters in the current string starting with the character at the ``from`` index and ending at the character *before* the ``to`` index (if the ``to`` index is specified, and if not specified it will contain the rest of the string).
 
-    -  **int indexOf(String str)** method searches for the string ``str`` in the current string and returns the index of the beginning of ``str`` in the current string or -1 if it isn't found.
+-  **int indexOf(String str)** method searches for the string ``str`` in the current string and returns the index of the beginning of ``str`` in the current string or -1 if it isn't found.
 
-    -  **int compareTo(String other)** returns a negative value if the current string is less than the ``other`` string alphabetically, 0 if they have the same characters in the same order, and a positive value if the current string is greater than the ``other`` string alphabetically.
+-  **int compareTo(String other)** returns a negative value if the current string is less than the ``other`` string alphabetically, 0 if they have the same characters in the same order, and a positive value if the current string is greater than the ``other`` string alphabetically.
 
-    -  **boolean equals(String other)** returns true when the characters in the current string are the same as the ones in the ``other`` string.  This method is inherited from the Object class, but is **overridden** which means that the String class has its own version of that method.
+-  **boolean equals(Object other)** returns true when the other `Object` is a `String` and the characters in the current string are the same as the ones in the ``other`` string.  This method is inherited from the `Object` class, but is **overridden** which means that the `String` class has its own version of that method. (Note: on the College Board’s AP CSA Java Quick Reference Sheet, they list the signature of this method as **boolean equals(String other)** which is not correct. But the difference will not matter on the exam.)
 
 
 String Methods: length, substring, indexOf
