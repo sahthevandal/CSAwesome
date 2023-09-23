@@ -261,7 +261,10 @@ An **Application Programming Interface (API)** is a library of prewritten classe
 
 .. note::
 
-   Strings are **immutable** which means that they can't change. Anything that you do to modify a string (like creating a substring or appending strings) returns a new string.
+   Strings are **immutable** which means that they can't change. Anything that
+   you do that might seem like it’s modifying a string (like creating a
+   substring or appending strings) actually has to return a new string since the
+   original string can’t be changed.
 
 |Exercise| **Check your understanding**
 
