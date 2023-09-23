@@ -22,7 +22,7 @@ Creating and Initializing Objects: Constructors
 
 A Java class defines what objects of the class know (attributes) and what they can do (behaviors).  Each class has **constructors** like ``World()`` and ``Turtle(habitat)`` which are used to initialize the attributes in a newly created object.
 
-A new object is created with the ``new`` keyword followed by the class name (``new Class()``).  When this code executes, it creates a new object of the specified class and calls a constructor, which has the same name as the class.  For example, ``new World()`` creates and initializes a new object of the ``World`` class, and ``new Turtle(habitat)`` creates and initializes a new ``Turtle`` object in the World habitat.
+A new object is created with the ``new`` keyword followed by the class name (``new Class()``).  When this code executes, it creates a new object of the specified class and calls a constructor, which has the same name as the class.  For example, ``new World()`` creates and initializes a new object of the ``World`` class, and ``new Turtle(habitat)`` creates and initializes a new ``Turtle`` object in the ``World habitat``.
 
 
 .. code-block:: java
@@ -39,12 +39,37 @@ A new object is created with the ``new`` keyword followed by the class name (``n
 Overloading Constructors
 ---------------------------
 
-There can be more than one constructor defined in a class. This is called **overloading** the constructor. There is usually a constructor that has no parameters (nothing inside the parentheses following the name of the constructor) like the ``World()`` constructor above.  This is also called the **no-argument constructor**.  The **no-argument** constructor usually sets the attributes of the object to default values.
+Like methods, constructors are defined with a list of parameters that determine
+what arguments they need to be passed. A **parameter** (sometimes called an
+**formal parameter**) is a variable that will hold a value of an **argument**
+(sometimes called an **actual parameter**) passed when the constructor is
+called. The arguments passed to constructors are used to initialize the
+attributes of the object.
 
-There can also be other constructors that take parameters like the ``Turtle(habitat)`` constructor call above. A **parameter** (also called **actual parameter** or **argument**) is a value that is passed into a constructor.  It can be used to initialize the attribute of an object.
+A constructor that has no parameters is called a **no-argument constructor** and
+is called with nothing inside the parentheses following the name of the
+constructor. The call to ``new World()`` above, is an example of a no-argument
+constructor.
 
-The ``World`` class actually has 2 constructors.  One doesn't take any parameters and one takes the world's width and height.
+If a class has a **no-argument** constructor, that means that has it no
+attributes that need to be initialized or all its attributes can be initialized
+to meaningful default values values. The ``World`` class is an example of the
+latter—the no-argument constructor creates a default sized world.
 
+But not all classes have a no-argument constructor. The ``Turtle`` class, for
+instance, doesn’t because the author of the class decided it doesn’t make sense
+to create a ``Turtle`` that is not in a particular ``World``.
+
+There can be more than one constructor defined in a class as long as they differ
+in what arguments they take. This is called **overloading** the constructor and
+allows us provide different ways to create instances of the class. One common
+pattern is to provide one or more constructors that take arguments for when you
+want to initialize an object with specific values and also a no-argument
+constructor for convenience that initializes the object with default values.
+
+The ``World`` class follows this pattern, and has 2 constructors, one which
+takes the world’s width and height and another which creates a default-sized
+world of 640x480 pixels.
 
 .. figure:: Figures/worldConstructors.png
     :width: 350px
