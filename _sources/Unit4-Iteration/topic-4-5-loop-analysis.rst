@@ -187,16 +187,43 @@ Loops can be also analyzed to determine how many times they run.  This is called
        }
    }
 
-If you made a trace table, you would know that the loop runs when i = 3, 4, 5, 6 but finishes as soon as i becomes 7 since that is not less than 7. So, the loop runs 4 times. Or you can use the shortcut formula in the note below.
+If you made a trace table, you would know that the loop body runs when ``i`` is
+3, 4, 5, 6 but the loop ends and the body does not execute when ``i`` becomes 7
+since that is not less than 7. So, the loop runs 4 times.
 
-.. note::
+But many ``for`` loops can be analyzed more easily than by making a trace table.
+If a ``for`` loop is initializes a loop variable to a number, iterates while the
+loop variable is below some other number, and increments the loop variable by
+one each time, we can analyze how many times the body will execute without
+making a trace table by calculating:
 
-   The number of times a loop executes can be calculated by *(largestValue - smallestValue + 1)*.
+  *largestValue - smallestValue + 1*
 
-   - If the loop uses counter <= limit, limit is the largest value.
-   - If the loop uses counter < limit, limit-1 is the largest value that allows the loop to run.
+where *largestValue* and *smallestValue* are the largest and smallest values the
+loop variable takes on. In a ``for`` loop like this, *smallestValue* is just the
+initial value of the loop variable and the *largestValue* depends on the kind of
+condition used:
 
-In the code above the largest value that allows the loop to run is 6 (which is the largest value < 7) and the smallest value that allows the loop to execute is 3 so this loop executes (6 - 3 + 1 = 4 times).
+- If the condition is of the form ``counter <= limit``, then *largestValue* is ``limit``.
+- If the condition is of the form ``counter < limit``, then *largestValue* is ``limit - 1``.
+
+Two important, but trivial, cases of this kind of ``for`` loops are ones like:
+
+.. code-block:: java
+
+   for (int i = 0; i < limit; i++) {
+
+and:
+
+.. code-block:: java
+
+   for (int i = 1; i <= limit; i++) {
+
+which both iterate ``limit`` times.
+
+Thus in the code above, we can see that the largest value that ``i`` takes on is
+6 (which is the largest value < 7) and the smallest value is 3 so this loop
+executes (6 - 3 + 1 = 4 times).
 
 |CodingEx| **Coding Exercise**
 
@@ -377,13 +404,18 @@ Do the following exercises in your group. Make sure you draw the trace tables ke
 Summary
 -------
 
-- A trace table can be used to keep track of the variables and their values throughout each iteration of the loop.
+- A trace table can be used to keep track of the variables and their values
+  throughout each iteration of the loop.
 
-- We can determine the number of times a code segment will execute with a **statement execution count**. This is called **run-time analysis**.
+- We can determine the number of times a code segment will execute with a
+  **statement execution count**. This is called **run-time analysis**.
 
-- The number of times a loop executes can be calculated by ``largestValue - smallestValue + 1`` where these are the largest and smallest values of the loop counter variable possible in the body of the loop.
+- The number of times a simple ``for`` loop executes can be calculated by
+  ``largestValue - smallestValue + 1`` where these are the largest and smallest
+  values of the loop counter variable possible in the body of the loop.
 
-- The number of times a nested for-loop runs is the number of times the outer loop runs **times** the number of times the inner loop runs.
+- The number of times a nested for-loop runs is the number of times the outer
+  loop runs **times** the number of times the inner loop runs.
 
 
 Loop Analysis Game
