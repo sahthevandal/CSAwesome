@@ -142,7 +142,7 @@ Remember that execution always starts in the ``main`` method. When a method like
 ``print`` is called, the code defined in the method runs but when it gets the
 values of ``name``, ``email``, and ``phoneNumber`` it gets the specific values
 of those variables that were set by the constructor when the particular object
-we called ``print`` on was created. Click on the Show CodeLens button below and 
+we called ``print`` on was created. Click on the Show CodeLens button below and
 the Next button to run the code step by step.
 
 .. activecode:: PersonClass
@@ -161,11 +161,11 @@ the Next button to run the code step by step.
 
       // constructor: construct a Person copying in the data into the instance
       // variables
-      public Person(String initName, String initEmail, String initPhone)
+      public Person(String name, String email, String phoneNumber)
       {
-          name = initName;
-          email = initEmail;
-          phoneNumber = initPhone;
+          this.name = name;
+          this.email = email;
+          this.phoneNumber = phoneNumber;
       }
 
       // Print all the data for a person
@@ -233,7 +233,10 @@ only be accessed by code in the class that declares the variable.
 
 .. note::
 
-   Instance variables are declared right after the class declaration.  They usually start with ``private`` then the *type* of the variable and then a *name* for the variable. Private means only the code in this class has access to it.
+   Instance variables are declared right after the class declaration. They
+   usually start with ``private`` then the *type* of the variable and then a
+   *name* for the variable. Private means only the code in this class has access
+   to it.
 
 The ``Person`` class declares 3 private instance variables: ``name``, ``email``,
 and ``phoneNumber``. These are things that you might want to know about a
@@ -285,27 +288,23 @@ move a turtle is through  ``forward`` and ``moveTo`` methods?)
         :click-correct:private String first;:endclick:
         :click-correct:private String last;:endclick:
 
-        :click-incorrect:public Name(String theFirst, String theLast):endclick:
+        :click-incorrect:public Name(String first, String last):endclick:
         :click-incorrect:{:endclick:
-            :click-incorrect:first = theFirst;:endclick:
-            :click-incorrect:last = theLast;:endclick:
+            :click-incorrect:this.first = first;:endclick:
+            :click-incorrect:this.last = last;:endclick:
          :click-incorrect:}:endclick:
 
-         :click-incorrect:public void setFirst(String theFirst):endclick:
+         :click-incorrect:public void setFirst(String first):endclick:
          :click-incorrect:{:endclick:
-            :click-incorrect:first = theFirst;:endclick:
+            :click-incorrect:this.first = first;:endclick:
          :click-incorrect:}:endclick:
 
-         :click-incorrect:public void setLast(String theLast):endclick:
+         :click-incorrect:public void setLast(String last):endclick:
          :click-incorrect:{:endclick:
-            :click-incorrect:last = theLast;:endclick:
+            :click-incorrect:this.last = last;:endclick:
          :click-incorrect:}:endclick:
 
     :click-incorrect:}:endclick:
-
-
-
-
 
 Methods
 -------
@@ -374,23 +373,86 @@ on the object ``p1``.
         :click-incorrect:private String first;:endclick:
         :click-incorrect:private String last;:endclick:
 
-        :click-incorrect:public Name(String theFirst, String theLast):endclick:
+        :click-incorrect:public Name(String first, String last):endclick:
         :click-incorrect:{:endclick:
-            :click-incorrect:first = theFirst;:endclick:
-            :click-incorrect:last = theLast;:endclick:
+            :click-incorrect:this.first = first;:endclick:
+            :click-incorrect:this.last = last;:endclick:
         :click-incorrect:}:endclick:
 
-        :click-correct:public void setFirst(String theFirst):endclick:
+        :click-correct:public void setFirst(String first):endclick:
         :click-correct:{:endclick:
-            :click-correct:first = theFirst;:endclick:
+            :click-correct:this.first = first;:endclick:
         :click-correct:}:endclick:
 
-        :click-correct:public void setLast(String theLast):endclick:
+        :click-correct:public void setLast(String last):endclick:
         :click-correct:{:endclick:
-            :click-correct:last = theLast;:endclick:
+            :click-correct:this.last = last;:endclick:
         :click-correct:}:endclick:
 
     :click-incorrect:}:endclick:
+
+The Keyword ``this``
+--------------------
+
+In the code above you may have noticed that sometimes we refer to instance
+variables such as ``first`` and ``last`` with ``this.first`` and ``this.last``
+rather than just the names ``first`` and ``last``.
+
+The keyword ``this`` is a special name in Java that always holds the value of
+the object being constructed (in a constructor) or the object on which a
+instance method was invoked.
+
+Most of the time we don’t need to use ``this`` when referring to instance
+variables because inside a method or constructor a variable name that hasn’t
+been declared in the method or constructor is assumed to be reference to an
+instance variable declared in the class. However when there `is` a variable
+declared that has the same name as an instance variable that name hides or
+“shadows” the instance variable. In such contexts we can use ``this.variable``
+to refer explicitly to the instance variable rather than to the locally declared
+variable.
+
+The two places that this is commonly needed are in constructors and in setters
+because we need a name for the parameters that will hold the value we are trying
+to set our instance variables to and it’s usually easier to use the same name
+for the parameter as the instance variable it’s going to be used to set.
+
+Some programmers prefer to give parameters different names either by prefixing
+the parameter with some noise word like ``the`` or by abbreviating the parameter
+names. They might write the ``Name`` constructor above like:
+
+.. code-block:: java
+
+   public Name(String theFirst, String theLast) {
+     first = theFirst;
+     last = theLast;
+   }
+
+or:
+
+.. code-block:: java
+
+   public Name(String f, String l) {
+     first = f;
+     last = l;
+   }
+
+However those styles tend to result in ugly names and wasted effort trying to
+come up with unique names which could all be avoided by using the idiomatic use
+of ``this`` in constructors and setters. Outside of constructors and setters
+it’s best to avoid naming local variables with the same name as instance
+variables so that you don’t have to use ``this`` to disambiguate instance
+variables from local variables with the same name.
+
+The variable ``this`` can also be used by itself when you need to reference the
+object a method was invoked on from within the method, such as to pass it as an
+argument to a method in another class. To take a simple example:
+
+.. code-block:: java
+
+   public void printMe() {
+     System.out.println(this);
+   }
+
 
 Object-Oriented Design
 ----------------------
