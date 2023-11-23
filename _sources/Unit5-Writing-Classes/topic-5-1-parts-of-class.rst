@@ -531,11 +531,26 @@ In this project, you will create a class that can tell riddles like the followin
 - Riddle Question: Why did the chicken cross the playground?
 - Riddle Answer: To get to the other slide!
 
-1. First, brainstorm in pairs to create an **object-oriented design** for a riddle asking program. What should we call this class? What data does it need to keep track of in instance variables? What is the data type for the instance variables? What methods do we need? (You could draw a Class Diagram for this class using |app diagrams| or |Creately.com|, although it is not required).
+1. First, brainstorm in pairs to create an **object-oriented design** for a
+   riddle asking program. What should we call this class? What data does it need
+   to keep track of in instance variables? What is the data type for the
+   instance variables? What methods do we need? (You could draw a Class Diagram
+   for this class using |app diagrams| or |Creately.com|, although it is not
+   required).
 
-2. Using the ``Person`` class above as a guide, write a ``Riddle`` class in the Active Code template below that has 2 instance variables for the riddle's question and answer, a constructor that initializes the riddle, and 2 methods to ask the riddle and answer the riddle. Don't name your instance variables ``initQuestion`` and ``initAnswer`` since they are used as constructor parameter variables. If you came up with other instance variables and methods for this class, you can add those too! Don't forget to specify the ``private`` or ``public`` access modifiers. Use the outline in the Active Code below. You will learn how to write constructors and other methods in detail in the next lessons.
+2. Using the ``Person`` class above as a guide, write a ``Riddle`` class in the
+   Active Code template below that has 2 instance variables for the riddle's
+   question and answer, a constructor that initializes the riddle, and 2 methods
+   to ask the riddle and answer the riddle. If you came up with other instance
+   variables and methods for this class, you can add those too! Don't forget to
+   specify the ``private`` or ``public`` access modifiers. Use the outline in
+   the Active Code below. You will learn how to write constructors and other
+   methods in detail in the next lessons.
 
-3. Complete the ``main`` method to construct at least 2 ``Riddle`` objects that call the ``Riddle`` constructor with the arguments for the riddle question and answer and call their ``printQuestion`` and ``printAnswer`` methods to ask and answer the riddle. You can look up some good riddles online.
+3. Complete the ``main`` method to construct at least 2 ``Riddle`` objects that
+   call the ``Riddle`` constructor with the arguments for the riddle question
+   and answer and call their ``printQuestion`` and ``printAnswer`` methods to
+   ask and answer the riddle. You can look up some good riddles online.
 
 
 
@@ -551,7 +566,7 @@ In this project, you will create a class that can tell riddles like the followin
       // variableName;
 
       // constructor
-      public Riddle(String initQuestion, String initAnswer)
+      public Riddle(String question, String answer)
       {
           // set the instance variables to the init parameter variables
 
@@ -772,6 +787,10 @@ Summary
 - Methods can be ``public`` or ``private``. The set of ``public`` methods define
   what other classes can do with an instance of a class.
 
+- The keyword ``this`` is a special variable that exists in every constructor
+  and instance method as a name for the object being constructed or on which the
+  method was invoked.
+
 AP Practice
 ------------
 
@@ -840,7 +859,7 @@ AP Practice
 .. mchoice:: AP5-1-2
     :practice: T
 
-    Consider the Party class below which will contain three int attributes for numOfPeople, volumeOfMusic, and numOfBoxesOfPizza, a constructor, and a startParty method. The startParty method is intended to be accessed outside the class.
+    Consider the Party class below which will contain three int attributes for people, musicVolume, and boxesOfPizza, a constructor, and a startParty method. The startParty method is intended to be accessed outside the class.
 
     .. code-block:: java
 
@@ -854,51 +873,59 @@ AP Practice
 
     - .. code-block:: java
 
-        private int numOfPeople;
-        private int volumeOfMusic;
-        private int numOfBoxesOfPizza;
-        public Party()
+        private int people;
+        private int musicVolume;
+        private int boxesOfPizza;
+
+        public Party(int people, int musicVolume, int boxesOfPizza)
         { /* implementation not shown */ }
+
         private void startParty()
         { /* implementation not shown */ }
 
-      - Method startParty() should be public.
+      - The method ``startParty`` should be public so it can be invoked from outside this class.
 
     - .. code-block:: java
 
-        private int numOfPeople;
-        private int volumeOfMusic;
-        private int numOfBoxesOfPizza;
-        public Party()
+        private int people;
+        private int musicVolume;
+        private int boxesOfPizza;
+
+        public Party(int people, int musicVolume, int boxesOfPizza)
         { /* implementation not shown */ }
+
         public void startParty()
         { /* implementation not shown */ }
 
-      + Correct, instance variables should be private and the methods should be public.
+      + Correct, instance variables should be private and the constructor and method should be public.
 
     - .. code-block:: java
 
-        public int numOfPeople;
-        public int volumeOfMusic;
-        public int numOfBoxesOfPizza;
-        public Party()
+        public int people;
+        public int musicVolume;
+        public int boxesOfPizza;
+
+        public Party(int people, int musicVolume, int boxesOfPizza)
         { /* implementation not shown */ }
+
         public void startParty()
         { /* implementation not shown */ }
 
-      - Instance variables should be private.
+      - Instance variables should be private to keep them encapsulated.
 
     - .. code-block:: java
 
-        private int numOfPeople;
-        private int volumeOfMusic;
-        private int numOfBoxesOfPizza;
-        private Party()
+        private int people;
+        private int musicVolume;
+        private int boxesOfPizza;
+
+        private Party(int people, int musicVolume, int boxesOfPizza)
         { /* implementation not shown */ }
+
         private void startParty()
         { /* implementation not shown */ }
 
-      - Methods should be public.
+      - The constructor and method should be public so they can be used outside this class.
 
 
 .. |tutorial on class diagrams| raw:: html
