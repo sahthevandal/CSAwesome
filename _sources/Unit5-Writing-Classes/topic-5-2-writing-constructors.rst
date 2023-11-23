@@ -93,17 +93,19 @@ section.
 
 .. code-block:: java
 
-   public Person(String initName, String initEmail, String initPhone)
+   public Person(String name, String email, String phoneNumber)
    {
-       name = initName;
-       email = initEmail;
-       phoneNumber = initPhone;
+       this.name = name;
+       this.email = email;
+       this.phoneNumber = phoneNumber;
    }
 
-This constructor ensures that all three of the instance variables (``name``, ``email``, and ``phoneNumber``) in ``Person`` 
-are initialized to the values provided by whatever code called the constructor. For example, in the constructor call  
-``new Person("Pat", "pat@gmail.com", "123-456-7890")``, the argument "Pat" is passed into the parameter variable ``initName``, 
-which the constructor then assigns to the instance variable ``name``.  
+This constructor ensures that all three of the instance variables (``name``,
+``email``, and ``phoneNumber``) in ``Person`` are initialized to the values
+provided by whatever code called the constructor. For example, in the
+constructor call ``new Person("Pat", "pat@gmail.com", "123-456-7890")``, the
+argument "Pat" is passed into the parameter variable ``initName``, which the
+constructor then assigns to the instance variable ``name``.
 
 One important note: if you do write a constructor, Java will not generate the
 default constructor for you. This is a good thing because it lets you make sure
@@ -131,6 +133,10 @@ this:
        phoneNumber = address.getPhoneNumber();
    }
 
+Note that in this constructor we don’t need to use ``this`` to refer to the
+instance variables because those names are not shadowed by the parameter
+``address``.
+
 Sometimes you might still even want to provide a no-argument constructor. If
 there’s a valid object that you can create without any arguments, you could
 write a no-argument constructor for ``Person`` like:
@@ -146,8 +152,9 @@ write a no-argument constructor for ``Person`` like:
 
 
 It’s up to you to decide if this is actually a useful value to have or if it
-would be better to force the users of the ``Person`` class to choose the
-values themselves.
+would be better to force the users of the ``Person`` class to choose the values
+themselves. You shouldn’t, however, reflexively create a no-argument
+constructor.
 
 
 |Exercise| **Check Your Understanding**
@@ -162,20 +169,20 @@ values themselves.
         :click-incorrect:private String first;:endclick:
         :click-incorrect:private String last;:endclick:
 
-        :click-correct:public Name(String theFirst, String theLast):endclick:
+        :click-correct:public Name(String first, String last):endclick:
         :click-correct:{:endclick:
-            :click-correct:first = theFirst;:endclick:
-            :click-correct:last = theLast;:endclick:
+            :click-correct:this.first = first;:endclick:
+            :click-correct:this.last = last;:endclick:
         :click-correct:}:endclick:
 
-        :click-incorrect:public void setFirst(String theFirst):endclick:
+        :click-incorrect:public void setFirst(String first):endclick:
         :click-incorrect:{:endclick:
-            :click-incorrect:first = theFirst;:endclick:
+            :click-incorrect:this.first = first;:endclick:
         :click-incorrect:}:endclick:
 
-        :click-incorrect:public void setLast(String theLast):endclick:
+        :click-incorrect:public void setLast(String last):endclick:
         :click-incorrect:{:endclick:
-            :click-incorrect:last = theLast;:endclick:
+            :click-incorrect:this.last = last;:endclick:
         :click-incorrect:}:endclick:
 
     :click-incorrect:}:endclick:
@@ -223,10 +230,10 @@ values themselves.
        }
 
        // constructor: set instance variables to init parameters
-       public Fraction(int initNumerator, int initDenominator)
+       public Fraction(int numerator, int denominator)
        {
-           numerator = initNumerator;
-           denominator = initDenominator;
+           this.numerator = numerator;
+           this.denominator = denominator;
        }
 
        // Print fraction
@@ -276,45 +283,45 @@ values themselves.
 
    The following class defines a Car with the instance variables model and year,
    for example a Honda 2010 car. However, some of the code is missing. First, fill in
-   the code to create a ``Car`` constructor. Then, fill in the code to call the constructor 
-   in the main method to create 2 ``Car`` objects. The first car should be a 2023 Ford and 
-   the second car should be a 2010 Honda. Run your program and make sure it works and 
+   the code to create a ``Car`` constructor. Then, fill in the code to call the constructor
+   in the main method to create 2 ``Car`` objects. The first car should be a 2023 Ford and
+   the second car should be a 2010 Honda. Run your program and make sure it works and
    prints out the information for both cars.
    ~~~~
    public class Car
    {
-      //  instance variables
-      private String model;
-      private int year;
+       //  instance variables
+       private String model;
+       private int year;
 
-      // constructor: set instance variables to init parameters
-      public Car(String initModel, int initYear)
-      {
-          // 1. set the instance variables to the init parameter variables
+       // constructor: set instance variables to init parameters
+       public Car(String model, int year)
+       {
+           // 1. set the instance variables to the parameter variables
 
 
-      }
+       }
 
-      // Print Car info
-      public void print()
-      {
-        System.out.println("Car model: " + model);
-        System.out.println("Car year: " + year);
-      }
+       // Print Car info
+       public void print()
+       {
+           System.out.println("Car model: " + model);
+           System.out.println("Car year: " + year);
+       }
 
-      // main method for testing
-      public static void main(String[] args)
-      {
-          // 2. Call the constructor to create 2 new Car objects with different
-          // values The first car should be a 2023 Ford and the second car
-          // should be a 2010 Honda.
+       // main method for testing
+       public static void main(String[] args)
+       {
+           // 2. Call the constructor to create 2 new Car objects with different
+           // values The first car should be a 2023 Ford and the second car
+           // should be a 2010 Honda.
 
-          Car car1 =
-          Car car2 =
+           Car car1 =
+           Car car2 =
 
-          car1.print();
-          car2.print();
-      }
+           car1.print();
+           car2.print();
+       }
    }
    ====
    // Test Code for Lesson 5.2.0 - Car
@@ -337,21 +344,29 @@ values themselves.
        }
    }
 
-Advanced AP Topic: Reference parameters 
+Advanced AP Topic: Reference parameters
 ------------------------------------------------
 
-When you pass object references as parameters to
-constructors or methods, those references refer to the same objects as the
-references in the caller. If the objects are immutable, like ``String`` objects
-it doesn’t matter at all. On the other hand, if the objects are **mutable**,
-meaning their instance variables can change after they are constructed, then
-storing the passed-in reference in an instance variable in your object can lead
-to surprising results: if some other code changes the object it will change for
-you too. If that’s not what you want, sometimes it makes sense to copy the
-object passed to the constructor and store the copy in the instance variable
-instead. How to make the copy will depend on the class of the object but often
-you can just construct a new object of the appropriate class using values from
-the original object as shown below.
+When you pass object references as parameters to constructors or methods, those
+references refer to the same objects as the references in the caller. If the
+objects are immutable, like ``String`` objects it probably doesn’t matter at
+all.
+
+On the other hand, if the objects are **mutable**, meaning their instance
+variables can change after they are constructed, then storing the passed-in
+reference in an instance variable in your object can lead to surprising results:
+if some other code changes the object it will change for you too.
+
+Sometimes that’s exactly what you want. But if you are assuming that the value
+stored in your instance variable is not going to change, or at least not unless
+your code changes it, you might want to protect your code from other code
+unexpectedly change the value stored in your instance variable by making a copy
+of the object passed to the constructor and storing the copy in the instance
+variable instead.
+
+How to make the copy will depend on the class of the object but often you can
+just construct a new object of the appropriate class using values from the
+original object as shown below.
 
 .. code-block:: java
 
@@ -362,16 +377,16 @@ the original object as shown below.
 
          // constructor: initialize instance variable and call Address constructor to
          // make a copy
-         public Person(String initName, Address initAddr)
+         public Person(String name, Address addr)
          {
-             name = initName;
-             addr =
-                     new Address(
-                             initAddr.getStreet(),
-                             initAddr.getCity(),
-                             initAddr.getState());
+             name = name;
+             addr = new Address(addr.getStreet(), addr.getCity(), addr.getState());
          }
      }
+
+An even better way to avoid the confusion caused by objects changing out from
+under you is to write classes like ``Address`` to be immutable, with their own
+instance variables set in their constructor and never changed.
 
 |Groupwork| Programming Challenge : Student Class
 --------------------------------------------------
@@ -622,12 +637,16 @@ Summary
 --------
 
 
-- **Constructors** are used to set the initial state of an object, which includes initial values for all instance variables.
+- **Constructors** are used to set the initial state of an object, which
+  includes initial values for all instance variables.
 
-- When no constructor is written, Java provides a no-argument **default constructor**, and the instance variables are set to their default values (0 for ``int`` and ``double``, ``null`` for objects like ``String``).
+- When no constructor is written, Java provides a no-argument **default
+  constructor**, and the instance variables are set to their default values
+  (``0`` for ``int``, ``0.0`` for ``double``, ``false`` for ``boolean`` and
+  ``null`` for objects like ``String``).
 
-- Constructor parameters are local variables to the constructor and provide data to initialize instance variables.
-
+- Constructor parameters are local variables to the constructor and provide data
+  to initialize instance variables.
 
 
 AP Practice
@@ -648,18 +667,11 @@ AP Practice
             private int age;
             private boolean isSenior;
 
-            public Cat(String n, int a)
+            public Cat(String name, int age)
             {
-                name = n;
-                age = a;
-                if (age >= 10)
-                {
-                    isSenior = true;
-                }
-                else
-                {
-                    isSenior = false;
-                }
+                this.name = name;
+                this.age = age;
+                this.isSenior = age >= 10;
             }
         }
 
@@ -702,7 +714,11 @@ AP Practice
    :feedback_d: Good job!
    :feedback_e: Option II will create a cat that is 0 years old with 5 kittens.
 
-   Consider the following class definition. Each object of the class Cat will store the cat’s name as name, the cat’s age as age, and the number of kittens the cat has as kittens. Which of the following code segments, found in a class other than Cat, can be used to create a cat that is 5 years old with no kittens?
+   Consider the following class definition. Each object of the class Cat will
+   store the cat’s name as name, the cat’s age as age, and the number of kittens
+   the cat has as kittens. Which of the following code segments, found in a
+   class other than Cat, can be used to create a cat that is 5 years old with no
+   kittens?
 
    .. code-block:: java
 
@@ -712,17 +728,17 @@ AP Practice
         private int age;
         private int kittens;
 
-        public Cat(String n, int a, int k)
+        public Cat(String name, int age, int kittens)
         {
-            name = n;
-            age = a;
-            kittens = k;
+            this.name = name;
+            this.age = age;
+            this.kittens = kittens;
         }
-        public Cat(String n, int a)
+        public Cat(String name, int age)
         {
-            name = n;
-            age = a;
-            kittens = 0;
+            this.name = name;
+            this.age = age;
+            this.kittens = 0;
         }
         /* Other methods not shown */
     }
