@@ -22,7 +22,6 @@ AP CSA Exam Weighting: 5-7.5%
    topic-5-6-writing-methods.rst
    topic-5-7-static-vars-methods.rst
    topic-5-8-scope-access.rst
-   topic-5-9-this.rst
    topic-5-10-social-impacts.rst
    topic-5-11-summary.rst
    topic-parsons-practice.rst
@@ -34,4 +33,3 @@ AP CSA Exam Weighting: 5-7.5%
    APLine.rst
    CBLabs.rst
    community-challenge.rst
-
