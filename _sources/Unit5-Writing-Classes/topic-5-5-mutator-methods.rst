@@ -49,11 +49,15 @@ Here are some examples of how to write a setter for an instance variable:
          private typeOfVar varName;
 
          // Setter method template
-         public void setVarName(typeOfVar newValue)
+         public void setVarName(typeOfVar varName)
          {
-             varName = newValue;
+             this.varName = varName;
          }
      }
+
+As with constructors, setters often use the idiom of using the same name for the
+paramater as the name of the instance variable that is being set and then using
+``this.name`` to explicitly refer to the instance variable when setting it.
 
 Here's an example of the ``Student`` class with a setter for the ``name`` variable:
 
@@ -67,11 +71,11 @@ Here's an example of the ``Student`` class with a setter for the ``name`` variab
       /**
        * setName sets name to newName
        *
-       * @param newName
+       * @param name
        */
-      public void setName(String newName)
+      public void setName(String name)
       {
-          name = newName;
+          this.name = name;
       }
 
       public static void main(String[] args)
@@ -83,9 +87,10 @@ Here's an example of the ``Student`` class with a setter for the ``name`` variab
   }
 
 Notice the difference between setters and getters in the following figure.
-Getters return an instance variable's value and have the same return type as
-this variable and no parameters. Setters have a void return type and take a new
-value as a parameter to change the value of the instance variable.
+Getters return an instance variable's value and have the same return type as the
+variable and no parameters. Setters have a ``void`` return type and a single
+parameter of the same type as the instance variable whose value is assigned to
+the instance variable by the setter.
 
 .. figure:: Figures/get-set-comparison.png
     :width: 600px
@@ -133,23 +138,23 @@ in the ```Student`` class. Change the ``main`` method so that it uses a
        private String email;
        private int id;
 
-       public Student(String initName, String initEmail, int initId)
+       public Student(String name, String email, int id)
        {
-           name = initName;
-           email = initEmail;
-           id = initId;
+           this.name = name;
+           this.email = email;
+           this.id = id;
        }
 
        // Setters
 
-       public void setName(String newName)
+       public void setName(String name)
        {
-           name = newName;
+           this.name = name;
        }
 
-       public void setEmail(String newEmail)
+       public void setEmail(String email)
        {
-           email = newEmail;
+           this.email = email;
        }
 
        // Getters
@@ -222,33 +227,33 @@ in the ```Student`` class. Change the ``main`` method so that it uses a
         public class Party
         {
             // number of people at the party
-            private int numOfPeople;
+            private int people;
 
             /* Missing header of set method */
             {
-                numOfPeople = people;
+                this.people = people;
             }
         }
 
     Which of the following method signatures could replace the missing header for the set method in the code above so that the method will work as intended?
 
-    - public int getNum(int people)
+    - public int getPeople(int people)
 
       - The set method should not have a return value and is usually named set, not get.
 
-    - public int setNum()
+    - public int setPeople()
 
       - The set method should not have a return value and needs a parameter.
 
-    - public int setNum(int people)
+    - public int setPeople(int people)
 
       - The set method should not have a return value.
 
-    - public void setNum(int people)
+    - public void setPeople(int people)
 
       + Yes, the set method should take a parameter called people and have a void return value. The name of the set method is usually set followed by the full instance variable name, but it does not have to be an exact match.
 
-    - public int setNumOfPeople(int p)
+    - public int setPeople(int p)
 
       - The parameter of this set method should be called people in order to match the code in the method body.
 
