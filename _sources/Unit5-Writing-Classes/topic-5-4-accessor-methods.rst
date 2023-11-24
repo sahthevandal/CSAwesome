@@ -141,14 +141,15 @@ Try the following code. Note that this active code window has 2 classes! The mai
       private String email;
       private int id;
 
-      public Student(String initName, String initEmail, int initId)
+      public Student(String name, String email, int id)
       {
-          name = initName;
-          email = initEmail;
-          id = initId;
+          this.name = name;
+          this.email = email;
+          this.id = id;
       }
 
       // accessor methods - getters
+
       /** getName() @return name */
       public String getName()
       {
@@ -235,11 +236,11 @@ in the Java visualizer by using the Show CodeLens button.
       private String email;
       private int id;
 
-      public Student(String initName, String initEmail, int initId)
+      public Student(String name, String email, int id)
       {
-          name = initName;
-          email = initEmail;
-          id = initId;
+          this.name = name;
+          this.email = email;
+          this.id = id;
       }
 
       // toString() method
