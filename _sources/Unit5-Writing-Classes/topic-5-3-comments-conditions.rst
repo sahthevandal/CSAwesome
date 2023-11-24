@@ -89,15 +89,17 @@ Here is an example of preconditions, postconditions, and @param in the Turtle co
          * Constructor that takes the x and y position for the
          * turtle
          * Preconditions: parameters x and y are coordinates from 0 to
-         *    the width and height of the world.
+         *    the width and height of the world and the world is not null.
          * Postconditions: the turtle is placed in (x,y) coordinates
          * @param x the x position to place the turtle
          * @param y the y position to place the turtle
+         * @param world the World into which to place the turtle
          */
-        public Turtle(int x, int y)
+        public Turtle(int x, int y, World world)
         {
-          xPos = x;
-          yPos = y;
+          this.x = x;
+          this.y = y;
+          this.world = world;
         }
 
 |CodingEx| **Coding Exercise**
@@ -129,8 +131,8 @@ Try to break the preconditions of the Turtle constructor below. Does the Turtle 
         public static void main(String[] args)
         {
             World world = new World(300, 300);
-            // Change 0, 0 in the Turtle constructor to other values 
-            // outside of 0-300 to break the preconditions 
+            // Change 0, 0 in the Turtle constructor to other values
+            // outside of 0-300 to break the preconditions
             // and see what happens
             Turtle t = new Turtle(0, 0, world);
             t.turnRight();
@@ -168,17 +170,17 @@ The Turtle constructor's precondition is that x and y should be between 0 and th
 
 .. mchoice:: AP5-3-1
     :practice: T
-    :answer_a: /* Precondition: s <= 0 */
-    :answer_b: /* Precondition: score >= 0 */
-    :answer_c: /* Precondition: s and ec >= 0 */
-    :answer_d: /* Precondition: n is not the empty String */
-    :answer_e: /* Precondition: studentName is not the empty String */
+    :answer_a: /* Precondition: score <= 0 */
+    :answer_b: /* Precondition: this.score >= 0 */
+    :answer_c: /* Precondition: score and extraCredit >= 0 */
+    :answer_d: /* Precondition: studentName is not the empty String */
+    :answer_e: /* Precondition: this.studentName is not the empty String */
     :correct: c, d
-    :feedback_a: It is not reasonable the s which sets the score should be negative.
-    :feedback_b: The precondition should be about the parameters of the constructor. score is not the parameter variable.
-    :feedback_c: Correct. It is reasonable that the score and extraCredit should be set to positive values using the parameters s and ec.
-    :feedback_d: Correct. It is reasonable that the parameter n which sets the name should be not empty.
-    :feedback_e: The precondition should be about the parameters of the constructor. score is not the parameter variable.
+    :feedback_a: It is not reasonable that the argument score should be negative.
+    :feedback_b: The precondition should be about the parameters of the constructor. this.score is not the parameter variable.
+    :feedback_c: Correct. It is reasonable that the score and extraCredit both be non-negative.
+    :feedback_d: Correct. It is reasonable that the student’s name should not be empty.
+    :feedback_e: The precondition should be about the parameters of the constructor. this.studentName is not the parameter variable.
 
     Consider the following class definition.
 
@@ -190,11 +192,11 @@ The Turtle constructor's precondition is that x and y should be between 0 and th
             private double score;
             private double extraCredit;
 
-            public TestScore (String n, double s, double ec)
+            public TestScore (String studentName, double score, double extraCredit)
             {
-                studentName = n;
-                score = s;
-                extraCredit = ec;
+                this.studentName = studentName;
+                this.score = score;
+                this.extraCredit = extraCredit;
             }
             /* Other methods not shown */
         }
@@ -257,12 +259,12 @@ Let's consider the substring method in Java. This method has a strong preconditi
    :answer_a: /* Precondition: i >= 0 */
    :answer_b: /* Precondition: i <= str.length() */
    :answer_c: /* Precondition: 0 < i < str.length() */
-   :answer_d: /* Precondition: 0 <= i < str.length() */
+   :answer_d: /* Precondition: 0 <= i <= str.length() */
    :correct: d
    :feedback_a: This is true but it could still throw an exception if i is a large value.
    :feedback_b: This is true but it could still throw an exception if i is a negative value.
    :feedback_c: This is true but a little too restrictive.
-   :feedback_d: Correct. i can refer to character 0 up to str.length().
+   :feedback_d: Correct. i can refer to character 0 up to str.length(). In the case that i is equal to str.length() this method will return the empty string without throwing an exception.
 
    The following method is intended to return the substring starting at index i until the end of the string. For example, getiToEnd("012",1) should return "12". Which of the following is the most appropriate precondition for the method so that it does not throw an exception?
 
@@ -377,10 +379,10 @@ Here is a simple class called User that could be used in an online store. Add go
             password = "guest" + (int) (Math.random() * 1000);
         }
 
-        public User(String nameInit, String pwordInit)
+        public User(String username, String password)
         {
-            username = nameInit;
-            password = pwordInit;
+            this.username = username;
+            this.password = password;
         }
 
         public void welcome()
@@ -542,6 +544,3 @@ Summary
 - A postcondition is a condition that must always be true after the execution of a section of program code. Postconditions describe the outcome of the execution in terms of what is being returned or the state of an object.
 
 - Programmers write method code to satisfy the postconditions when preconditions are met.
-
-
-
