@@ -536,6 +536,8 @@ Summary
 
 - Static methods are associated with the class, not instances of the class.
 
+- In static methods, the special variable ``this`` is not defined.
+
 - Static variables and methods are referenced with the class name and the dot
   operator, since they are associated with a class, not objects of a class.
 

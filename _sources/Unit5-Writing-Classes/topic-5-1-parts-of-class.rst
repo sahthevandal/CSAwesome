@@ -404,9 +404,9 @@ instance method was invoked.
 
 Most of the time we don’t need to use ``this`` when referring to instance
 variables because inside a method or constructor a variable name that hasn’t
-been declared in the method or constructor is assumed to be reference to an
-instance variable declared in the class. However when there `is` a variable
-declared that has the same name as an instance variable that name hides or
+been declared in that method or constructor is assumed to be reference to an
+instance variable declared in the class. However when there *is* a variable
+declared that has the same name as an instance variable, that name hides or
 “shadows” the instance variable. In such contexts we can use ``this.variable``
 to refer explicitly to the instance variable rather than to the locally declared
 variable.
@@ -422,26 +422,28 @@ names. They might write the ``Name`` constructor above like:
 
 .. code-block:: java
 
-   public Name(String theFirst, String theLast) {
-     first = theFirst;
-     last = theLast;
+   public Name(String theFirst, String theLast)
+   {
+       first = theFirst;
+       last = theLast;
    }
 
 or:
 
 .. code-block:: java
 
-   public Name(String f, String l) {
-     first = f;
-     last = l;
+   public Name(String f, String l)
+   {
+       first = f;
+       last = l;
    }
 
 However those styles tend to result in ugly names and wasted effort trying to
-come up with unique names which could all be avoided by using the idiomatic use
-of ``this`` in constructors and setters. Outside of constructors and setters
-it’s best to avoid naming local variables with the same name as instance
-variables so that you don’t have to use ``this`` to disambiguate instance
-variables from local variables with the same name.
+come up with unique names which could all be avoided the idiomatic use of
+``this`` in constructors and setters. Outside of constructors and setters it’s
+best to avoid naming local variables with the same name as instance variables so
+you normally don’t have to use ``this`` to disambiguate instance variables from
+local variables with the same name.
 
 The variable ``this`` can also be used by itself when you need to reference the
 object a method was invoked on from within the method, such as to pass it as an
@@ -449,8 +451,9 @@ argument to a method in another class. To take a simple example:
 
 .. code-block:: java
 
-   public void printMe() {
-     System.out.println(this);
+   public void printMe()
+   {
+       System.out.println(this);
    }
 
 
@@ -788,8 +791,8 @@ Summary
   what other classes can do with an instance of a class.
 
 - The keyword ``this`` is a special variable that exists in every constructor
-  and instance method as a name for the object being constructed or on which the
-  method was invoked.
+  and instance method as a name for the object being constructed or the object
+  on which the method was invoked.
 
 AP Practice
 ------------
