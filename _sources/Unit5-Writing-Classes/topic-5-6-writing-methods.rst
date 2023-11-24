@@ -19,11 +19,20 @@
 Writing Methods
 =================
 
-Up until this unit, you wrote all your code in the main method, but now we are using lots of methods. Why have multiple methods instead of just one? **Procedural Abstraction** allows us to name a block of code as a method and call it whenever we need it, abstracting away the details of how it works.  This serves to organize our code by function and reduce its complexity and reduce the repetition of code. In addition, it helps with debugging and maintenance since changes to that block of code only need to happen in one place. Here are some of the main reasons to use multiple methods in your programs:
+We first talked about writing methods in Unit √2 and at the end of that unit
+talked about how breaking our code until lots of small methods allows us to
+create **procedural abstractions** that make our code easier to understand and
+maintain by abstracting away the details of how it works.
 
-- Organization and Reducing Complexity: organize your program into small sections of code by function to reduce its complexity. Divide a problem into subproblems to solve it a piece at a time.
-- Reusing Code: avoid repetition of code. Reuse code by putting it in a method and calling it whenever needed.
-- Maintainability and Debugging: smaller methods are easier to debug and understand than searching through a large main method.
+Here are some of the main reasons to use multiple methods in your programs:
+
+- Organization and Reducing Complexity: organize your program into small
+  sections of code by function to reduce its complexity. Divide a problem into
+  subproblems to solve it a piece at a time.
+- Reusing Code: avoid repetition of code. Reuse code by putting it in a method
+  and calling it whenever needed.
+- Maintainability and Debugging: smaller methods are easier to debug and
+  understand than searching through a large main method.
 
 Let's look at an example with lots of repetition of code and create methods to reduce the repetition of code. You can sing along here https://www.youtube.com/watch?v=Di23O5cN4ZU&ab_channel=Rock%27NLearn .
 
@@ -51,7 +60,9 @@ Did you find some repeated lines of the `This Old Man song <https://www.youtube.
 
 There are three steps to creating and calling a method:
 
-1. **Object of the Class**: Declare an object of your class in the main method or from outside the class.
+1. **Instance of the Class**: Create an instance of your class in the main
+   method or from outside the class. Usually you will assign that instance to a
+   variable of the type of the class.
 
     .. code-block:: java
 
@@ -309,9 +320,18 @@ Here's what that looks like with the 2 method calls above. Notice how the parame
     Figure 1: Matching Arguments to Parameters
 
 
-Java uses **Call by Value** when it passes arguments to methods. This means that a copy of the value in the argument is saved in the parameter variable. If the parameter variable changes its value inside the method, the original value outside the method is not changed.
+Java uses **Call by Value** when it passes arguments to methods. This means that
+a copy of the value in the argument is saved in the parameter variable. If the
+parameter variable is changed inside the method, the original value outside the
+method is not changed.
 
-If you pass in an argument that holds a reference to an object, like a String or Person or Turtle object, a copy of this reference is passed in and saved in the parameter variable. The formal parameter and the actual parameter (argument) are then **aliases**, both refering to the same object. Java was designed this way to avoid copying large objects from method to method. Remember when we discussed reference aliases with turtle objects who are set equal to one another.
+If you pass in an argument that holds a reference to an object, like a
+``String`` or ``Person`` or ``Turtle`` object, a copy of this reference is
+passed in and saved in the parameter variable. The formal parameter and the
+actual parameter (argument) are then **aliases**, both refering to the same
+object. Java was designed this way to avoid copying large objects from method to
+method. Remember when we discussed reference aliases with ``Turtle`` objects who
+are set equal to one another.
 
 .. figure:: Figures/turtleEquality.png
     :width: 500px
@@ -321,7 +341,6 @@ If you pass in an argument that holds a reference to an object, like a String or
     Figure 2: Turtle Reference Equality
 
 (Advanced topics warning): Although String objects are not mutable, the classes that you create will have mutable objects. If the reference parameter is for a mutable object, the method could change the actual object. However, it is good programming practice to not modify mutable objects that are passed as parameters unless required in the specification. Methods can even access the private data and methods of a parameter that is a reference to an object if the parameter is the same type as the method’s enclosing class. Note that Strings are immutable objects, so they cannot be changed by the method; only a new changed copy of them can be made.
-
 
 Methods can also return values of any type back to the calling method. The calling method should do something with this return value, like printing it out or assigning it to a variable. Try the problems below to practice with a String method that takes a parameter and returns a boolean value.
 
@@ -334,7 +353,14 @@ Methods can also return values of any type back to the calling method. The calli
   :autograde: unittest
   :practice: T
 
-  Run the following program which contains a method called findLetter that takes a letter and a text as parameters and uses a loop to see if that letter is in the text and returns true if it is, false otherwise. Set the variables ``letter`` and ``message`` to new values in the main method and run it again to try finding a different letter. Then, change the code of the findLetter method to return how many times it finds letter in text, using a new variable called ``count``. How would the return type change?
+  Run the following program which contains a method called ``findLetter`` that
+  takes a letter and a text as parameters and uses a loop to see if that letter
+  is in the text and returns true if it is, false otherwise. Set the variables
+  ``letter`` and ``message`` to new values in the main method and run it again
+  to try finding a different letter. Then, change the code of the findLetter
+  method to return how many times it finds letter in text, using a new variable
+  called ``count``. How would the return type change?
+
   ~~~~
   public class StringFind
   {
@@ -343,10 +369,11 @@ Methods can also return values of any type back to the calling method. The calli
        *
        * @param String letter to look for
        * @param String text to look in
-       * @return boolean true if letter is in text After running the code, change
-       *     this method to return an int count of how many times letter is in the
-       *     text.
+       * @return boolean true if letter is in text
        */
+
+      // After running the code, change this method to return an int count of
+      // how many times letter is in the text.
       public boolean findLetter(String letter, String text)
       {
           boolean flag = false;
@@ -898,19 +925,19 @@ AP Practice
             private int currentTemp;
             private int boilingPoint;
 
-            public Liquid(int ct, int bp)
+            public Liquid(int currentTemp, int boilingPoint)
             {
-                currentTemp = ct;
-                boilingPoint = bp;
+                this.currentTemp = currentTemp;
+                this.boilingPoint = boilingPoint;
             }
 
-            public boolean isBoiling(int amount)
+            public boolean wouldBoil(int amount)
             {
                 /* missing code */
             }
         }
 
-    The isBoiling method is intended to return true if increasing the currentTemp by the parameter amount is greater than or equal to the boilingPoint, or otherwise return false. Which of the following code segments can replace *missing code* to ensure that the isBoiling method works as intended?
+    The ``wouldBoil`` method is intended to return ``true`` if increasing the ``currentTemp`` by the parameter ``amount`` would make it greater than or equal to the ``boilingPoint``, and otherwise return ``false``. Which of the following code segments can replace *missing code* to ensure that the ``wouldBoil`` method works as intended?
 
     .. code-block:: java
 
