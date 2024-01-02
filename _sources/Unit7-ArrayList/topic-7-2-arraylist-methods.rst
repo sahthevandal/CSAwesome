@@ -54,7 +54,7 @@ of 0.
 
 .. code-block:: java
 
-    ArrayList<String> list = new ArrayList<String>();
+    ArrayList<String> list = new ArrayList<>();
     System.out.println( list.size() );
 
 .. note::
@@ -93,7 +93,7 @@ line to board a bus.
    {
        public static void main(String[] args)
        {
-           ArrayList<String> nameList = new ArrayList<String>();
+           ArrayList<String> nameList = new ArrayList<>();
            nameList.add("Diego");
            System.out.println(nameList);
            nameList.add("Grace");
@@ -156,7 +156,7 @@ that is called **unboxing**.
 
 .. code-block:: java
 
-    ArrayList<Integer> list = new ArrayList<Integer>();
+    ArrayList<Integer> list = new ArrayList<>();
     list.add(new Integer(5)); // this will only work in Java 7
     list.add(5); // this will work in all Java versions
 
@@ -178,7 +178,7 @@ that you wrote. For example, here is an ``ArrayList`` of ``Student``\ s.
       // main method for testing
       public static void main(String[] args)
       {
-          ArrayList<Student> roster = new ArrayList<Student>();
+          ArrayList<Student> roster = new ArrayList<>();
           roster.add(new Student("Skyler", "skyler@sky.com", 123456));
           roster.add(new Student("Ayanna", "ayanna@gmail.com", 789012));
 
@@ -257,7 +257,7 @@ object.
    {
        public static void main(String[] arts)
        {
-           ArrayList<Integer> list1 = new ArrayList<Integer>();
+           ArrayList<Integer> list1 = new ArrayList<>();
            list1.add(1);
            System.out.println(list1);
            // adds the number 2 to the end of the list
@@ -319,7 +319,7 @@ object.
 
    .. code-block:: java
 
-      ArrayList<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list1 = new ArrayList<>();
       list1.add(1);
       list1.add(2);
       list1.add(3);
@@ -348,7 +348,7 @@ You can step through the code above by clicking on this |Java Visualizer 1|.
 
    .. code-block:: java
 
-      ArrayList<String> list1 = new ArrayList<String>();
+      ArrayList<String> list1 = new ArrayList<>();
       list1.add("Anaya");
       list1.add("Layla");
       list1.add("Sharrie");
@@ -389,7 +389,7 @@ the other items over in the underlying array and decrease the size of the
    {
        public static void main(String[] arts)
        {
-           ArrayList<Integer> list1 = new ArrayList<Integer>();
+           ArrayList<Integer> list1 = new ArrayList<>();
            list1.add(1);
            list1.add(2);
            list1.add(3);
@@ -446,7 +446,7 @@ the other items over in the underlying array and decrease the size of the
 
    .. code-block:: java
 
-      List<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list1 = new ArrayList<>();
       list1.add(1);
       list1.add(2);
       list1.add(3);
@@ -487,7 +487,7 @@ in the language like arrays.
    {
        public static void main(String[] args)
        {
-           ArrayList<String> nameList = new ArrayList<String>();
+           ArrayList<String> nameList = new ArrayList<>();
            nameList.add("Diego");
            nameList.add("Grace");
            nameList.add("Deja");
@@ -553,7 +553,7 @@ in the language like arrays.
 
    .. code-block:: java
 
-      List<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list1 = new ArrayList<>();
       list1.add(1);
       list1.add(2);
       list1.add(3);
@@ -579,7 +579,7 @@ You can step through the code above by clicking on the following `Example1 <http
 
    .. code-block:: java
 
-      List<String> list1 = new ArrayList<String>();
+      ArrayList<String> list1 = new ArrayList<>();
       list1.add("Anaya");
       list1.add("Layla");
       list1.add("Sharrie");
@@ -613,8 +613,8 @@ Here is a comparison of how to create arrays and ``ArrayList``\ s:
    String[] names = new String[5];
 
    // ArrayLists are empty to start with
-   ArrayList<Integer> highScoreList = new ArrayList<Integer>();
-   ArrayList<String> nameList = new ArrayList<String>();
+   ArrayList<Integer> highScoreList = new ArrayList<>();
+   ArrayList<String> nameList = new ArrayList<>();
 
 .. |comparison handout| raw:: html
 
