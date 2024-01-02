@@ -144,7 +144,7 @@ Here is the same search with an ``ArrayList``. The same algorithms can be used w
 
         public static void main(String[] args)
         {
-            ArrayList<Integer> numList = new ArrayList<Integer>();
+            ArrayList<Integer> numList = new ArrayList<>();
             numList.add(3);
             numList.add(-2);
             numList.add(9);
@@ -279,7 +279,7 @@ Binary search keeps dividing the sorted search space into half. It compares a ta
 .. figure:: Figures/binary-search-small.gif
     :width: 500px
     :align: center
- 
+
 
 Binary search calculates the middle index as ``left + right / 2`` where left starts out at 0 and right starts out at the array length - 1 (the index of the last element). Remember that integer division gives an integer result so 2.5 becomes 2. It compares the value at the middle index with the target value (the value you are searching for).  If the target value is less than the value at the middle it sets right to middle minus one. If the target value is greater than the value at the middle it sets left to middle plus one. Otherwise the values match and it returns the middle index. It also stops when left is greater than right which indicates that the value wasn't found and it returns -1.
 
@@ -527,11 +527,11 @@ Runtimes can be described with mathematical functions. For an array of size n, l
 
    <a href= "https://docs.google.com/document/d/1VrQf7wFIEIu7qfOg7FYUTeNWrdrRsPw4eJSdehhz4dM/edit?usp=sharing" style="text-decoration:underline" target="_blank" >Google document</a>
 
-Let's go back to the spellchecker that we created in Unit 6. Here is a version of the spellchecker below that reads the dictionary file into an ``ArrayList``. The advantage of using an ``ArrayList`` instead of an array for the dictionary is that we do not need to know or declare the size of the dictionary in advance.  
+Let's go back to the spellchecker that we created in Unit 6. Here is a version of the spellchecker below that reads the dictionary file into an ``ArrayList``. The advantage of using an ``ArrayList`` instead of an array for the dictionary is that we do not need to know or declare the size of the dictionary in advance.
 
-In Unit 6, we used linear search to find a word in the dictionary. However, the dictionary file is actually in alphabetical order.  We could have used a much faster binary search algorithm! Let's see how much faster we can make it. 
+In Unit 6, we used linear search to find a word in the dictionary. However, the dictionary file is actually in alphabetical order.  We could have used a much faster binary search algorithm! Let's see how much faster we can make it.
 
-Write a linear search method and a binary search method to search for a given word in the dictionary using the code in this lesson as a guide. You will need to use ``size`` and ``get(i)`` instead of [] to get an element in the ``ArrayList`` dictionary at index i. You will need to use the ``equals`` and ``compareTo`` methods to compare Strings. Have the methods return a count of how many words they had to check before finding the word or returning. 
+Write a linear search method and a binary search method to search for a given word in the dictionary using the code in this lesson as a guide. You will need to use ``size`` and ``get(i)`` instead of [] to get an element in the ``ArrayList`` dictionary at index i. You will need to use the ``equals`` and ``compareTo`` methods to compare Strings. Have the methods return a count of how many words they had to check before finding the word or returning.
 
 .. activecode:: challenge7-5-search-coding
     :language: java
@@ -549,15 +549,15 @@ Write a linear search method and a binary search method to search for a given wo
         private ArrayList<String> dictionary;
 
         /* Constructor populates the dictionary ArrayList from the file dictionary.txt*/
-        public SpellChecker() throws IOException 
+        public SpellChecker() throws IOException
         {
             List<String> lines = Files.readAllLines(Paths.get("dictionary.txt"));
-            dictionary = new ArrayList<String>(lines);
+            dictionary = new ArrayList<>(lines);
         }
 
         /**
          * Write a linearSearch(word) method that finds a word
-         * in the ArrayList dictionary. It should also keep 
+         * in the ArrayList dictionary. It should also keep
          * a count of the number of words checked.
          *
          * @param String word to be found in elements.
@@ -565,12 +565,12 @@ Write a linear search method and a binary search method to search for a given wo
          */
         public int linearSearch(String word)
         {
-           
+
         }
 
         /**
-         * Write a binarySearch(word) method that finds the word 
-         * in the ArrayList dictionary. It should also keep 
+         * Write a binarySearch(word) method that finds the word
+         * in the ArrayList dictionary. It should also keep
          * a count of the number of words checked.
          *
          * @param String word to be found in elements.
@@ -578,7 +578,7 @@ Write a linear search method and a binary search method to search for a given wo
          */
         public int binarySearch(String word)
         {
-           
+
         }
 
         public static void main(String[] args) throws IOException
@@ -604,7 +604,7 @@ Write a linear search method and a binary search method to search for a given wo
            super("SpellChecker");
         }
 
-        
+
        @Test
        public void test1()
        {

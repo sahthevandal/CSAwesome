@@ -31,7 +31,7 @@ Concept Summary
 - **ArrayList** -  An ArrayList can hold many objects of the same type.  It can grow or shrink as needed.  You can add and remove items at any index.
 - **Add** - You can add an object to the end of a list using ``listName.add(obj)``.  You can add an object at an index of a list using ``add(index,obj)``.  This will first move any objects at that index or higher to the right one position to make room for the new object.
 - **Declaration** - To declare an ArrayList use ``ArrayList<Type> name``, where ``Type`` is the class name for the type of objects in the list.  If you leave off the ``<Type>`` it will default to ``Object``.
-- **Creation** - To create an ArrayList use ``new ArrayList<Type>``, where ``Type`` is the class name for the type of objects you want to store in the list. There are other classes that implement the ``List`` interface, but you only need to know the ``ArrayList`` class for the exam.
+- **Creation** - To create an ArrayList use ``new ArrayList<Type>()`` or ``new ArrayList<>()``. In the latter case  compiler will infer the type parameter from the declared type of the variable you are assigning to. There are other classes that implement the ``List`` interface, but you only need to know the ``ArrayList`` class for the exam.
 - **Get** - To get an object at an index from a list use ``listName.get(index)``.
 - **Index** - You can access and set values in a list using an index.  The first element in a list called ``list1`` is at index 0 ``list1.get(0)``.  The last element in a list is at the length minus one - ``list1[list1.size() - 1]``.
 - **Remove** - To remove the object at an index use ``ListName.remove(index)``.  This will move all object past that index to the left one index.

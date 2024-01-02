@@ -46,7 +46,7 @@ while looping over it, you’ll need to use a regular ``while`` or ``for`` loop.
    {
        public static void main(String[] args)
        {
-           ArrayList<Integer> myList = new ArrayList<Integer>();
+           ArrayList<Integer> myList = new ArrayList<>();
            myList.add(50);
            myList.add(30);
            myList.add(20);
@@ -135,7 +135,7 @@ that array.
    {
        public static void main(String[] args)
        {
-           ArrayList<Integer> myList = new ArrayList<Integer>();
+           ArrayList<Integer> myList = new ArrayList<>();
            myList.add(50);
            myList.add(30);
            myList.add(20);
@@ -223,7 +223,7 @@ rather than a class (static) method to loop through the list.
 
        public static void main(String[] args)
        {
-           ArrayList<String> myList = new ArrayList<String>();
+           ArrayList<String> myList = new ArrayList<>();
            myList.add("Amun");
            myList.add("Ethan");
            myList.add("Donnie");
@@ -282,7 +282,7 @@ the loop.
 
    .. code-block:: java
 
-      ArrayList<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list1 = new ArrayList<>();
       private ArrayList<Integer> nums;
 
       // precondition: nums.size() > 0;
@@ -390,7 +390,7 @@ may want a nicer printout.
       // main method for testing
       public static void main(String[] args)
       {
-          ArrayList<Student> roster = new ArrayList<Student>();
+          ArrayList<Student> roster = new ArrayList<>();
           roster.add(new Student("Skyler", "skyler@sky.com", 123456));
           roster.add(new Student("Ayanna", "ayanna@gmail.com", 789012));
           // Replace this with a for each loop that prints out each student on a

@@ -15,7 +15,7 @@ Input Files (Optional)
 
 Files are used to store data in software that we use every day. For example, when you play a game on your computer, your game progress is saved in a file. The next time you play that game, your game progress is loaded in from that file, so you can continue where you left off. In this lesson, you will learn how to read in data from a file in Java.
 
-A **file** is storage for data that *persists* when the program is not running. The data in a file can be retrieved during program execution. For example in Unit 6, you created a ``SpellChecker`` class that reads in a dictionary file into an array of words, and a ``spellcheck`` method that uses this array to verify if a word is spelled correctly. Input files like the dictionary enable us to handle large amounts of data efficiently. Instead of manually entering data into our program every time it runs, we can store the data in a file and read it as needed. Another benefit of using files is the ability to separate the data from the code, allowing for more modular and flexible software design. 
+A **file** is storage for data that *persists* when the program is not running. The data in a file can be retrieved during program execution. For example in Unit 6, you created a ``SpellChecker`` class that reads in a dictionary file into an array of words, and a ``spellcheck`` method that uses this array to verify if a word is spelled correctly. Input files like the dictionary enable us to handle large amounts of data efficiently. Instead of manually entering data into our program every time it runs, we can store the data in a file and read it as needed. Another benefit of using files is the ability to separate the data from the code, allowing for more modular and flexible software design.
 
 Java ``File``, ``Scanner``, and ``IOException`` Classes
 --------------------------------------------------------
@@ -32,14 +32,14 @@ A file can be opened by creating a ``File`` object, using the name of the file o
 
 After opening a file, the  ``Scanner`` class can be used to read in the data from the file line by line. The ``Scanner`` class is part of the ``java.util`` package and has a constructor that takes a ``File`` object as an argument to create an input stream from the file.
 
-But what if you misspell the file name or the file does not exist? The ``Scanner`` constructor will throw a ``FileNotFoundException`` if it cannot find the file. This is a type of ``IOException``, which is a general error that is also thrown when the input does not match expectations.  We've seen other exceptions before, like ``ArrayIndexOutOfBoundsException`` and ``NullPointerException``. Exceptions are a way for Java to handle runtime errors that occur during program execution. When an exception is thrown, the program stops executing and the exception is *thrown* back to the calling method. If the exception is not handled, the program will terminate. Java uses ``try/catch`` blocks to handle exceptions, but you can use the ``throws`` keyword in the method header to indicate that the method may throw an exception instead of handling it there. The **throws IOException** statement is added to the end of the method header. Here is an example that sets up an input file in the main method and throws an exception. 
+But what if you misspell the file name or the file does not exist? The ``Scanner`` constructor will throw a ``FileNotFoundException`` if it cannot find the file. This is a type of ``IOException``, which is a general error that is also thrown when the input does not match expectations.  We've seen other exceptions before, like ``ArrayIndexOutOfBoundsException`` and ``NullPointerException``. Exceptions are a way for Java to handle runtime errors that occur during program execution. When an exception is thrown, the program stops executing and the exception is *thrown* back to the calling method. If the exception is not handled, the program will terminate. Java uses ``try/catch`` blocks to handle exceptions, but you can use the ``throws`` keyword in the method header to indicate that the method may throw an exception instead of handling it there. The **throws IOException** statement is added to the end of the method header. Here is an example that sets up an input file in the main method and throws an exception.
 
 .. code-block:: java
 
    import java.io.*;
    import java.util.*;
 
-   public class FileIO 
+   public class FileIO
    {
                                              // Notice throws IOException here
       public static void main(String[] args) throws IOException
@@ -62,7 +62,7 @@ Try the following exercise to practice reading in a file. Notice the compiler er
    :autograde: unittest
    :datafile: dictionary.txt
 
-   Run the code below to see the error message. Add **throws** and the correct exception to the end of the main method header to fix the error.  
+   Run the code below to see the error message. Add **throws** and the correct exception to the end of the main method header to fix the error.
    ~~~~
    import java.io.*;
    import java.util.*;
@@ -113,12 +113,12 @@ Try the following exercise to practice reading in a file. Notice the compiler er
 Reading in Data with Scanner
 -----------------------------
 
-Once the file is opened, the data can be read using ``Scanner`` methods. For example, the method, ``nextLine`` will read the next line of input and returns it as a ``String``. Here are the methods used in the Scanner file to read all types of input: 
+Once the file is opened, the data can be read using ``Scanner`` methods. For example, the method, ``nextLine`` will read the next line of input and returns it as a ``String``. Here are the methods used in the Scanner file to read all types of input:
 
 - ``Scanner(File f)`` the Scanner constructor that accepts a File for reading.
 - ``boolean hasNext()`` returns true if there is a next item to read in the file or input source; false otherwise.
 - ``String nextLine()`` returns the next line of text up until the end of the line as a String read from the file or input source; returns null if there is no next line.
-- ``String next()`` returns the next String up until a white space read from the file or input source. 
+- ``String next()`` returns the next String up until a white space read from the file or input source.
 - ``int nextInt()`` returns the next int read from the file or input source. If the next int does not exist, it will result in an ``InputMismatchException``. Note that this method does not read the end of the line, so the next call to ``nextLine()`` will return the rest of the line which will be empty.
 - ``double nextDouble()`` returns the next double read from the file or input source.
 - ``boolean nextBoolean()`` returns the next Boolean read from the file or input source.
@@ -136,7 +136,7 @@ read. A loop with this condition will terminate when there are no more lines to 
    }
    scan.close();
 
-We can save a file into an array. In the ``SpellChecker`` class, we read the data file of words into a dictionary array with the following code. However, we had to know the number lines or words in the file to declare an array of the right size. 
+We can save a file into an array. In the ``SpellChecker`` class, we read the data file of words into a dictionary array with the following code. However, we had to know the number lines or words in the file to declare an array of the right size.
 
 .. code-block:: java
 
@@ -161,12 +161,12 @@ The following exercise reads in a data file about Pokemon and prints out the fir
    :autograde: unittest
    :datafile: pokemon.csv
 
-   Complete the code in the main method below to read in the first 10 lines of the pokemon file using the Scanner class, save each line into the pokemonLines array, and print it out.  
+   Complete the code in the main method below to read in the first 10 lines of the pokemon file using the Scanner class, save each line into the pokemonLines array, and print it out.
    ~~~~
    import java.io.*;
    import java.util.*;
 
-   public class ReadData 
+   public class ReadData
    {
        public static void main(String[] args) throws IOException
        {
@@ -187,7 +187,7 @@ The following exercise reads in a data file about Pokemon and prints out the fir
 
                i++; // line count
             }
-            scan.close();           
+            scan.close();
       }
    }
    ====
@@ -229,7 +229,7 @@ The following exercise reads in a data file about Pokemon and prints out the fir
    }
 
 Reading in Files with ``java.nio.file``
-----------------------------------------  
+----------------------------------------
 
 The ``java.nio.file`` package, added in Java version 7, provides a better and easier way to read in files. The ``Files`` class in this package has a method called ``readAllLines`` that reads all of the lines in a file and returns them as a ``List`` of ``String`` objects. The ``readAllLines`` method throws an ``IOException`` if the file cannot be read. (``List`` is an **interface**. Interfaces are not on the AP CSA exam but are quite common in actual Java programming. For now all you need to know is that all the methods we've talked about using with ``ArrayList`` you can use on any ``List`` such as the one returned by ``readAllLines``.)
 
@@ -251,7 +251,7 @@ Under the covers ``readAllLines`` is almost certainly using an ``ArrayList`` whi
    :autograde: unittest
    :datafile: pokemon.csv
 
-   Complete the code in the main method below to reads all lines of the file using ``Files.readAllLines`` into a ``List<String>`` named ``lines``. Add a loop that prints out the first 10 pokemon.  
+   Complete the code in the main method below to reads all lines of the file using ``Files.readAllLines`` into a ``List<String>`` named ``lines``. Add a loop that prints out the first 10 pokemon.
    ~~~~
    import java.io.*;
    import java.nio.file.*;
@@ -275,11 +275,11 @@ Under the covers ``readAllLines`` is almost certainly using an ``ArrayList`` whi
 
    public class RunestoneTests extends CodeTestHelper
    {
-       public RunestoneTests() 
+       public RunestoneTests()
        {
            super("ReadData");
        }
-   
+
        @Test
        public void testMain() throws IOException
        {
@@ -308,7 +308,7 @@ Object-Oriented Design with CSV Files
    :align: left
    :alt: Pikachu
 
-If you take a look at the Pokemon CSV file, you'll notice that each line contains multiple data attributes separated by commas. These attributes include each Pokemon's name, type, speed, etc. on each row. Typically, the first line of a CSV file serves as the header, indicating the names of these attributes. 
+If you take a look at the Pokemon CSV file, you'll notice that each line contains multiple data attributes separated by commas. These attributes include each Pokemon's name, type, speed, etc. on each row. Typically, the first line of a CSV file serves as the header, indicating the names of these attributes.
 
 .. code=block:: text
 
@@ -324,11 +324,11 @@ The Java ``String`` class provides a useful method called ``split(String delimet
 
    // Split the line of data into an array of Strings
    String[] data = line.split(",");
-   // Identify the data 
-   // data: Number,Name,Type1,Type2,HP,Attack,Defense,Speed,PNG,Description 
+   // Identify the data
+   // data: Number,Name,Type1,Type2,HP,Attack,Defense,Speed,PNG,Description
    String name = data[1];
    String type1 = data[2];
-   // Numerical data can be saved as numbers to do math     
+   // Numerical data can be saved as numbers to do math
    int speed = Integer.parseInt(data[7]);
    String imageFile = data[8];
 
@@ -341,7 +341,7 @@ Try the exercise below to display Pokemon images using the ``split`` method to e
    :autograde: unittest
    :datafile: pokemon.csv
 
-   **PokeImages:** This program reads in some of the data from the pokemon file into a List of lines. Complete the main method to print out a random pokemon name and its image using the split method.  
+   **PokeImages:** This program reads in some of the data from the pokemon file into a List of lines. Complete the main method to print out a random pokemon name and its image using the split method.
    ~~~~
    import java.io.*;
    import java.nio.file.*;
@@ -447,12 +447,12 @@ Once we have extracted the individual pieces of data from each line of the CSV f
 .. code-block:: java
 
     // Create an ArrayList of Pokemon objects
-    ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
+    ArrayList<Pokemon> pokemonList = new ArrayList<>();
 
     // read in the file
     List<String> lines = Files.readAllLines(Paths.get("pokemon.csv"));
 
-    // loop through each row (except the 0th header row) 
+    // loop through each row (except the 0th header row)
     for(int i = 1; i < lines.size(); i++)
     {
         // Get each line
@@ -460,7 +460,7 @@ Once we have extracted the individual pieces of data from each line of the CSV f
         // Split each line into its attributes name, type1, etc.
         // ... split not shown....
 
-        // Create a Pokemon object from the split data 
+        // Create a Pokemon object from the split data
         Pokemon p = new Pokemon(name, type1, speed, imageFile);
         // Add the object to the ArrayList
         pokemonList.add(p);
@@ -475,7 +475,7 @@ Let's try this code in the exercise below.
    :language: java
    :datafile: pokemon.csv
 
-   **Pokemon ArrayList:** Design the class Pokemon that has at least 3 attributes that can be found in the Pokemon file, including its name, type1, and imagefile, and any other attributes from the file that you would like. Write a constructor and getters for these attributes. Then, read in the data from the pokemon file, split each line, and save the data in an ``ArrayList`` of Pokemon objects. Write a ``findType`` method that loops through the ArrayList to find the Pokemon of a type given as the argument and prints out their names and images.  
+   **Pokemon ArrayList:** Design the class Pokemon that has at least 3 attributes that can be found in the Pokemon file, including its name, type1, and imagefile, and any other attributes from the file that you would like. Write a constructor and getters for these attributes. Then, read in the data from the pokemon file, split each line, and save the data in an ``ArrayList`` of Pokemon objects. Write a ``findType`` method that loops through the ArrayList to find the Pokemon of a type given as the argument and prints out their names and images.
    ~~~~
    import java.io.*;
    import java.nio.file.*;
@@ -493,7 +493,7 @@ Let's try this code in the exercise below.
 
    public class PokemonArrayList
    {
-       private ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
+       private ArrayList<Pokemon> pokemonList = new ArrayList<>();
 
        // Write a method to read in the data (it may throw an exception).
        // Loop through each row to split it into attributes.
@@ -619,11 +619,11 @@ After you have chosen an input file, use the Pokemon exercise in the section abo
 
 2. Declare an ``ArrayList`` of your class type.
 
-3. Read in the data from the file. You can use ``Files.readAllLines`` or the ``Scanner`` class. 
+3. Read in the data from the file. You can use ``Files.readAllLines`` or the ``Scanner`` class.
 
-4. Inside a loop, split each line into its attributes and create an object for your class using its constructor. Add the object to the ``ArrayList``. 
+4. Inside a loop, split each line into its attributes and create an object for your class using its constructor. Add the object to the ``ArrayList``.
 
-5. Do something interesting with the data using a loop, for example you could find the maximum or minimum value of an attribute or print out all the objects that have the same attribute value. 
+5. Do something interesting with the data using a loop, for example you could find the maximum or minimum value of an attribute or print out all the objects that have the same attribute value.
 
 .. activecode:: challenge-file
    :language: java
@@ -739,4 +739,3 @@ After you have chosen an input file, use the Pokemon exercise in the section abo
            assertTrue(passed);
        }
    }
-

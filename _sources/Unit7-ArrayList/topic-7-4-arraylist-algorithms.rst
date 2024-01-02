@@ -62,7 +62,7 @@ You should be able to trace through code that uses all the basic ArrayList metho
 
    .. code-block:: java
 
-      List<Integer> numList = new ArrayList<Integer>();
+      ArrayList<Integer> numList = new ArrayList<>();
       numList.add(new Integer(1));
       numList.add(new Integer(2));
       numList.add(new Integer(3));
@@ -88,7 +88,7 @@ You can step through the code above by clicking on the following `Example1 <http
 
    .. code-block:: java
 
-      List<Integer> list1 = new ArrayList<Integer>();
+      ArrayList<Integer> list1 = new ArrayList<>();
       list1.add(new Integer(1));
       list1.add(new Integer(2));
       list1.add(new Integer(3));
@@ -109,7 +109,7 @@ You can step through the code above by clicking on the following `Example2 <http
    {
        public static void main(String[] args)
        {
-           ArrayList<Integer> arr = new ArrayList<Integer>();
+           ArrayList<Integer> arr = new ArrayList<>();
            for (int i = 0; i < 5; i++)
            {
                arr.add(i);
@@ -163,8 +163,8 @@ Some algorithms require multiple String, array, or ArrayList objects to be trave
    {
        public static void main(String[] args)
        {
-           ArrayList<Integer> test1Grades = new ArrayList<Integer>();
-           ArrayList<Integer> test2Grades = new ArrayList<Integer>();
+           ArrayList<Integer> test1Grades = new ArrayList<>();
+           ArrayList<Integer> test2Grades = new ArrayList<>();
            test1Grades.add(100);
            test2Grades.add(100);
            test1Grades.add(80);
