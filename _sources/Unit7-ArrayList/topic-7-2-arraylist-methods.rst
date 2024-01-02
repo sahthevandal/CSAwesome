@@ -146,19 +146,21 @@ line to board a bus.
    pair: list; autoboxing
    pair: list; unboxing
 
-When adding Integer objects to the list, you can use the Integer constructor
-like ``add(new Integer(5))`` in Java version 7 which is used on the exam
-(although this is deprecated and no longer used in Java version 9) or you can
-just add the int value directly like ``add(5)`` in any Java version and it will
-be changed into an ``Integer`` object automatically. This is called
-**autoboxing**. When you pull an ``int`` value out of a list of ``Integers``
-that is called **unboxing**.
+When adding ``Integer`` objects to an ``ArrayList<Integer>``, the simplest thing
+to do is add an ``int`` and let autoboxing take care of wrapping it in an
+``Integer`` for you: ``add(5)``. If you really want to, you can wrap the ``int``
+yourself; the best way is with the static method ``Integer.valueOf``:
+``add(Integer.valueOf(5))``. Another option, and the least good, is to use the
+deprecated ``Integer`` constructor: ``add(new Integer(5))``. Note, however, that
+you may see code like the last version on the AP exam as that constructor was
+not deprecated until Java 9 and the exam uses Java 7.
 
 .. code-block:: java
 
     ArrayList<Integer> list = new ArrayList<>();
-    list.add(new Integer(5)); // this will only work in Java 7
-    list.add(5); // this will work in all Java versions
+    list.add(new Integer(5)); // Deprecated, but something you may see on the exam
+    list.add(5); // How you should write it.
+    list.add(Integer.valueOf(5)); // This is also okay.
 
 You can put any kind of objects into an ``ArrayList``. Even instances of a class
 that you wrote. For example, here is an ``ArrayList`` of ``Student``\ s.
@@ -739,12 +741,21 @@ School.
 Summary
 -----------
 
+The following ``ArrayList`` methods, including what they do and when they are used, are part of the Java Quick Reference:
 
-- The following ArrayList methods, including what they do and when they are used, are part of the Java Quick Reference:
+- **int size()** : Returns the number of elements in the list
 
-  - **int size()** : Returns the number of elements in the list
-  - **boolean add(E obj)** : Appends obj to end of list; returns true
-  - **void add(int index, E obj)** : Inserts obj at position index (0 <= index <= size), moving elements at position index and higher to the right (adds 1 to their indices) and adds 1 to size
-  - **remove(int index)** — Removes element from position index, moving elements at position index + 1 and higher to the left (subtracts 1 from their indices) and subtracts 1 from size; returns the element formerly at position index
-  - **E get(int index)** : Returns the element at position index in the list
-  - **E set(int index, E obj)** : Replaces the element at position index with obj; returns the element formerly at position index
+- **boolean add(E obj)** : Appends obj to end of list; returns true
+
+- **void add(int index, E obj)** : Inserts obj at position index (0 <= index <=
+  size), moving elements at position index and higher to the right (adds 1 to
+  their indices) and adds 1 to size
+
+- **remove(int index)** — Removes element from position index, moving elements
+  at position index + 1 and higher to the left (subtracts 1 from their indices)
+  and subtracts 1 from size; returns the element formerly at position index
+
+- **E get(int index)** : Returns the element at position index in the list
+
+- **E set(int index, E obj)** : Replaces the element at position index with obj;
+  returns the element formerly at position index
