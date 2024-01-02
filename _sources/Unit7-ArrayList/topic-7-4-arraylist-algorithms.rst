@@ -9,22 +9,23 @@
 ArrayList Algorithms
 =====================
 
-There are standard ArrayList algorithms that utilize traversals to:
+There are standard ``ArrayList`` algorithms that utilize traversals to:
 
-  - Insert elements
-  - Delete elements
-  - Determine the minimum or maximum value
-  - Compute a sum, average, or mode of elements
-  - Search for a particular element in the array
-  - Determine if at least one element has a particular property
-  - Determine if all elements have a particular property
-  - Access all consecutive pairs of elements
-  - Determine the presence or absence of duplicate elements
-  - Determine the number of elements meeting specific criteria
-  - Shift or rotate elements left or right
-  - Reverse the order of the elements
+- Insert elements
+- Delete elements
+- Determine the minimum or maximum value
+- Compute a sum, average, or mode of elements
+- Search for a particular element in the array
+- Determine if at least one element has a particular property
+- Determine if all elements have a particular property
+- Access all consecutive pairs of elements
+- Determine the presence or absence of duplicate elements
+- Determine the number of elements meeting specific criteria
+- Shift or rotate elements left or right
+- Reverse the order of the elements
 
-Here are two common ArrayList traversal loops that can be used for these algorithms:
+Here are two common ``ArrayList`` traversal loops that can be used for these
+algorithms:
 
 .. code-block:: java
 
@@ -42,8 +43,8 @@ Here are two common ArrayList traversal loops that can be used for these algorit
   }
 
 
-
-You should be able to trace through code that uses all the basic ArrayList methods like the following.
+You should be able to trace through code that uses all the basic ``ArrayList``
+methods like the following.
 
 |Exercise| **Check Your Understanding**
 
@@ -63,12 +64,12 @@ You should be able to trace through code that uses all the basic ArrayList metho
    .. code-block:: java
 
       ArrayList<Integer> numList = new ArrayList<>();
-      numList.add(new Integer(1));
-      numList.add(new Integer(2));
-      numList.add(new Integer(3));
-      numList.set(2,new Integer(4));
-      numList.add(1, new Integer(5));
-      numList.add(new Integer(6));
+      numList.add(1);
+      numList.add(2);
+      numList.add(3);
+      numList.set(2, 4);
+      numList.add(1, 5);
+      numList.add(6);
       System.out.println(numList);
 
 You can step through the code above by clicking on the following `Example1 <http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.*%3B%0A%0Apublic+class+ClassNameHere+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++List%3CInteger%3E+list1+%3D+new+ArrayList%3CInteger%3E()%3B%0A++++++list1.add(new+Integer(1))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(2))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(3))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.set(2,+new+Integer(4))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(1,+new+Integer(5))%3B%0A++++++System.out.println(list1)%3B%0A++++++list1.add(new+Integer(6))%3B%0A++++++System.out.println(list1)%3B%0A++++++%0A+++%7D%0A%7D&mode=display&curInstr=0>`_.
@@ -89,9 +90,9 @@ You can step through the code above by clicking on the following `Example1 <http
    .. code-block:: java
 
       ArrayList<Integer> list1 = new ArrayList<>();
-      list1.add(new Integer(1));
-      list1.add(new Integer(2));
-      list1.add(new Integer(3));
+      list1.add(1);
+      list1.add(2);
+      list1.add(3);
       list1.remove(1);
       System.out.println(list1);
 
