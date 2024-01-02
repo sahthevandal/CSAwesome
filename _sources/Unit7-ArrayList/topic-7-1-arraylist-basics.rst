@@ -23,18 +23,22 @@ Intro to ArrayLists
 
 In the last unit, we learned about using arrays to hold collections of related
 data. However arrays are not very flexible. Most notably, the size of an array
-is established at the time of creation and cannot be changed. What if you don't
-know how big the collection of data will be? What if you want to both add and
-remove items from a collection? For example, if you wanted to represent a
-shopping list, you might add to the list throughout the week and remove things
-from the list while you are shopping. You probably would not know how many items
-will be on the list at the beginning of the week.
+is set at the time of creation and cannot be changed.
 
-For cases like this, Java has a class called ``ArrayList`` which is a re-sizable
-list. It is called ``ArrayList`` because it stores the items that have been
-added to it in an underlying array. But it also takes care of keeping track of
-how many items have been added to the array and it will create a new bigger
-array under the covers when needed to hold more items.
+What if you don't know how big the collection of data will be? What if you want
+to both add and remove items from a collection? For example, if you wanted to
+represent a shopping list, you might add to the list throughout the week and
+remove things from the list while you are shopping. You probably would not know
+how many items will be on the list at the beginning of the week. Thus arrays are
+not a very convenient way to represent a shopping list.
+
+For cases like this, Java provides a wide variety of class collectively referred
+to as “collections” classes. In the AP curriculum we will cover one called
+``ArrayList`` which is a re-sizable list. It is called ``ArrayList`` because it
+stores the items that have been added to it in an underlying array. But it also
+takes care of keeping track of how many items have been added to the array and
+it will create a new bigger array under the covers when needed to hold more
+items.
 
 You can use ``ArrayList`` instead of arrays whenever you don't know the size of
 the array you need or you know that you will add and remove items and may need
@@ -44,11 +48,11 @@ from it.
 
 .. note::
 
-   An ``ArrayList`` is often called just a list on the CSA exam. Prior to 2020
-   the AP CSA curriculum included **interfaces** which are somewhat like classes
-   and the interface ``List`` was often used to declare a variable that would
-   refer to an ``ArrayList``. Interfaces are no longer on the exam, but if you
-   see ``List`` being used in an old exam question just assume it’s an
+   An ``ArrayList`` is sometimes called just a list on the CSA exam. Prior to
+   2020 the AP CSA curriculum included **interfaces** which are somewhat like
+   classes and the interface ``List`` was often used to declare a variable that
+   would refer to an ``ArrayList``. Interfaces are no longer on the exam, but if
+   you see ``List`` being used in an old exam question just assume it’s an
    ``ArrayList``.
 
 .. mchoice:: qloopList
@@ -72,15 +76,21 @@ Packages and imports
 .. index::
    single: import statement
 
-The ``ArrayList`` class is in the ``java.util`` package. A **package** is a set
-or library of related classes. The classes we have used until now, such as
-``String`` and ``Math``, are in the special package ``java.lang`` whose classes
-are always available in any Java program. Other packages, such as ``java.util``,
-provide classes that can only be used either by **importing** them or (much more
-rarely) by referring to them by their full name which includes the package as a
-prefix. The full name of ``ArrayList`` is thus ``java.util.ArrayList`` but
-rather than type that out all the time, in any class where we want to use
-``ArrayList`` we will usually import it with an ``import`` statement.
+To use the ``ArrayList`` class we need to learn a little bit about Java
+packages. A **package** is a set or library of related classes that can be used
+in other classes.
+
+The classes we have used until now, such as ``String`` and ``Math``, are in the
+special package ``java.lang`` whose classes are always available in any Java
+program.
+
+The ``ArrayList`` class, on the other hand, is defined in a different package,
+``java.util``. To use classes from packages like ``java.util`` we must either
+**import** them or (much more rarely) refer to them by their full name which
+includes the package as a prefix. The full name of ``ArrayList`` is thus
+``java.util.ArrayList``. But rather than type that out all the time, in any
+source file where we want to use ``ArrayList`` we will usually import it with an
+``import`` statement.
 
 Import statements have to come before the class definition in a Java source file
 and serve to tell Java which class you mean when you use a short name like
@@ -138,31 +148,32 @@ packages that are part of Java itself.
 Declaring and Creating ArrayLists
 ----------------------------------
 
-To declare a ArrayList use ``ArrayList<Type> name`` where *Type*, called a
-**type parameter** is the type of objects you want to store in the ArrayList.
-For example a variable naming an ``ArrayList`` meant to hold ``String``\ s is
-declared as ``ArrayList<String>`` as shown in the code below. You can declare a
-variable to just be of type ``ArrayList``, with no type parameter, and it’ll be
-approximately the same as if you had declared ``ArrayList<Object>``, but it is
-good practice to specify the type of objects you intend to store in an
-``ArrayList`` as it allows the compiler to find errors that would otherwise be
-missed until run time.
+``ArrayList``\ s are also the first example we’ve seen of a **generic type**.
+They are generic in the sense that we can make ``ArrayList``\ s to hold any kind
+of object, ``String``\ s, ``Turtle``\ s, whatever, similar to the way we can
+make different kind of arrays to hold different kinds of values.
+
+This means that when we declare an ``ArrayList``, we use the syntax
+``ArrayList<Type>`` to specify the actual type of the ``ArrayList`` where
+*Type*, called a **type parameter**, is the type of objects we want to store in
+the ``ArrayList``. For example a variable naming an ``ArrayList`` meant to hold
+``String``\ s is declared as ``ArrayList<String>`` as shown in the code below.
+Note that when you invoke the constructor you still need the ``<>`` after
+``ArrayList`` but you don’t have to specify the type parameter again—the
+compiler can infer it. (You can specify it again if you really want.)
 
 .. code-block:: java
 
-    // ArrayList<Type> name = new ArrayList<Type>();
     // An ArrayList of Strings:
-    ArrayList<String> shoppingList = new ArrayList<String>();
+    ArrayList<String> shoppingList = new ArrayList<>();
 
 .. note::
 
-    ``ArrayList``\ s can only hold reference types like ``String``. Since they
-    can’t hold primitive types like ``int`` and ``double``, if we want a
-    collection of numbers we need to use the wrapper classes ``Integer`` or
-    ``Double``. However, because of autoboxing, if you declare an
-    ``ArrayList<Integer>`` or ``ArrayList<Double>`` you can mostly treat the
-    elements of the ``ArrayList`` as if they were in fact ``int``\ s or
-    ``double``\ s.
+   You *can* declare a variable to just be of type ``ArrayList``, with no type
+   parameter, and then you can put any kind of object at all into it, but it is
+   good practice to always specify the type of objects you intend to store in an
+   ``ArrayList`` as it allows the compiler to find errors that would otherwise
+   be missed until run time.
 
 |CodingEx| **Coding Exercise**
 
@@ -215,7 +226,7 @@ missed until run time.
 As with other reference types, declaring a ``ArrayList`` variable doesn't
 actually create a ``ArrayList`` object. It only creates a variable that can
 refer to a ``ArrayList`` or ``null``. To actually create a ``ArrayList`` we must
-invoke a constructor such as ``new ArrayList<String>()``.
+invoke a constructor such as ``new ArrayList<>()``.
 
 You can get the number of items in a ``ArrayList`` using the ``size()`` method.
 Notice that a newly constructed ``ArrayList`` is empty and thus has a size of 0.
@@ -235,7 +246,7 @@ on the value of ``list2`` at line 10 below causes a ``NullPointerException``.
    {
        public static void main(String[] args)
        {
-           ArrayList<String> nameList = new ArrayList<String>();
+           ArrayList<String> nameList = new ArrayList<>();
            System.out.println("The size of nameList is: " + nameList.size());
            ArrayList<String> list2 = null;
            System.out.println("The size of list2 is: " + list2.size());
@@ -267,13 +278,14 @@ on the value of ``list2`` at line 10 below causes a ``NullPointerException``.
        }
    }
 
-You can also create ArrayLists of integer and double values. However, you have
-to use ``Integer`` or ``Double`` as the type parameter because ``ArrayList``\ s
-can only hold objects, not primitive values. All primitive types must be
-**wrapped** in objects before they are added to an ArrayList. For example,
-``int`` values can be wrapped in ``Integer`` objects, ``double`` values can be
-wrapped in ``Double`` objects. However this normally happens automatically
-thanks to autoboxing.
+You can also create ``ArrayList``\ s of integer and double values. However,
+``ArrayList``\ s can only hold reference types, not primitive types such as
+``int`` and ``double``. Thus if we want to represent a list of numbers or
+booleans we need to use one of the wrapper classes ``Integer``, ``Double``, or
+``Boolean`` as the type parameter. But because of autoboxing, if you declare an
+``ArrayList<Integer>``, ``ArrayList<Double>``, or ``ArrayList<Boolean>`` you can
+mostly treat the elements of the ``ArrayList`` as if they were in fact ``int``\
+s, ``double``\ s, or ``boolean``\ s.
 
 You can actually put in any kind of objects in an ``ArrayList``, including
 instances of classes that you write, such as the ``Student``, ``Person``, or
@@ -291,7 +303,7 @@ instances of classes that you write, such as the ``Student``, ``Person``, or
    {
        public static void main(String[] args)
        {
-           ArrayList<Integer> numList = new ArrayList<Integer>();
+           ArrayList<Integer> numList = new ArrayList<>();
            System.out.println(numList.size());
        }
    }
@@ -326,11 +338,11 @@ instances of classes that you write, such as the ``Student``, ``Person``, or
 .. mchoice:: qArrayListInteger
    :answer_a: ArrayList[int] numbers = new ArrayList();
    :answer_b: ArrayList&lt;String&gt; numbers = new ArrayList();
-   :answer_c: ArrayList&lt;int&gt; numbers = new ArrayList&lt;int&gt;();
-   :answer_d: ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
+   :answer_c: ArrayList&lt;int&gt; numbers = new ArrayList&lt;&gt;();
+   :answer_d: ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
    :correct: d
    :feedback_a: The square brackets [] are only used with arrays, not ArrayLists.
-   :feedback_b: String is not the correct type since this is for an array of integers, and the type should be next to ArrayList on both sides.
+   :feedback_b: String is not the correct type since this is for an array of integers, and constructor needs <>s.
    :feedback_c: ArrayLists cannot hold primitive types like int. You must use the wrapper class Integer.
    :feedback_d: The wrapper class Integer is used to hold integers in an ArrayList.
 
@@ -340,8 +352,14 @@ instances of classes that you write, such as the ``Student``, ``Person``, or
 
 Although it is not on the AP exam, you can convert an array to a ``List`` using
 the static method ``asList`` from the ``Arrays`` helper class:
-``Arrays.asList(arrayname)``. Note that ``ArrayList`` has a ``toString`` method
-that is automatically called to print the list in a nice format.
+``Arrays.asList(arrayname)``. This list will not actually be an ``ArrayList``
+but you can pass it to the ``ArrayList`` constructor that takes a collection as
+its argument to make a new ``ArrayList`` with the contents of the array.
+
+Note also that ``ArrayList`` has a ``toString`` method that produces a nice
+string representation of the contents of the list, unlike the ``toString``
+method on arrays which produces not very helpful gibberish like
+``[Ljava.lang.String;@4361bd48``.
 
 .. activecode:: ArrayListFromArray
    :language: java
@@ -356,7 +374,7 @@ that is automatically called to print the list in a nice format.
        public static void main(String[] args)
        {
            String[] names = {"Dakota", "Madison", "Brooklyn"};
-           ArrayList<String> namesList = new ArrayList<String>(Arrays.asList(names));
+           ArrayList<String> namesList = new ArrayList<>(Arrays.asList(names));
            System.out.println(namesList);
        }
    }
@@ -388,7 +406,7 @@ that is automatically called to print the list in a nice format.
 
 |CodingEx| **Coding Exercise**
 
-You can add values to an ``ArrayList`` using its **add** method, described in
+You can add values to an ``ArrayList`` using its ``add`` method, described in
 detail in the next lesson. Try the code below. Note that the type of the
 ``ArrayList``, ``String`` or ``Integer``, also determines the type of parameters
 and return types for all of its methods, so add and print work for any type of
@@ -408,7 +426,7 @@ into instances of ``Integer`` for us.
    {
        public static void main(String[] args)
        {
-           ArrayList<String> shoppingList = new ArrayList<String>();
+           ArrayList<String> shoppingList = new ArrayList<>();
            System.out.println("Size: " + shoppingList.size());
            shoppingList.add("carrots");
            System.out.println(shoppingList);
@@ -417,7 +435,7 @@ into instances of ``Integer`` for us.
            shoppingList.add("chocolate");
            System.out.println(shoppingList);
            System.out.println("Size: " + shoppingList.size());
-           ArrayList<Integer> quantities = new ArrayList<Integer>();
+           ArrayList<Integer> quantities = new ArrayList<>();
            quantities.add(2);
            quantities.add(4);
            System.out.println(quantities);
@@ -622,11 +640,11 @@ Summary
 - An ``ArrayList`` object contains object references and is mutable, meaning it
   can change (by adding and removing items from it).
 
-- The ``ArrayList`` constructor ``ArrayList()`` constructs an empty list of size 0.
+- The ``ArrayList`` constructor ``ArrayList<>()`` constructs an empty list of size 0.
 
-- Java allows the generic type ``ArrayList<E>``, where the generic type ``E``
-  specifies the type of the elements, like ``String`` or ``Integer``. Without
-  it, the type will be ``Object``.
+- ``ArrayList`` is really a generic type ``ArrayList<E>``, where the type
+  parameter ``E`` specifies the type of the elements, like ``String`` or
+  ``Integer`` that will be stored in a specific ``ArrayList``.
 
 - ``ArrayList<E>`` is preferred over ``ArrayList`` because it allows the
   compiler to find errors that would otherwise be found at run time.
