@@ -62,11 +62,24 @@ an object of a class. A reference is a way to find the object (like a UPS
 tracking number helps you find your package). The primitive types on the
 Advanced Placement Computer Science A exam are:
 
-- ``int`` which represent integers, i.e. whole numbers like 3, -76, 20393.
+- ``int`` which can represent integers, i.e. numbers with no fractional part
+  such as 3, 0, -76, and 20393.
 
-- ``double`` which represent non-integer numbers like 6.3 -0.9, and 60293.93032. Computer people call these “floating point” numbers because the decimal point “floats” similar relative to the magnitude of the number, similar to the way it does in scientific notation like :math:`6.5 ✕ 10^8`
+- ``double`` which can represent non-integer numbers like 6.3 -0.9, and
+  60293.93032. Computer people call these “floating point” numbers because the
+  decimal point “floats” relative to the magnitude of the number, similar to the
+  way it does in scientific notation like :math:`6.5 ✕ 10^8`. The name
+  ``double`` comes from the fact that ``double``\s are represented using 64
+  bits, double the 32 bits used for the type ``float`` which used to be the
+  normal size floating point number when most computers did math in units of
+  32-bits. (``float`` is rarely used these days and is not part of the AP
+  curriculum.)
 
-- ``boolean`` which can represent only two values: ``true`` and ``false``. (The data type is named for George Boole, a 19th century English mathematician who invented Boolean algebra, a system for dealing with statements made up of only true and false values.)
+- ``boolean`` which can represent only two values: ``true`` and ``false``. (The
+  data type is named for `George Boole
+  <https://en.wikipedia.org/wiki/George_Boole>`_, a 19th century English
+  mathematician who invented Boolean algebra, a system for dealing with
+  statements made up of only true and false values.)
 
 ``String`` is one of the object types on the exam and is the name of a class in
 Java. A ``String`` is written in a Java program as a sequence of characters
@@ -75,11 +88,12 @@ about ``String`` objects in Unit 2.
 
 .. note::
 
-   Some languages use 0 to represent false and 1 to represent true, but Java uses the keywords ``true`` and ``false`` in boolean variables.
+   Some languages use 0 to represent false and 1 to represent true, but Java
+   uses the keywords ``true`` and ``false`` in boolean variables.
 
 A type is a set of values (a domain) and a set of operations on them. For
-example, you can do addition with ``int``\ 's and ``double``\ 's but not with
-``booleans``.
+example, you can do addition operations with ``int``\s and ``double``\s but not
+with ``boolean``\s and ``String``\s.
 
 |Exercise| **Check your understanding**
 
