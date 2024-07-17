@@ -230,7 +230,7 @@ Variables are a powerful abstraction in programming because the same algorithm c
    }
 
 
-Although you will not be tested in the AP CSA exam on using the Java input or the ``Scanner`` or ``Console`` classes, learning how to do input in Java is very useful and fun. For more information on using the ``Scanner`` class, go to https://www.w3schools.com/java/java_user_input.asp, and for the newer ``Console`` class, https://howtodoinjava.com/java-examples/console-input-output/. We are limited with the one way communication with the Java server in this Runestone ebook, but in most IDEs like replit, the input/output would be more interactive. Here are some examples in replit for |JavaIOExample| using the ``Scanner`` class and |JavaIOConsole| using the ``Console`` class that you can try out. We will also learn how to use ``Scanner`` with input files in a later unit.  
+Although you will not be tested in the AP CSA exam on using the Java input or the ``Scanner`` or ``Console`` classes, learning how to do input in Java is very useful and fun. For more information on using the ``Scanner`` class, go to https://www.w3schools.com/java/java_user_input.asp, and for the newer ``Console`` class, https://howtodoinjava.com/java-examples/console-input-output/. We are limited with the one way communication with the Java server in this Runestone ebook, but in most IDEs like replit, the input/output would be more interactive. Here are some examples in replit for |JavaIOExample| using the ``Scanner`` class and |JavaIOConsole| using the ``Console`` class that you can try out. 
 
 
 
