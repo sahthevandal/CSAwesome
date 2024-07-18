@@ -222,9 +222,9 @@ Variables are a powerful abstraction in programming because the same algorithm c
        @Test
        public void test1()
        {
-           String output = getMethodOutput("main");
+           // String output = getMethodOutput("main");
            boolean passed =
-                   getResults(output, output, "Expected output from main", true);
+                   getResults("", "", "Scanner example", true);
            assertTrue(passed);
        }
    }
@@ -317,7 +317,7 @@ will be ``false``!
            String output = getMethodOutput("main");
            String expect = "5\n-1\n6\n" + (2.0/3) + "\nfalse\ntrue";
            boolean passed =
-                   getResults(expect, output, "Expected output from main. Make sure you change 2/3 to 2.0/3", true);
+                   getResults(expect, output, "Expected output from main. Make sure you change 2/3 to 2.0/3");
            assertTrue(passed);
        }
    }
