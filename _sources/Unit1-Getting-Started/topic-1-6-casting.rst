@@ -189,7 +189,7 @@ nearest integer to ``1.25``.
                        + "4";
 
            boolean passed =
-                   getResults(expect, output, "Expected output from main", true);
+                   getResults(expect, output, "Expected output from main");
            assertTrue(passed);
        }
    }
@@ -237,7 +237,7 @@ incorrect value could be stored. Try it below.
 
            boolean passed =
                    getResults(
-                           expect, output, "Fixed Integer Overflow Error", true);
+                           expect, output, "Fixed Integer Overflow Error");
            assertTrue(passed);
        }
    }
@@ -284,7 +284,7 @@ Although it's not on the AP exam, you can format long decimal numbers to just sh
            String expect = "3.0\n3.33\n0.67\n";
 
            boolean passed =
-                   getResults(expect, output, "Expected output from main", true);
+                   getResults(expect, output, "Expected output from main");
            assertTrue(passed);
        }
    }
