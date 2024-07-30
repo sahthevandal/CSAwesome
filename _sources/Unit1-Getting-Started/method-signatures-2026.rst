@@ -2,8 +2,8 @@
 
 |Time45|
 
-Method Signatures (from 2026 curriculum)
-==========================================
+Method Signatures (preview 2026 curriculum)
+=============================================
 
 
 Methods and Procedural Abstraction

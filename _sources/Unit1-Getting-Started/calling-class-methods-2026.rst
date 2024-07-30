@@ -3,8 +3,8 @@
 
 |Time45|
 
-Calling Class Methods (from 2026 curriculum)
-===============================================
+Calling Class Methods (preview 2026 curriculum)
+================================================
 
 Most of the methods we have used so far are **static methods**, which are also called **class methods**. These methods are associated with the class and include the keyword static in the method header. The main method is always static, which also means that there is only one copy of the method. 
 
