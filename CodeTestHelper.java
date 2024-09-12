@@ -439,7 +439,9 @@ public class CodeTestHelper {
                 if (m.getName().equals(methodName)) {
 
                     if (!checkStaticMethod(m) && checkReturnType(m, "void")) {
-                        return getInstanceMethodOutput(m, null);
+                        // this was ignoring the args passed in before
+                        // which is probably not the desired behavior
+                        return getInstanceMethodOutput(m, args);
                     } else if (!checkStaticMethod(m)) {
                         Object o = getTestInstance();
 
