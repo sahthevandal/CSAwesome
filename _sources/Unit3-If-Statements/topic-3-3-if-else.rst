@@ -420,7 +420,7 @@ they are not technically required to avoid this kind of confusion.
 Math.random() in if Statements
 -------------------------------
 
-The ``Math.random()`` method returns a random number between 0.0 and 1.0.  You can use this method with ``if`` statements to simulate a coin flip or an event occuring a certain percentage of the time. For example, if you want to simulate a coin flip, you can use check if the random number is less than 0.5 (halfway between 0 and .1) to simulate a 50% chance of heads or tails:
+The ``Math.random()`` method returns a random number between 0.0 and 1.0.  You can use this method with ``if`` statements to simulate a coin flip or an event occuring a certain percentage of the time. For example, if you want to simulate a coin flip, you can check if the random number is less than 0.5 (halfway between 0 and .1) to simulate a 50% chance of heads or tails:
 
 .. code-block:: java
 
