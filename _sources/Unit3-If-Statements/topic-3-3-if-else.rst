@@ -467,7 +467,7 @@ If you want to simulate an event occuring 90% of the time, you can check the ran
         
          if (Math.random() > 0.75) { System.out.println("Rain"); }
 
-      - Correct. This code will print "Rain" 25% (.1 - .75) of the time.
+      + Correct. This code will print "Rain" 25% (.1 - .75) of the time.
 
    -  .. code-block:: java
        
