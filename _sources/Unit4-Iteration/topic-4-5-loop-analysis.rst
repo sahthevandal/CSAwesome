@@ -282,7 +282,7 @@ This code will print a triangle of stars instead of a rectangle because the inne
    :language: java
    :autograde: unittest
 
-   How many stars are printed out by the following non-rectangular loops? Trace through it with the Code Lens button. Then, can you change the code so that the triangle is upside down where the first row has 5 stars and the last row has 1 star? Hint: make the inner loop count backwards from i to 0.
+   How many stars are printed out by the following non-rectangular loops? Trace through it with the Code Lens button. Then, can you change the code so that the triangle is upside down where the first row has 5 stars and the last row has 1 star? Hint: make the inner loop count from row up to 5.
    ~~~~
    public class NestedLoops
    {
@@ -291,7 +291,7 @@ This code will print a triangle of stars instead of a rectangle because the inne
        {
            for (int row = 0; row < 5; row++)
            {
-               // Change the inner loop to count backwards from i to 0
+               // Change the inner loop to count from row up to 5
                for (int col = 0; col <= row; col++)
                {
                    System.out.print("*");
@@ -320,10 +320,11 @@ This code will print a triangle of stars instead of a rectangle because the inne
        @Test
        public void testCodeContains()
        {
-           boolean check = checkCodeContains("col=i", "col=i");
+           boolean check = checkCodeContains("col=row", "col=row");
            assertTrue(check);
        }
    }
+
 
 How many stars are printed out? How many times do the loops iterate? The outer loop runs 5 times and the inner loop runs 0, 1, 2, 3, 4, 5 times respectively. So, the number of stars printed are 0 + 1 + 2 + 3 + 4 + 5 = 15. Notice that this is the sum of a series of natural numbers from 0 to 5. 
 
